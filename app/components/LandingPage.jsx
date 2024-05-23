@@ -34,6 +34,7 @@ const Header = () => {
 
   return (
     <div>
+      {/* Share */}
       {open && (
         <ShareLayout
           open={open}
@@ -42,6 +43,8 @@ const Header = () => {
           onCopy={onCopy}
         />
       )}
+
+      {/* Scroll Header */}
       <motion.div
         ref={ref}
         className="fixed top-11 flex z-20 justify-center w-full "
