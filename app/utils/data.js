@@ -1,6 +1,6 @@
 import { TbMail, TbPhone } from "react-icons/tb";
 
-const url = "https://multiphaceportfolio.vercel.app/";
+const url = "https://aakashsondagar.vercel.app/";
 
 const data = {
   name: "Aakash Sondagar",
