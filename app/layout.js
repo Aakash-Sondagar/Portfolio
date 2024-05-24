@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {/* Add favicon */}
-        <link rel="icon" href="/me.png" />
+        <link rel="icon" href="/me.png" sizes="any" />
 
         {/* Open Graph Meta Tags */}
         <meta property="og:title" content={metadata.title} />
