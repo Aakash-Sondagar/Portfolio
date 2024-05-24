@@ -1,10 +1,12 @@
-import { PiPhoneLight, PiGlobeSimpleThin } from "react-icons/pi";
+import { TbMail, TbPhone } from "react-icons/tb";
 
 const url = "https://multiphaceportfolio.vercel.app/";
 
 const data = {
   name: "Aakash Sondagar",
   email: "aakashsondar@gmail.com",
+  resumeUrl:
+    "https://media.instahyre.com/resume/2381689/642c0b1a03/Aakash_Sondagar.pdf",
   backgroundPic:
     "https://images.pexels.com/photos/370470/pexels-photo-370470.jpeg?auto=compress&cs=tinysrgb&w=1600",
   profilePic:
@@ -15,13 +17,13 @@ const data = {
   shareUrl: `${url}`,
   contactLinks: [
     {
-      href: `${url}`,
-      icon: <PiGlobeSimpleThin className="text-xl text-neutral-500" />,
-      text: `AakashSondagar.com`,
+      href: `mailto:aakashsondagar@gmail.com?subject=Hello&body=This is a test email`,
+      icon: <TbMail className="text-xl text-neutral-500" />,
+      text: `aakashsondagar@gmail.com`,
     },
     {
-      href: "tel:+918080240015", // Ensures correct phone call handling
-      icon: <PiPhoneLight className="text-xl text-neutral-500" />,
+      href: "tel:+918080240015",
+      icon: <TbPhone className="text-xl text-neutral-500" />,
       text: "+91 8080240015",
     },
   ],

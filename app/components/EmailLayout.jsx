@@ -1,38 +1,46 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-import { PiUploadThin } from "react-icons/pi";
+import { PiUploadThin, PiDownloadThin } from "react-icons/pi";
 import { FcCheckmark } from "react-icons/fc";
-import { TbCopy } from "react-icons/tb";
 
 import ShareLayout from "./ShareLayout";
 import data from "../utils/data";
 
 function EmailLayout() {
-  const [copied, setCopied] = useState(false);
   const [open, setOpen] = useState(false);
+  const [click, setClick] = useState(false);
 
-  const onCopy = () => {
-    navigator.clipboard.writeText(data?.email);
-    setCopied(true);
-
+  const downloadResume = () => {
+    setClick(true);
+    fetch(data.resumeUrl)
+      .then((res) => res.blob())
+      .then((blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "AakashSondagar.pdf";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      });
     setTimeout(() => {
-      setCopied(false);
+      setClick(false);
     }, 1000);
   };
 
   return (
     <div className="flex items-center justify-center gap-x-2 my-6">
       <button
-        onClick={onCopy}
+        onClick={() => downloadResume()}
         className="w-72 gap-x-3 h-10 rounded-lg bg-slate-50 flex items-center justify-center hover:bg-neutral-100 duration-300 transition-all ease-in"
       >
         <div className="font-Intermedium text-black">
-          {copied ? "copied" : data?.email}
+          {click ? "Downloaded" : data?.email}
         </div>
 
         <AnimatePresence>
-          {copied ? (
+          {click ? (
             <motion.span
               initial={{ scale: 1 }}
               animate={{ scale: 0.8 }}
@@ -56,7 +64,7 @@ function EmailLayout() {
                 damping: 10,
               }}
             >
-              <TbCopy className="w-4 h-4 text-black" />
+              <PiDownloadThin className=" text-black" />
             </motion.span>
           )}
         </AnimatePresence>
@@ -71,8 +79,6 @@ function EmailLayout() {
         <ShareLayout
           open={open}
           setOpen={setOpen}
-          copied={copied}
-          onCopy={onCopy}
         />
       )}
     </div>

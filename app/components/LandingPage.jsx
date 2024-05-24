@@ -14,18 +14,8 @@ import data from "../utils/data";
 // https://images.pexels.com/photos/303383/pexels-photo-303383.jpeg?auto=compress&cs=tinysrgb&w=1600
 
 const Header = () => {
-  const [copied, setCopied] = useState(false);
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
-
-  const onCopy = () => {
-    navigator.clipboard.writeText(data?.email);
-    setCopied(true);
-
-    setTimeout(() => {
-      setCopied(false);
-    }, 1000);
-  };
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -35,14 +25,7 @@ const Header = () => {
   return (
     <div>
       {/* Share */}
-      {open && (
-        <ShareLayout
-          open={open}
-          setOpen={setOpen}
-          copied={copied}
-          onCopy={onCopy}
-        />
-      )}
+      {open && <ShareLayout open={open} setOpen={setOpen} />}
 
       {/* Scroll Header */}
       <motion.div
@@ -55,7 +38,7 @@ const Header = () => {
             width={800}
             height={800}
             className="w-9 h-9  rounded-md object-cover"
-            src="/images/img7.jpg"
+            src="https://avatars.githubusercontent.com/u/89018309?v=4"
             alt=""
           />
           <h1 className="text-white font-Intermedium">{data?.name}</h1>
@@ -120,7 +103,7 @@ const Header = () => {
                   className="flex items-center gap-x-2 hover:bg-neutral-900 transition-all ease-in duration-100 p-1 px-2 rounded-xl"
                 >
                   {link.icon}
-                  <p className="text-white font-Intermedium">{link.text}</p>
+                  <div className="text-white font-Intermedium">{link.text}</div>
                 </Link>
               ))}
             </div>

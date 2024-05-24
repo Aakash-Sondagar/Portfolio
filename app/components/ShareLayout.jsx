@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+
 import {
   PiXCircleLight,
   PiFacebookLogoLight,
@@ -62,7 +64,18 @@ const links = [
 ];
 
 const ShareLayout = (props) => {
-  const { open, setOpen, copied, onCopy } = props;
+  const { open, setOpen } = props;
+
+  const [copied, setCopied] = useState(false);
+
+  const onCopy = () => {
+    navigator.clipboard.writeText(data?.email);
+    setCopied(true);
+
+    setTimeout(() => {
+      setCopied(false);
+    }, 1000);
+  };
 
   return (
     <>
