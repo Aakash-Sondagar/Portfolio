@@ -6,6 +6,7 @@ import {
   PiFacebookLogoLight,
   PiLinkedinLogoLight,
   PiLinkLight,
+  PiDownloadThin,
 } from "react-icons/pi";
 import { BsWhatsapp } from "react-icons/bs";
 import { FaAngleRight, FaTwitter } from "react-icons/fa";
@@ -13,6 +14,8 @@ import { TbCopy } from "react-icons/tb";
 import { FcCheckmark } from "react-icons/fc";
 
 import data from "../utils/data";
+
+import { resumeDownload } from "../utils/commonFunctions";
 
 const shareMessage = encodeURIComponent(data?.shareProfile);
 
@@ -53,6 +56,14 @@ const links = [
     lastIcon: <FaAngleRight />,
     onClick: () => {
       Click(`https://www.facebook.com/sharer/sharer.php?u=${data?.shareUrl}`);
+    },
+  },
+  {
+    iconFirst: <PiDownloadThin className="text-2xl" />,
+    name: "Resume",
+    lastIcon: <FaAngleRight />,
+    onClick: () => {
+      resumeDownload();
     },
   },
   {

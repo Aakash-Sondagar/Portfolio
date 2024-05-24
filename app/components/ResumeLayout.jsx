@@ -5,7 +5,7 @@ import { PiUploadThin, PiDownloadThin } from "react-icons/pi";
 import { FcCheckmark } from "react-icons/fc";
 
 import ShareLayout from "./ShareLayout";
-import data from "../utils/data";
+import { resumeDownload } from "../utils/commonFunctions";
 
 function EmailLayout() {
   const [open, setOpen] = useState(false);
@@ -13,17 +13,8 @@ function EmailLayout() {
 
   const downloadResume = () => {
     setClick(true);
-    fetch(data.resumeUrl)
-      .then((res) => res.blob())
-      .then((blob) => {
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "AakashSondagar.pdf";
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-      });
+    resumeDownload();
+    
     setTimeout(() => {
       setClick(false);
     }, 1000);
@@ -33,10 +24,10 @@ function EmailLayout() {
     <div className="flex items-center justify-center gap-x-2 my-6">
       <button
         onClick={() => downloadResume()}
-        className="w-72 gap-x-3 h-10 rounded-lg bg-slate-50 flex items-center justify-center hover:bg-neutral-100 duration-300 transition-all ease-in"
+        className="w-64 gap-x-3 h-10 rounded-lg bg-slate-50 flex items-center justify-center hover:bg-neutral-100 duration-300 transition-all ease-in"
       >
         <div className="font-Intermedium text-black">
-          {click ? "Downloaded" : data?.email}
+          {click ? "Downloaded" : "Resume"}
         </div>
 
         <AnimatePresence>
@@ -75,12 +66,7 @@ function EmailLayout() {
       >
         <PiUploadThin className="text-black" />
       </button>
-      {open && (
-        <ShareLayout
-          open={open}
-          setOpen={setOpen}
-        />
-      )}
+      {open && <ShareLayout open={open} setOpen={setOpen} />}
     </div>
   );
 }

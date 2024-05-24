@@ -6,7 +6,7 @@ import { PiUploadThin } from "react-icons/pi";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 
 import ShareLayout from "./ShareLayout";
-import EmailLayout from "./EmailLayout";
+import EmailLayout from "./ResumeLayout";
 
 import data from "../utils/data";
 
