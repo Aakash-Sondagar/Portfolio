@@ -4,7 +4,7 @@ import { socialLinks } from "../utils/link";
 
 const Links = () => {
   return (
-    <div className="flex flex-wrap gap-3 mx-auto mb-6">
+    <div className="flex flex-wrap justify-center gap-3 mx-auto mb-6">
       {socialLinks?.map((ele) => (
         <Link
           key={ele.text} // Important for accessibility and uniqueness
