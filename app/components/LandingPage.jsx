@@ -95,12 +95,12 @@ const Header = () => {
             <p className="font-Intermedium text-neutral-500 text-center my-3">
               {data?.bio}
             </p>
-            <div className="flex justify-center gap-x-7">
+            <div className="flex justify-center flex-col md:flex-row items-center gap-x-7">
               {data?.contactLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="flex items-center gap-x-2 hover:bg-neutral-900 transition-all ease-in duration-100 p-1 px-2 rounded-xl"
+                  className="flex items-center gap-x-2 my-1 md:my-0 hover:bg-neutral-900 transition-all ease-in duration-100 p-1 px-2 rounded-xl"
                 >
                   {link.icon}
                   <div className="text-white font-Intermedium">{link.text}</div>
