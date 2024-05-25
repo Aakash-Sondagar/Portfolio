@@ -7,7 +7,7 @@ import { FcCheckmark } from "react-icons/fc";
 import ShareLayout from "./ShareLayout";
 import { resumeDownload } from "../utils/commonFunctions";
 
-function EmailLayout() {
+function ResumeLayout() {
   const [open, setOpen] = useState(false);
   const [click, setClick] = useState(false);
 
@@ -71,4 +71,4 @@ function EmailLayout() {
   );
 }
 
-export default EmailLayout;
+export default ResumeLayout;
