@@ -11,10 +11,10 @@ function ResumeLayout() {
   const [open, setOpen] = useState(false);
   const [click, setClick] = useState(false);
 
-  const downloadResume = () => {
+  const downloadResume = async () => {
     setClick(true);
-    resumeDownload();
-    
+    await resumeDownload();
+
     setTimeout(() => {
       setClick(false);
     }, 1000);

@@ -1,8 +1,8 @@
 import data from "./data";
 
-export const resumeDownload = () => {
+export const resumeDownload = async () => {
   try {
-    fetch(data?.resumeUrl)
+    await fetch(data?.resumeUrl)
       .then((res) => res.blob())
       .then((blob) => {
         const url = window.URL.createObjectURL(blob);
