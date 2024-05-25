@@ -17,7 +17,7 @@ const data = {
   shareUrl: `${url}`,
   contactLinks: [
     {
-      href: "mailto:aakashsondagar@gmail.com?subject=Inquiry%20from%20Your%20Portfolio&body=Hi%20Aakash,%0D%0A%0D%0AI%20visited%20your%20portfolio%20website,%20and%20I%27m%20interested%20in%20discussing%20%0D%0A%0D%0ALooking%20forward%20to%20your%20response.%0D%0A%0D%0ABest%20regards,%0D%0A%5BYour%20Name%5D",
+      href: "mailto:aakashsondar@gmail.com?subject=Inquiry%20from%20Your%20Portfolio&body=Hi%20Aakash,%0D%0A%0D%0AI%20visited%20your%20portfolio%20website,%20and%20I%27m%20interested%20in%20discussing%20%0D%0A%0D%0ALooking%20forward%20to%20your%20response.%0D%0A%0D%0ABest%20regards,%0D%0A%5BYour%20Name%5D",
       icon: <TbMail className="text-xl text-neutral-500" />,
       text: `aakashsondagar@gmail.com`,
     },
