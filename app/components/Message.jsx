@@ -42,8 +42,7 @@ const Message = () => {
       </p>
       <form onSubmit={handleSubmit}>
         <input
-          className="text-neutral-800 bg-neutral-200 placeholder:text-neutral-400 ring-neutral-300
-dark:text-neutral-400 dark:bg-neutral-800 dark:placeholder:text-neutral-600 dark:ring-neutral-500 rounded-lg p-2 w-full mt-2 focus:ring-2 outline-none font-Intermedium "
+          className="text-neutral-800 bg-neutral-200 placeholder:text-neutral-400 ring-neutral-300 dark:text-neutral-400 dark:bg-neutral-800 dark:placeholder:text-neutral-600 dark:ring-neutral-500 rounded-lg p-2 w-full mt-2 focus:ring-2 outline-none font-Intermedium "
           type="text"
           placeholder="Your Name"
           name="name"

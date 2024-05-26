@@ -15,10 +15,19 @@
   src: url("../public//font//Intermedium.otf");
 }
 
+@layer base {
+  body {
+    @apply transition-all ease-in duration-200;
+  }
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
+  --animation-timing: 4s;
+  --button-size: 40px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -42,5 +51,77 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+.indicator {
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 12px;
+  background: #ccc;
+  position: relative;
+  overflow: hidden;
+}
+
+.indicator.active {
+  transition: transform 1s ease;
+}
+
+.indicator.complete {
+  background: #118ab2;
+}
+
+.indicator.active::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: rgb(150, 150, 150);
+  animation: fill var(--animation-timing) ease;
+}
+
+@keyframes fill {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.prev-next {
+  position: absolute;
+  top: calc(50% - var(--button-size) / 2);
+  left: 5px;
+  right: 5px;
+}
+
+.prev-next button {
+  position: absolute;
+  background: #ffffff;
+  height: var(--button-size);
+  width: var(--button-size);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.7;
+}
+
+.prev-next button:first-child {
+  left: 0;
+}
+
+.prev-next button:last-child {
+  right: 0;
+}
+
+/* Slight repositioning of the elements on mobile */
+@media screen and (min-width: 520px) {
+  .prev-next {
+    left: -50px;
+    right: -50px;
   }
 }

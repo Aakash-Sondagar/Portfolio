@@ -6,7 +6,9 @@ import ImageComponent from "./ImageComponent";
 import ProfileInfo from "./ProfileInfo";
 import ResumeLayout from "./ResumeLayout";
 import ShareLayout from "./ShareLayout";
+import Stories from "./Stories";
 import Links from "./Links";
+import ProjectCard from "./ProjectCard";
 const MapComponent = dynamic(() => import("./MapComponent"), { ssr: false });
 import Message from "./Message";
 import Footer from "./Footer";
@@ -31,8 +33,11 @@ const LandingPage = () => {
           <ProfileInfo />
           <ResumeLayout />
           {/* Stories */}
+          {/* <div className="flex justify-center gap-x-7">
+            <Stories />
+          </div> */}
           <Links />
-          {/* ProjectCard */}
+          <ProjectCard />
           <MapComponent />
           <Message />
         </div>
