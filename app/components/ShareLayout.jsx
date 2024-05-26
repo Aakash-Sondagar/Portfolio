@@ -100,14 +100,14 @@ const ShareLayout = (props) => {
             transition: { duration: !open ? 1 : 0 },
           }}
           transition={{ duration: 0.8 }}
-          className="backdrop-blur-xl flex justify-center items-center w-full bg-black/60 fixed bottom-0 z-50 overscroll-y-none right-0 left-0 h-full"
+          className="backdrop-blur-xl flex justify-center items-center w-full bg-white/60 dark:bg-black/60 fixed bottom-0 z-50 overscroll-y-none right-0 left-0 h-full"
         >
-          <div className="max-w-md  bg-[#161616] py-3 px-3 rounded-xl">
-            <div className="flex justify-between items-center text-white">
+          <div className="max-w-md bg-neutral-100 dark:bg-[#161616] py-3 px-3 rounded-xl">
+            <div className="flex justify-between items-center text-black dark:text-white">
               <p className="text-xl font-Intermedium">Share this profile</p>
 
               <div className="cursor-pointer" onClick={() => setOpen(false)}>
-                <PiXCircleLight className="text-2xl text-neutral-300" />
+                <PiXCircleLight className="text-2xl text-neutral-800 dark:text-neutral-300" />
               </div>
             </div>
 
@@ -115,10 +115,11 @@ const ShareLayout = (props) => {
               {links.map((link, indx) => (
                 <div
                   key={indx}
-                  className={`flex items-center justify-between  text-neutral-300 hover:bg-neutral-800 duration-300 ease-in-out transition-all p-2 mt-1 rounded-xl cursor-pointer ${
-                    indx === links.length - 1 &&
-                    "bg-neutral-950 hover:bg-neutral-950"
-                  }`}
+                  className={`flex items-center justify-between text-neutral-700 hover:bg-neutral-200
+ dark:text-neutral-300 dark:hover:bg-neutral-800 duration-300 ease-in-out transition-all p-2 mt-1 rounded-xl cursor-pointer ${
+   indx === links.length - 1 &&
+   "bg-neutral-50 hover:bg-neutral-100 dark:bg-neutral-950 dark:hover:bg-neutral-950"
+ }`}
                   onClick={link.onClick ? link.onClick : null}
                 >
                   <div className="flex items-center gap-x-2 ">
@@ -135,7 +136,8 @@ const ShareLayout = (props) => {
                   {indx === links.length - 1 ? (
                     <span
                       onClick={onCopy}
-                      className="flex items-center bg-neutral-300 p-1 ml-2 rounded-lg px-1 gap-x-1 text-sm font-Intermedium text-neutral-600 cursor-pointer "
+                      className="flex items-center bg-neutral-400 text-white
+ dark:bg-neutral-300 p-1 ml-2 rounded-lg px-1 gap-x-1 text-sm font-Intermedium dark:text-neutral-600 cursor-pointer "
                     >
                       {copied ? "Copied" : link.string}
 

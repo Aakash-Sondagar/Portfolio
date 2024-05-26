@@ -1,11 +1,10 @@
 import Image from "next/image";
-import data from "../utils/data";
 
 const ImageComponent = () => {
   return (
     <>
       {/* Background Image */}
-      <div className="h-60 relative w-full -z-10">
+      <div className="h-60 relative w-full bg-neutral-400 dark:bg-[#111111] -z-10">
         <Image
           width={1000}
           height={1000}
@@ -16,7 +15,7 @@ const ImageComponent = () => {
       </div>
       {/* Profile Image */}
       <div className="w-full flex justify-center z-10 relative -top-9">
-        <div className="absolute  p-1 rounded-full bg-[#111111]">
+        <div className="absolute  p-1 rounded-full bg-neutral-100 dark:bg-[#111111]">
           <img
             width={800}
             height={800}

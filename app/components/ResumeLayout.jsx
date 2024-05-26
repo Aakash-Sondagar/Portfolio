@@ -24,9 +24,9 @@ function ResumeLayout() {
     <div className="flex items-center justify-center gap-x-2 my-6">
       <button
         onClick={() => downloadResume()}
-        className="w-64 gap-x-3 h-10 rounded-lg bg-slate-50 flex items-center justify-center hover:bg-neutral-100 duration-300 transition-all ease-in"
+        className="w-64 gap-x-3 h-10 rounded-lg bg-neutral-500 dark:bg-slate-50 text-white dark:text-black flex items-center justify-center duration-300 transition-all ease-in"
       >
-        <div className="font-Intermedium text-black">
+        <div className="font-Intermedium">
           {click ? "Downloaded" : "Resume"}
         </div>
 
@@ -42,7 +42,7 @@ function ResumeLayout() {
                 damping: 100,
               }}
             >
-              <FcCheckmark className="w-4 h-4 text-black" />
+              <FcCheckmark />
             </motion.span>
           ) : (
             <motion.span
@@ -55,16 +55,16 @@ function ResumeLayout() {
                 damping: 10,
               }}
             >
-              <PiDownloadThin className=" text-black" />
+              <PiDownloadThin />
             </motion.span>
           )}
         </AnimatePresence>
       </button>
       <button
         onClick={() => setOpen(true)}
-        className="w-10 h-10 rounded-lg bg-slate-50 flex items-center justify-center"
+        className="w-10 h-10 rounded-lg bg-neutral-500 dark:bg-slate-50 text-white dark:text-black flex items-center justify-center"
       >
-        <PiUploadThin className="text-black" />
+        <PiUploadThin />
       </button>
       {open && <ShareLayout open={open} setOpen={setOpen} />}
     </div>

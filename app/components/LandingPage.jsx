@@ -11,7 +11,7 @@ const MapComponent = dynamic(() => import("./MapComponent"), { ssr: false });
 import Message from "./Message";
 import Footer from "./Footer";
 
-const Header = () => {
+const LandingPage = () => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -25,8 +25,8 @@ const Header = () => {
       {/* Images */}
       <ImageComponent />
 
-      <div className="bg-[#111111] p-3">
-        <div className="max-w-lg mx-auto bg-[#111111] pt-8 gap-y-3">
+      <div className="bg-[#ffffff] dark:bg-[#111111] p-3">
+        <div className="max-w-lg mx-auto bg-[#ffffff] dark:bg-[#111111] pt-8 gap-y-3">
           {/* Profile Info */}
           <ProfileInfo />
           <ResumeLayout />
@@ -42,4 +42,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default LandingPage;

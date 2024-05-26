@@ -21,7 +21,10 @@ const ScrollHeader = (props) => {
       className="fixed top-11 flex z-20 justify-center w-full "
       style={{ opacity: scrollYProgress }}
     >
-      <div className="bg-[#161616] border p-2 rounded-lg  border-neutral-800 flex justify-between items-center  w-[640px]">
+      <div
+        className="bg-neutral-100 dark:bg-[#161616] border p-2 rounded-lg border-neutral-200
+ dark:border-neutral-800 flex justify-between items-center  w-[640px]"
+      >
         <Image
           width={800}
           height={800}
@@ -29,10 +32,13 @@ const ScrollHeader = (props) => {
           src="/images/profilepic2.jpg"
           alt="profile pic"
         />
-        <h1 className="text-white font-Intermedium">{data?.name}</h1>
+        <h1 className="text-black dark:text-white font-Intermedium">
+          {data?.name}
+        </h1>
         <button
           onClick={() => setOpen(true)}
-          className="w-9 h-9 rounded-lg bg-neutral-700 text-neutral-300 flex items-center justify-center"
+          className="w-9 h-9 rounded-lg bg-neutral-400 text-neutral-700
+ dark:bg-neutral-700 dark:text-neutral-300 flex items-center justify-center"
         >
           <PiUploadThin />
         </button>
