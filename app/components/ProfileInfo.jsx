@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { useContext } from "react";
 import Link from "next/link";
 
 import { RiVerifiedBadgeFill } from "react-icons/ri";
