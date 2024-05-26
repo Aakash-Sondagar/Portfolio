@@ -12,7 +12,7 @@ const data = {
     { text: "Mumbai, IND", separator: true },
     { text: "He/Him" },
   ],
-  bio: "Greetings! I'm a Software Engineer on a mission to create a positive impact through code. My love for innovation keeps me exploring new frontiers, like DevOps and Open Source. Let's collaborate!",
+  bio: "Welcome! As a Software Engineer, I thrive on crafting solutions that make a difference. With a love for new challenges and staying updated on Software Development, DevOps, and Open Source, let's collaborate and make something extraordinary together!",
   shareProfile: `Check out this profile! ${url}`,
   shareUrl: `${url}`,
 };

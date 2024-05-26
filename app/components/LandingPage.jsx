@@ -18,21 +18,16 @@ const LandingPage = () => {
 
   return (
     <div>
-      {/* Share */}
       {open && <ShareLayout open={open} setOpen={setOpen} />}
 
-      {/* Scroll Header */}
       <ScrollHeader setOpen={setOpen} />
 
-      {/* Images */}
       <ImageComponent />
 
       <div className="bg-[#ffffff] dark:bg-[#111111] p-3">
         <div className="max-w-lg mx-auto bg-[#ffffff] dark:bg-[#111111] pt-8 gap-y-3">
-          {/* Profile Info */}
           <ProfileInfo />
           <ResumeLayout />
-          {/* Stories */}
           {/* <div className="flex justify-center gap-x-7">
             <Stories />
           </div> */}
