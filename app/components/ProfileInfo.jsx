@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useContext } from "react";
 import Link from "next/link";
 
 import { RiVerifiedBadgeFill } from "react-icons/ri";
@@ -8,7 +9,7 @@ import ThemeContext from "../utils/ThemeContext";
 import data from "../utils/data";
 import { contactLinks } from "../utils/link";
 
-const profileInfo = () => {
+const ProfileInfo = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
@@ -82,4 +83,4 @@ const profileInfo = () => {
   );
 };
 
-export default profileInfo;
+export default ProfileInfo;
