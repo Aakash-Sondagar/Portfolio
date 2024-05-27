@@ -10,7 +10,7 @@ export const resumeDownload = async () => {
     link.click();
     document.body.removeChild(link);
 
-    window.location.href = data?.resumeUrl;
+    window.open(data?.resumeUrl, "_blank");
   } catch (error) {
     console.error("Error fetching PDF:", error);
   }
