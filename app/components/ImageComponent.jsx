@@ -15,11 +15,11 @@ const ImageComponent = () => {
       </div>
       {/* Profile Image */}
       <div className="w-full flex justify-center z-10 relative -top-9">
-        <div className="absolute  p-1 rounded-full bg-neutral-100 dark:bg-[#111111]">
+        <div className="absolute p-[3px] rounded-full bg-gradient-to-r from-[#D300C5] via-[#FF0069] to-[#FF7A00]">
           <Image
             width={800}
             height={800}
-            className="w-16 h-16 rounded-full object-cover"
+            className="w-16 h-16 rounded-full object-cover z-8"
             src="/images/profilepic.jpg"
             alt=""
           />
