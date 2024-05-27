@@ -1,29 +1,15 @@
 import React, { useContext } from "react";
 import Link from "next/link";
 
-import { PiSunDuotone, PiMoonDuotone } from "react-icons/pi";
 
-import ThemeContext from "../utils/ThemeContext";
 import data from "../utils/data";
 import { contactLinks } from "../utils/link";
 
 const ProfileInfo = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
     <div className="relative">
-      <div className="absolute top-0 right-0 bg-neutral-200 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200 px-2 py-1 text-sm rounded-lg flex justify-center items-center h-10 w-10">
-        <label className="swap swap-rotate">
-          <input
-            type="checkbox"
-            className="theme-controller"
-            value={theme === "dark"}
-            onChange={toggleTheme}
-          />
-          <PiSunDuotone className="text-yellow-500 swap-on text-xl" />
-          <PiMoonDuotone className="text-blue-200 swap-off text-xl" />
-        </label>
-      </div>
+      
       <div className="text-center">
         <div className="font-Intermedium text-black dark:text-white text-2xl flex justify-center items-center gap-x-2">
           <div>{data?.name}</div>

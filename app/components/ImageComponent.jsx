@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const ImageComponent = () => {
   return (
-    <>
+    <div className="relative">
       {/* Background Image */}
       <div className="h-60 relative w-full bg-neutral-400 dark:bg-[#111111] -z-10">
         <Image
@@ -25,7 +25,7 @@ const ImageComponent = () => {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
