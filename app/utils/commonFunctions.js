@@ -1,20 +1,16 @@
 import data from "./data";
 
 export const resumeDownload = async () => {
-  const corsProxyUrl = "https://cors-anywhere.herokuapp.com/";
-  const pdfUrl = data?.resumeUrl;
-
   try {
-    const response = await fetch(`${corsProxyUrl}${pdfUrl}`);
-    const blob = await response.blob();
+    const pdfPath = "/images/Aakash_Sondagar_Resume.pdf";
+    const link = document.createElement("a");
+    link.href = pdfPath;
+    link.download = "Aakash_Sondagar_Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "Aakash_Sondagar_Resume.pdf";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
+    window.location.href = data?.resumeUrl;
   } catch (error) {
     console.error("Error fetching PDF:", error);
   }

@@ -37,35 +37,32 @@ const Message = () => {
 
   return (
     <div className="bg-neutral-100 dark:bg-[#161616] mt-3 py-3 px-3 rounded-xl">
-      <p className="text-neutral-700 dark:text-neutral-300 font-Interegular font-bold mt-1">
+      <p className="text-neutral-700 dark:text-neutral-300 font-Interegular p-2">
         Leave a Message
       </p>
       <form onSubmit={handleSubmit}>
         <input
-          className="text-neutral-800 bg-neutral-200 placeholder:text-neutral-400 ring-neutral-300 dark:text-neutral-400 dark:bg-neutral-800 dark:placeholder:text-neutral-600 dark:ring-neutral-500 rounded-lg p-2 w-full mt-2 focus:ring-2 outline-none font-Intermedium "
+          className="text-neutral-800 bg-neutral-200 placeholder:text-neutral-400 ring-neutral-300 dark:text-neutral-400 dark:bg-neutral-800 dark:placeholder:text-neutral-600 dark:ring-neutral-500 rounded-lg p-2 w-full focus:ring-2 outline-none font-Interegular"
           type="text"
-          placeholder="Your Name"
+          placeholder="Your name *"
           name="name"
           required
         />
         <input
-          className="text-neutral-800 bg-neutral-200 placeholder:text-neutral-400 ring-neutral-300 dark:text-neutral-400 dark:bg-neutral-800 dark:placeholder:text-neutral-600 dark:ring-neutral-500 rounded-lg p-2 w-full mt-2 focus:ring-2 outline-none font-Intermedium "
+          className="text-neutral-800 bg-neutral-200 placeholder:text-neutral-400 ring-neutral-300 dark:text-neutral-400 dark:bg-neutral-800 dark:placeholder:text-neutral-600 dark:ring-neutral-500 rounded-lg p-2 w-full mt-2 focus:ring-2 outline-none font-Interegular "
           type="email"
-          placeholder="Your email"
+          placeholder="Your email *"
           name="email"
           required
         />
         <textarea
-          className="text-neutral-800 bg-neutral-200 placeholder:text-neutral-400 ring-neutral-300 dark:text-neutral-400 dark:bg-neutral-800 dark:placeholder:text-neutral-600 dark:ring-neutral-500 rounded-lg p-2 w-full mt-2 focus:ring-2 outline-none font-Intermedium "
+          className="text-neutral-800 bg-neutral-200 placeholder:text-neutral-400 ring-neutral-300 dark:text-neutral-400 dark:bg-neutral-800 dark:placeholder:text-neutral-600 dark:ring-neutral-500 rounded-lg p-2 w-full mt-2 focus:ring-2 outline-none font-Interegular "
           rows={5}
-          placeholder="Your message"
+          placeholder="Your message *"
           name="message"
           required
         />
-        <button
-          className="bg-neutral-200 text-neutral-800
- dark:bg-neutral-800 dark:text-neutral-200 p-2 rounded-lg mt-2 w-full font-Intermedium"
-        >
+        <button className="bg-neutral-500 dark:bg-slate-50 text-white dark:text-black p-2 rounded-lg mt-2 w-full font-Interegular">
           Send
         </button>
       </form>

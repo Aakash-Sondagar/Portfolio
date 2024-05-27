@@ -16,7 +16,7 @@ const ImageComponent = () => {
       {/* Profile Image */}
       <div className="w-full flex justify-center z-10 relative -top-9">
         <div className="absolute  p-1 rounded-full bg-neutral-100 dark:bg-[#111111]">
-          <img
+          <Image
             width={800}
             height={800}
             className="w-16 h-16 rounded-full object-cover"

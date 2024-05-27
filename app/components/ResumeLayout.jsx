@@ -62,9 +62,10 @@ function ResumeLayout() {
       </button>
       <button
         onClick={() => setOpen(true)}
-        className="w-10 h-10 rounded-lg bg-neutral-500 dark:bg-slate-50 text-white dark:text-black flex items-center justify-center"
+        className="h-10 rounded-lg bg-neutral-200 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200 flex items-center justify-center px-2"
       >
-        <PiUploadThin />
+        Share 
+        <PiUploadThin className="ml-2" />
       </button>
       {open && <ShareLayout open={open} setOpen={setOpen} />}
     </div>

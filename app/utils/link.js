@@ -38,6 +38,6 @@ export const contactLinks = [
   {
     href: "tel:+918080240015",
     icon: <TbPhone className="text-xl text-neutral-500" />,
-    text: "+91 8080240015",
+    text: "+91 808024 0015",
   },
 ];

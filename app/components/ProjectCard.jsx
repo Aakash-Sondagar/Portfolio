@@ -16,7 +16,7 @@ const ProjectCard = () => {
             height={800}
             className="w-10 h-9 rounded-lg object-cover"
             src={item.imgSrc}
-            alt=""
+            alt={item.title}
           />
           <div className="flex-1">
             <h4 className="font-Interegular text-black dark:text-white text-lg text-center md:text-left">
@@ -34,10 +34,10 @@ const ProjectCard = () => {
               onClick={() => window.open(item.githubLink, "_blank")}
               className="text-black bg-neutral-200 dark:text-white dark:bg-neutral-800 flex items-center gap-x-2 h-fit p-2 rounded-lg"
             >
-              <span className="font-Intermedium text-xs hidden md:block">
+              <PiGithubLogoThin />
+              <span className="font-Interegular text-xs hidden md:block">
                 GitHub
               </span>
-              <PiGithubLogoThin />
             </button>
           )}
           {item?.liveLink && (
@@ -45,10 +45,10 @@ const ProjectCard = () => {
               onClick={() => window.open(item?.liveLink, "_blank")}
               className="text-black bg-neutral-200 dark:text-white dark:bg-neutral-800 flex items-center gap-x-2 h-fit  p-2 rounded-lg"
             >
+              <PiLinkLight />
               <span className="font-Intermedium text-xs hidden md:block">
                 link
               </span>
-              <PiLinkLight />
             </button>
           )}
         </div>
