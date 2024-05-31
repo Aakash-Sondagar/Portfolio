@@ -1,13 +1,13 @@
 "use client";
 import Main from "./components/Main";
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import { usePathname } from "next/navigation";
+import { Analytics } from "@vercel/analytics/react";
 
 const Page = () => {
-  const router = usePathname();
   return (
     <div>
       <SpeedInsights route="/" />
+      <Analytics />
       <Main />
     </div>
   );
