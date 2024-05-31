@@ -7,7 +7,7 @@ const Page = () => {
   const router = usePathname();
   return (
     <div>
-      <SpeedInsights route={router.pathname} />
+      <SpeedInsights route="/" />
       <Main />
     </div>
   );
