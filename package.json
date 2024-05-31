@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@vercel/speed-insights": "^1.0.11",
     "classnames": "^2.5.1",
     "framer-motion": "^11.2.6",
     "leaflet": "^1.9.4",
