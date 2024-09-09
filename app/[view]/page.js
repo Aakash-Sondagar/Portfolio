@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { redirect, notFound } from "next/navigation";
-import { getCookie, setViewAndCookie } from "@/Utils/commonFunction";
+import { getCookie, setViewAndCookie } from "@/utils/commonFunction";
 
 export default function ViewPage({ params }) {
   const { view } = params;
