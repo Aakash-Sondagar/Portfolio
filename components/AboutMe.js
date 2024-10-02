@@ -5,10 +5,12 @@ import { description } from "@/utils/data";
 
 const AboutMe = ({ view }) => {
   return (
-    <div className="pt-6 sm:pt-8 text-sm px-4 sm:px-0">
-      <h1 className="font-semibold text-center sm:text-left">About Me</h1>
-      <Separator className="mt-2 bg-zinc-800" />
-      <div className="text-pretty text-justify sm:text-left mt-3">
+    <div className="pt-3 sm:pt-8 px-4 sm:px-0">
+      <h1 className="font-medium text-center text-lg sm:indent-1 sm:text-left">
+        About Me
+      </h1>
+      <Separator className="mt-1 bg-zinc-700 w-full" />
+      <div className="font-light text-sm text-justify indent-3 sm:indent-8 sm:text-left sm:text-base mt-2">
         <Markdown>{description[view]}</Markdown>
       </div>
     </div>
