@@ -71,20 +71,18 @@ export const workExp = [
 
 export const Skills = {
   sde: [
-    "Node",
-    "React",
-    "Vue",
-    "MongoDB",
-    "Postgres",
+    "JavaScript",
+    "TypeScript",
+    "Node.js",
+    "Express.js",
+    "React.js",
+    "Tailwind CSS",
+    "SQL",
+    "NoSQL",
+    "Git & Github",
     "GCP",
     "Terraform",
-    "Docker",
-    "Kubernetes",
-    "Git",
-    "Jenkins",
-    "AWS",
-    "Azure",
-    "DevOps",
+    "CI/CD",
   ],
 };
 
