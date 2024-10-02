@@ -41,6 +41,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
     - Projects
     - Connect
     - footer
+    - New Accordion
 
     https://motion-primitives.com/docs
     https://ui.shadcn.com/

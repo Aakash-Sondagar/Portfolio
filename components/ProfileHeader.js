@@ -8,6 +8,7 @@ import { role, profileHeader } from "@/utils/data";
 
 export default function ProfileHeader({ view }) {
   const [download, setDownload] = useState("false");
+
   const downloadResume = () => {
     const anchorElement = document.createElement("a");
     anchorElement.href = profileHeader.ResumeLink;
@@ -22,9 +23,9 @@ export default function ProfileHeader({ view }) {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row sm:justify-between items-center sm:items-center sm:space-y-0 space-y-4 animate-slideFromDownAndFade">
-      <div className="flex items-center">
-        <Avatar className="sm:mr-4 mr-2 h-16 w-16  hover:scale-105">
+    <div className="flex flex-col sm:flex-row sm:justify-between items-center sm:items-center sm:space-y-0 animate-slideFromDownAndFade">
+      <div className="flex items-center flex-col sm:flex-row">
+        <Avatar className="h-16 w-16 hover:scale-105 sm:mr-5">
           <AvatarImage
             className="object-cover"
             src={profileHeader.ProfilePic}
@@ -32,12 +33,12 @@ export default function ProfileHeader({ view }) {
           <AvatarFallback>{profileHeader.ProfilePicAlt}</AvatarFallback>
         </Avatar>
 
-        <div className="text-center sm:text-left text-[14px] sm:text-[16px]">
-          <h1 className="font-medium text-lg">{profileHeader.Name}</h1>
-          <div className="text-base">{role[view]}</div>
+        <div className="text-center mt-2 sm:text-left sm:mt-0">
+          <h1 className="font-semibold text-lg">{profileHeader.Name}</h1>
+          <div className="font-light text-base">{role[view]}</div>
         </div>
       </div>
-      <div className="flex gap-4 sm:gap-3 items-center justify-center font-semibold mt-4 sm:mt-0">
+      <div className="flex gap-4 sm:gap-3 items-center justify-center font-semibold mt-3">
         {/* Resume Button */}
         <Button
           variant="ghost"
@@ -46,16 +47,16 @@ export default function ProfileHeader({ view }) {
         >
           <span className="hidden sm:flex text-base">Resume</span>
           {download === "true" ? (
-            <LuCheck className="h-6 w-6 sm:h-4 sm:w-4 sm:ml-1 hover:h-5 transition-all duration-300 ease-in-out opacity-100 transform scale-100" />
+            <LuCheck className="h-6 w-6 sm:h-5 sm:w-5 sm:ml-1 transition-all duration-300 ease-in-out opacity-100 transform scale-100" />
           ) : (
-            <LuArrowDownToLine className="h-6 w-6 sm:h-4 sm:w-4 sm:ml-1 hover:h-5 transition-all duration-300 ease-in-out opacity-100 transform scale-100" />
+            <LuArrowDownToLine className="h-6 w-6 sm:h-5 sm:w-5 sm:ml-1 transition-all duration-300 ease-in-out opacity-100 transform scale-100" />
           )}
         </Button>
 
         {/* Social Icons */}
         {profileHeader.social.map((item, index) => (
           <Link key={index} href={item.link}>
-            <item.icon className="h-6 w-6 sm:h-5 sm:w-5 hover:animate-squeeze" />
+            <item.icon className="h-6 w-6 sm:h-5 sm:w-5" />
           </Link>
         ))}
       </div>
