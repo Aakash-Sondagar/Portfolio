@@ -25,7 +25,7 @@ export default function ProfileHeader({ view }) {
   return (
     <div className="flex flex-col sm:flex-row sm:justify-between items-center sm:items-center sm:space-y-0 animate-slideFromDownAndFade">
       <div className="flex items-center flex-col sm:flex-row">
-        <Avatar className="h-16 w-16 hover:scale-105 sm:mr-5">
+        <Avatar profile={true} className="h-16 w-16 hover:scale-105 sm:mr-5">
           <AvatarImage
             className="object-cover"
             src={profileHeader.ProfilePic}

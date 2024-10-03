@@ -4,24 +4,23 @@ import { ResumeCard } from "@/components/ui/resume-card";
 
 const WorkExperience = ({ view }) => {
   return (
-    <div className="pt-6 sm:pt-8 text-sm px-4 sm:px-0">
-      <h1 className="font-semibold text-center sm:text-left">
+    <div className="pt-3 sm:pt-8 px-4 sm:px-0">
+      <h1 className="font-medium text-center text-lg sm:indent-1 sm:text-left">
         Work Experience
       </h1>
-      <Separator className="mt-2 bg-zinc-800 mb-2" />
+      <Separator className="mt-1 bg-zinc-700 w-full" />
       {workExp.map((work, index) => {
         return (
           <ResumeCard
             key={index}
             logoUrl={work.logoUrl}
             altText={work.company}
-            title={work.company}
-            subtitle={work.title}
+            company={work.company}
+            role={work.role}
             href={work.href}
             badges={work.badges}
             period={`${work.start} - ${work.end ?? "Present"}`}
             description={work.description}
-            separator={index !== workExp.length - 1 ? true : false}
           />
         );
       })}

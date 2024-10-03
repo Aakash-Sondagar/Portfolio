@@ -15,7 +15,7 @@ const SDE = () => {
   const BLUR_FADE_DELAY = 0.04;
 
   return (
-    <div className="mx-auto min-h-screen max-w-2xl overflow-x-hidden px-3 py-8 sm:py-32 md:overflow-x-visible md:py-16">
+    <div className="mx-auto min-h-screen max-w-2xl overflow-x-hidden px-3 py-9 sm:py-16 md:overflow-x-visible">
       <BlurFade delay={BLUR_FADE_DELAY}>
         <ProfileHeader view={view} />
       </BlurFade>
@@ -31,9 +31,9 @@ const SDE = () => {
       <BlurFade delay={BLUR_FADE_DELAY * 9}>
         <Education />
       </BlurFade>
-      <BlurFade delay={BLUR_FADE_DELAY * 11}>
+      {/* <BlurFade delay={BLUR_FADE_DELAY * 11}>
         <Projects view={view} />
-      </BlurFade>
+      </BlurFade> */}
     </div>
   );
 };

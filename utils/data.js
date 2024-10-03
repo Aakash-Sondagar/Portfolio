@@ -47,8 +47,7 @@ export const profileHeader = {
 export const workExp = [
   {
     company: "Wohlig Transformations",
-    title: "Software Development Engineer",
-    href: "https://www.wohlig.com",
+    role: "SDE 1",
     badges: ["Node", "React", "MongoDB", "Postgres", "GCP", "Terraform"],
     start: "July 2023",
     end: null,
@@ -58,8 +57,7 @@ export const workExp = [
   },
   {
     company: "Wohlig Transformations",
-    title: "Software Development Engineer Intern",
-    href: "https://www.wohlig.com",
+    role: "SDE Intern",
     badges: ["Node", "Vue", "MongoDB"],
     start: "Jan 2022",
     end: "June 2022",
