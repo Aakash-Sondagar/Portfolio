@@ -8,15 +8,20 @@ import Backend from "@/components/views/Backend";
 import ViewContext from "@/utils/viewContext";
 import { getCookie, setViewAndCookie } from "@/utils/commonFunction";
 
-import { Button } from "@/components/ui/button";
+import AnimatedBackground from "@/components/ui/animated-tabs";
+import { Home, Sun, Moon } from "lucide-react";
 
-export default function Home({ children }) {
+export default function HomePage({ children }) {
   // Dark Mode
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
-    const darkModePreference = window.localStorage.getItem("darkMode");
+    let darkModePreference = window.localStorage.getItem("darkMode");
+    if (!darkModePreference) {
+      window.localStorage.darkMode = true;
+      darkModePreference = window.localStorage.getItem("darkMode");
+    }
     setIsDarkMode(darkModePreference === "true");
     if (darkModePreference === "true") {
       document.documentElement.classList.add("dark");
@@ -34,6 +39,32 @@ export default function Home({ children }) {
 
     return () => clearTimeout(timer);
   };
+
+  const TABS = [
+    {
+      label: "Home",
+      icon: <Home className="h-5 w-5" />,
+      action: null,
+    },
+    {
+      label: "DarkMode",
+      icon: (
+        <div className="relative h-5 w-5">
+          <Sun
+            className={`absolute h-5 w-5 transform transition-all duration-500 ${
+              isDarkMode ? "rotate-0 opacity-0" : "rotate-0 opacity-100"
+            }`}
+          />
+          <Moon
+            className={`absolute h-5 w-5 transform transition-all duration-500 ${
+              isDarkMode ? "rotate-0 opacity-100" : "rotate-90 opacity-0"
+            }`}
+          />
+        </div>
+      ),
+      action: toggleDarkMode,
+    },
+  ];
 
   // Set View
   const [view, setView] = useState("");
@@ -71,9 +102,33 @@ export default function Home({ children }) {
           {children}
         </SelectedView>
       </ViewContext.Provider>
-      <Button onClick={toggleDarkMode} className="p-2 rounded">
-        {isDarkMode ? "Dark" : "Light"} Mode
-      </Button>
+      <div className="fixed bottom-3 left-1/2 max-w-full -translate-x-1/2">
+        <div className="flex w-full space-x-2 rounded-xl border dark:border-zinc-950/10 dark:bg-white bg-zinc-900 border-zinc-800 p-2">
+          <AnimatedBackground
+            defaultValue={["Home", "DarkMode"]}
+            className="rounded-lg bg-zinc-800 dark:bg-zinc-100"
+            transition={{
+              type: "spring",
+              bounce: 0.2,
+              duration: 0.3,
+            }}
+          >
+            {TABS.map((tab) => (
+              <button
+                key={tab.label}
+                data-id={tab.label}
+                type="button"
+                onClick={() => {
+                  tab.action && tab.action();
+                }}
+                className="inline-flex h-9 w-9 items-center justify-center text-zinc-400 dark:text-zinc-500 transition-colors duration-100 focus-visible:outline-2 data-[checked=true]:text-zinc-50 dark:data-[checked=true]:text-zinc-950"
+              >
+                {tab.icon}
+              </button>
+            ))}
+          </AnimatedBackground>
+        </div>
+      </div>
       {animate && (
         <div
           className={`fixed inset-0 -z-10 ${

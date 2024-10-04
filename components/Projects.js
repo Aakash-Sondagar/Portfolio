@@ -1,8 +1,11 @@
+import { Separator } from "@/components/ui/separator";
+
 const Projects = () => {
   return (
-    <div>
-      <h1>Projects</h1>
-      <p>Here are some of my projects</p>
+    <div className="pt-6 sm:pt-8 text-sm px-4 sm:px-0">
+      <h1 className="font-semibold text-center sm:text-left">Projects</h1>
+      <Separator className="mt-2 bg-zinc-800" />
+      
     </div>
   );
 };
