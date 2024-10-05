@@ -12,6 +12,25 @@ import AnimatedBackground from "@/components/ui/animated-tabs";
 import { Home, Sun, Moon } from "lucide-react";
 
 export default function HomePage({ children }) {
+  // componentToShow
+  const [componentToShow, setComponentToShow] = useState(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 640) {
+        setComponentToShow(false);
+      } else {
+        setComponentToShow(true);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   // Dark Mode
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [animate, setAnimate] = useState(false);
@@ -40,7 +59,8 @@ export default function HomePage({ children }) {
     return () => clearTimeout(timer);
   };
 
-  const TABS = [
+  // Tabs
+  const tabs = [
     {
       label: "Home",
       icon: <Home className="h-5 w-5" />,
@@ -98,7 +118,10 @@ export default function HomePage({ children }) {
   return (
     <div className="font-[family-name:var(--font-geist-sans)]">
       <ViewContext.Provider value={{ view }}>
-        <SelectedView className={animate ? "clipPathReveal" : ""}>
+        <SelectedView
+          componentToShow={componentToShow}
+          className={animate ? "clipPathReveal" : ""}
+        >
           {children}
         </SelectedView>
       </ViewContext.Provider>
@@ -113,7 +136,7 @@ export default function HomePage({ children }) {
               duration: 0.3,
             }}
           >
-            {TABS.map((tab) => (
+            {tabs.map((tab) => (
               <button
                 key={tab.label}
                 data-id={tab.label}

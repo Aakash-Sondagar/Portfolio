@@ -32,7 +32,7 @@ export default function ProfileHeader({ view }) {
           />
           <AvatarFallback>{profileHeader.ProfilePicAlt}</AvatarFallback>
         </Avatar>
-
+        
         <div className="text-center mt-2 sm:text-left sm:mt-0">
           <h1 className="font-semibold text-lg">{profileHeader.Name}</h1>
           <div className="font-light text-base">{role[view]}</div>

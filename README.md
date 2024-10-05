@@ -37,19 +37,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 <!-- 
     To Do
-    - Menubar
-    - Projects
-    - Connect
-    - footer
-    - New Accordion
-
-    https://motion-primitives.com/docs
-    https://ui.shadcn.com/
-    https://magicui.design/
+    - Sort Data and Minor styling tweaks
+    - Sort layout.js 
+    - Sort Readme and Github Repo
 
     https://ibelick.com/
     https://portfolio-magicui.vercel.app/
-    https://react-icons.github.io/react-icons/icons/lu/
-
-
  -->

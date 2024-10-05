@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import ViewContext from "@/utils/viewContext";
 
+import { cn } from "@/lib/utils";
+
 import { BlurFade } from "@/components/ui/blur-fade";
 
 import ProfileHeader from "@/components/ProfileHeader";
@@ -9,8 +11,10 @@ import Skills from "@/components/Skills";
 import WorkExperience from "@/components/WorkExperience";
 import Education from "@/components/Education";
 import Projects from "@/components/Projects";
+import Certificates from "@/components/Certificates";
+import Connect from "@/components/Connect";
 
-const SDE = () => {
+const SDE = ({ componentToShow }) => {
   const { view } = useContext(ViewContext);
   const BLUR_FADE_DELAY = 0.04;
 
@@ -31,9 +35,15 @@ const SDE = () => {
       <BlurFade delay={BLUR_FADE_DELAY * 9}>
         <Education />
       </BlurFade>
-      {/* <BlurFade delay={BLUR_FADE_DELAY * 11}>
-        <Projects view={view} />
-      </BlurFade> */}
+      <BlurFade delay={BLUR_FADE_DELAY * 11}>
+        <Projects componentToShow={componentToShow} view={view} />
+      </BlurFade>
+      <BlurFade delay={BLUR_FADE_DELAY * 13}>
+        <Certificates componentToShow={componentToShow} view={view} />
+      </BlurFade>
+      <BlurFade delay={BLUR_FADE_DELAY * 15}>
+        <Connect />
+      </BlurFade>
     </div>
   );
 };
