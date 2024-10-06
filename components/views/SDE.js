@@ -1,8 +1,6 @@
 import { useContext } from "react";
 import ViewContext from "@/utils/viewContext";
 
-import { cn } from "@/lib/utils";
-
 import { BlurFade } from "@/components/ui/blur-fade";
 
 import ProfileHeader from "@/components/ProfileHeader";
