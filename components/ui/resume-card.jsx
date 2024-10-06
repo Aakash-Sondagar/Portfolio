@@ -22,7 +22,6 @@ export const ResumeCard = ({
   period,
   description,
 }) => {
-  
   return (
     <Link href={href || "#"} className="cursor-default">
       <Accordion

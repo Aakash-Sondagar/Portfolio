@@ -74,7 +74,7 @@ export const Skills = {
     "Terraform",
     "CI/CD",
   ],
-  frontend: ["React.js", "Redux", "Next.js", "Tailwind CSS", "CI/CD"],
+  frontend: ["React.js", "Redux", "Next.js", "Tailwind CSS", "Vue.js", "CI/CD"],
 };
 
 export const workExp = [

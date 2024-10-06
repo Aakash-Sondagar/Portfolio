@@ -25,15 +25,15 @@ const Connect = () => {
           <p className="mb-4">
             Follow me on{" "}
             <a
-              href="https://x.com/Ibelick"
+              href="https://x.com/AakashSondagar"
               target="_blank"
               className="external-link"
             >
               X
             </a>
-            , view my code and open-source projects on{" "}
+            , view my code on{" "}
             <a
-              href="https://github.com/ibelick"
+              href="https://github.com/Aakash-Sondagar"
               target="_blank"
               className="external-link"
             >
@@ -51,9 +51,9 @@ const Connect = () => {
             <span className="inline-flex items-center">
               <span
                 className="relative cursor-pointer flex items-center no-underline"
-                onClick={() => handleCopyEmail("julien.thibeaut@gmail.com")}
+                onClick={() => handleCopyEmail("aakashsondar@gmail.com")}
               >
-                <span>julien.thibeaut@gmail.com</span>
+                <span>aakashsondar@gmail.com</span>
                 {isCopied ? (
                   <Check className="ml-2 text-green-500" size={18} />
                 ) : (

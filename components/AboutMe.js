@@ -1,5 +1,4 @@
 import Markdown from "react-markdown";
-
 import { Separator } from "@/components/ui/separator";
 
 import { description } from "@/utils/data";
