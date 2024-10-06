@@ -1,30 +1,34 @@
 import { Icons } from "./icon";
 
 export const role = {
-  backend: "Backend Engineer",
-  frontend: "Frontend Engineer",
-  sde: "Software Engineer",
+  backend: "SDE 1 (Backend)",
+  frontend: "SDE 1 (Frontend)",
+  sde: "Software Engineer (SDE 1)",
 };
 
 export const description = {
-  sde: `Hi 👋, I’m a **Software Engineer** with 1+ years of experience, currently working at **[Wohlig](https://www.wohlig.com/)**. 
-    I’m passionate about building impactful solutions and staying up-to-date with the latest technologies in software development. 
-    I’m currently diving into DevOps while also contributing to the open-source community.`,
+  sde: `Hi 👋, I’m a **Software Engineer (SDE 1)**  with 1.5 years of experience, currently working at ***[Wohlig](https://www.wohlig.com/)***. 
+    I’m passionate about building impactful softwares that solve real-world problems. 
+    I’m currently learning **Full Stack Development** and **DevOps**, and I’m excited to apply my skills in the open-source community.`,
 
-  backend: `I’m a **Backend Software Engineer** with 1+ years of experience, currently working at **[Wohlig](https://www.wohlig.com/)**. 
-    I specialize in building efficient, scalable solutions using Node.js, Express, MongoDB, and Postgres. 
-    I’m passionate about backend architecture, database optimization, and cloud technologies, 
-    and I’m also exploring DevOps to optimize deployment processes and enhance system security.`,
-  frontend: `Hi 👋, I’m a **Frontend Software Engineer** with 1+ years of experience, currently working at **[Wohlig](https://www.wohlig.com/)**. 
-    I focus on crafting dynamic, responsive user interfaces using React, Next.js, and TailwindCSS. 
-    I’m passionate about creating intuitive, engaging user experiences and keeping up with the latest trends in frontend development to deliver clean, maintainable code`,
+  backend: `Hi 👋, I’m an **SDE 1 (Backend)** with 1.5+ years of experience, currently working at ***[Wohlig](https://www.wohlig.com/)***. 
+    I’m passionate about designing and implementing robust backend systems, Additionally, I have experience in cloud technologies. 
+    I’m currently learning **Java** and **DevOps**, and I’m excited to apply my skills in the open-source community.`,
+
+  frontend: `Hi 👋, I’m an **Frontend Software Engineer** with 1.5+ years of experience, currently working at ***[Wohlig](https://www.wohlig.com/)***. 
+  I'm passionate about creating intuitive, engaging user experiences and keeping up with the latest trends in frontend development to deliver clean, maintainable code.
+  I’m currently learning **Next.js**, and I’m excited to apply my skills in the open-source community.`,
 };
 
 export const profileHeader = {
   Name: "Aakash Sondagar",
   ProfilePic: "profilepic.jpg",
   ProfilePicAlt: "AS",
-  ResumeLink: "/Aakash_Sondagar_Resume.pdf",
+  ResumeLink: {
+    sde: "/Aakash_Sondagar_SDE.pdf",
+    backend: "/Aakash_Sondagar_Backend.pdf",
+    frontend: "/Aakash_Sondagar_Frontend.pdf",
+  },
   social: [
     {
       name: "Email",

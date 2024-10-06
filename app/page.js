@@ -72,12 +72,12 @@ export default function HomePage({ children }) {
         <div className="relative h-5 w-5">
           <Sun
             className={`absolute h-5 w-5 transform transition-all duration-500 ${
-              isDarkMode ? "rotate-0 opacity-0" : "rotate-0 opacity-100"
+              isDarkMode ? "rotate-0 opacity-100" : "rotate-90 opacity-0"
             }`}
           />
           <Moon
             className={`absolute h-5 w-5 transform transition-all duration-500 ${
-              isDarkMode ? "rotate-0 opacity-100" : "rotate-90 opacity-0"
+              isDarkMode ? "rotate-0 opacity-0" : "rotate-0 opacity-100"
             }`}
           />
         </div>

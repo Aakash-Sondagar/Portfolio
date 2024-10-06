@@ -1,4 +1,5 @@
 import Markdown from "react-markdown";
+
 import { Separator } from "@/components/ui/separator";
 
 import { description } from "@/utils/data";
@@ -10,7 +11,7 @@ const AboutMe = ({ view }) => {
         About Me
       </h1>
       <Separator className="mt-1 bg-zinc-700 w-full" />
-      <div className="font-light text-sm text-justify indent-3 sm:indent-8 sm:text-left sm:text-base mt-2">
+      <div className="text-sm text-justify indent-3 sm:indent-8 sm:text-left sm:text-base mt-2">
         <Markdown>{description[view]}</Markdown>
       </div>
     </div>
