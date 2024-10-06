@@ -48,6 +48,35 @@ export const profileHeader = {
   ],
 };
 
+export const Skills = {
+  sde: [
+    "JavaScript",
+    "TypeScript",
+    "Node.js",
+    "Express.js",
+    "SQL (MySQL, Postgres)",
+    "NoSQL (MongoDB)",
+    "React.js",
+    "Next.js",
+    "Tailwind CSS",
+    "GCP",
+    "Terraform",
+    "CI/CD",
+  ],
+  backend: [
+    "JavaScript",
+    "TypeScript",
+    "Node.js",
+    "Express.js",
+    "SQL (MySQL, Postgres)",
+    "NoSQL (MongoDB)",
+    "GCP",
+    "Terraform",
+    "CI/CD",
+  ],
+  frontend: ["React.js", "Redux", "Next.js", "Tailwind CSS", "CI/CD"],
+};
+
 export const workExp = [
   {
     company: "Wohlig Transformations",
@@ -70,23 +99,6 @@ export const workExp = [
     description: `Developing web solutions and contributing to software projects.`,
   },
 ];
-
-export const Skills = {
-  sde: [
-    "JavaScript",
-    "TypeScript",
-    "Node.js",
-    "Express.js",
-    "React.js",
-    "Tailwind CSS",
-    "SQL",
-    "NoSQL",
-    "Git & Github",
-    "GCP",
-    "Terraform",
-    "CI/CD",
-  ],
-};
 
 export const educationDetails = [
   {

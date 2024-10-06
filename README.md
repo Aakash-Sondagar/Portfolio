@@ -39,6 +39,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
     To Do
     - Sort Data and Minor styling tweaks
     - Sort layout.js 
+    - Add components in frontend and backend
     - Sort Readme and Github Repo
 
     https://ibelick.com/
