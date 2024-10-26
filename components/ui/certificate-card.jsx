@@ -5,13 +5,14 @@ import {
   DisclosureTrigger,
 } from "@/components/ui/disclosure";
 import { motion } from "framer-motion";
-import ReactMarkdown from "react-markdown";
+import { ExternalLink } from "lucide-react";
 
 export const CertificateCard = ({
   img,
   altImg,
   title,
   description,
+  link,
   componentToShow,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,6 +32,10 @@ export const CertificateCard = ({
     stiffness: 26.7,
     damping: 4.1,
     mass: 0.2,
+  };
+
+  const redirectToLink = () => {
+    window.open(link, "_blank");
   };
 
   return (
@@ -63,8 +68,12 @@ export const CertificateCard = ({
             </button>
           </DisclosureTrigger>
           <DisclosureContent>
-            <div className="flex flex-col pb-4 text-[13px] text-zinc-300 dark:text-zinc-700">
-              <ReactMarkdown>{description}</ReactMarkdown>
+            <div className="pb-4 text-[13px] text-zinc-300 dark:text-zinc-700">
+              {description}
+              <ExternalLink
+                onClick={redirectToLink}
+                className="inline-block h-3 w-3 cursor-pointer ml-1 align-middle"
+              />
             </div>
           </DisclosureContent>
         </Disclosure>

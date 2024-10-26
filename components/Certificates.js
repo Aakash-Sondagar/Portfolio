@@ -1,15 +1,7 @@
 import { Separator } from "@/components/ui/separator";
 import { CertificateCard } from "./ui/certificate-card";
 
-const certificates = [
-  {
-    img: "https://images.beta.cosmos.so/5b21c112-ed1d-45cd-baf0-38186a15af8e?format=jpeg",
-    altImg: "lesothers.studio",
-    title: "lesothers.studio",
-    subtitle: "Edouard Wilfrid Buquet",
-    description: `Little is known about the life of Édouard-Wilfrid Buquet. He was born in France in 1866, but the time and place of his death is unfortunately a mystery.`,
-  },
-];
+import { certificates } from "@/utils/data";
 
 const Certificates = ({ componentToShow }) => {
   return (

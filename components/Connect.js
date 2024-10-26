@@ -39,7 +39,8 @@ const Connect = () => {
             >
               Github
             </a>
-            , explore my{" "}
+            ,
+            {/* explore my{" "}
             <a
               href="https://read.cv/ibelick"
               target="_blank"
@@ -47,7 +48,8 @@ const Connect = () => {
             >
               Read.cv
             </a>{" "}
-            profile, or email me directly at{" "}
+            profile, */}
+            or email me directly at{" "}
             <span className="inline-flex items-center">
               <span
                 className="relative cursor-pointer flex items-center no-underline"

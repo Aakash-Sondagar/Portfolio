@@ -84,9 +84,7 @@ export const ResumeCard = ({
                   ))}
                 </div>
               )}
-              <div className="ml-1 mt-1 font-thin text-sm sm:text-base">
-                {description}
-              </div>
+              <div className="ml-1 mt-1 font-light text-sm">{description}</div>
             </AccordionContent>
           </AccordionItem>
         </div>

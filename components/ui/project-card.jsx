@@ -10,8 +10,6 @@ import {
   DialogContainer,
 } from "@/components/ui/dialog";
 
-import ReactMarkdown from "react-markdown";
-
 import { PlusIcon } from "lucide-react";
 
 export const ProjectCard = ({ img, altImg, title, subtitle, description }) => {
@@ -59,9 +57,9 @@ export const ProjectCard = ({ img, altImg, title, subtitle, description }) => {
                 {subtitle}
               </DialogSubtitle>
               <DialogDescription>
-                <ReactMarkdown className="text-zinc-400 dark:text-zinc-700 prose prose-zinc dark:prose-invert">
+                <div className="text-zinc-400 dark:text-zinc-700 prose prose-zinc dark:prose-invert">
                   {description}
-                </ReactMarkdown>
+                </div>
               </DialogDescription>
             </div>
             <DialogClose className="text-zinc-950" />

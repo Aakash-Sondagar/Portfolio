@@ -6,20 +6,6 @@ export const role = {
   sde: "Software Engineer (SDE 1)",
 };
 
-export const description = {
-  sde: `Hi 👋, I’m a **Software Engineer (SDE 1)**  with 1.5 years of experience, currently working at ***[Wohlig](https://www.wohlig.com/)***. 
-    I’m passionate about building impactful softwares that solve real-world problems. 
-    I’m currently learning **Full Stack Development** and **DevOps**, and I’m excited to apply my skills in the open-source community.`,
-
-  backend: `Hi 👋, I’m an **SDE 1 (Backend)** with 1.5+ years of experience, currently working at ***[Wohlig](https://www.wohlig.com/)***. 
-    I’m passionate about designing and implementing robust backend systems, Additionally, I have experience in cloud technologies. 
-    I’m currently learning **Java** and **DevOps**, and I’m excited to apply my skills in the open-source community.`,
-
-  frontend: `Hi 👋, I’m an **Frontend Software Engineer** with 1.5+ years of experience, currently working at ***[Wohlig](https://www.wohlig.com/)***. 
-  I'm passionate about creating intuitive, engaging user experiences and keeping up with the latest trends in frontend development to deliver clean, maintainable code.
-  I’m currently learning **Next.js**, and I’m excited to apply my skills in the open-source community.`,
-};
-
 export const profileHeader = {
   Name: "Aakash Sondagar",
   ProfilePic: "profilepic.jpg",
@@ -46,6 +32,20 @@ export const profileHeader = {
       icon: Icons.linkedin,
     },
   ],
+};
+
+export const description = {
+  sde: `Hi 👋, I’m a **Software Engineer (SDE 1)**  with 1.5 years of experience, currently working at ***[Wohlig](https://www.wohlig.com/)***. 
+    I’m passionate about building impactful softwares that solve real-world problems. 
+    I’m currently learning **Full Stack Development** and **DevOps**, and I’m excited to apply my skills in the open-source community.`,
+
+  backend: `Hi 👋, I’m an **SDE 1 (Backend)** with 1.5+ years of experience, currently working at ***[Wohlig](https://www.wohlig.com/)***. 
+    I’m passionate about designing and implementing robust backend systems, Additionally, I have experience in cloud technologies. 
+    I’m currently learning **Java** and **DevOps**, and I’m excited to apply my skills in the open-source community.`,
+
+  frontend: `Hi 👋, I’m an **Frontend Software Engineer** with 1.5+ years of experience, currently working at ***[Wohlig](https://www.wohlig.com/)***. 
+  I'm passionate about creating intuitive, engaging user experiences and keeping up with the latest trends in frontend development to deliver clean, maintainable code.
+  I’m currently learning **Next.js**, and I’m excited to apply my skills in the open-source community.`,
 };
 
 export const Skills = {
@@ -86,7 +86,13 @@ export const workExp = [
     end: null,
     logoUrl:
       "https://cdn.prod.website-files.com/6481a63fb32c167045e442cf/64e32576ae89c46bfb5ed1c3_wohlighighres.webp",
-    description: `Developing web solutions and contributing to software projects.`,
+    description: `As a Software Development Engineer (SDE-1) at Wohlig Transformation, 
+    I’ve led pivotal migration and optimization projects across frontend, backend, and DevOps. 
+    My work includes steering full-stack solutions for high-profile clients, 
+    such as enhancing data visualization for improved performance and cost savings, 
+    as well as designing resilient infrastructure to support complex cloud migrations. 
+    Driven by impact, I bring technical expertise and a client-focused approach to every project, 
+    consistently delivering solutions that balance innovation with efficiency.`,
   },
   {
     company: "Wohlig Transformations",
@@ -109,5 +115,15 @@ export const educationDetails = [
       "https://www.spit.ac.in/wp-content/themes/spit-main/images/SPIT_logo.png",
     start: "2019",
     end: "2023",
+  },
+];
+
+export const certificates = [
+  {
+    img: "gcp-certification.jpg",
+    altImg: "Professional Cloud Developer GCP",
+    title: "GCP Professional Cloud Developer",
+    link: "https://scq.io/rsolS68",
+    description: `Earned Google Cloud (GCP) Professional Cloud Developer Certification`,
   },
 ];
