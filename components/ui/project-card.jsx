@@ -122,9 +122,9 @@ export const ProjectCardMobile = ({
                   {subtitle}
                 </DialogSubtitle>
                 <div className="mt-4">
-                  <ReactMarkdown className="text-zinc-400 dark:text-zinc-700 prose prose-zinc dark:prose-invert">
+                  <div className="text-zinc-400 dark:text-zinc-700 prose prose-zinc dark:prose-invert">
                     {description}
-                  </ReactMarkdown>
+                  </div>
                 </div>
               </div>
             </div>
