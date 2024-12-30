@@ -1,6 +1,6 @@
 import { formatDate } from "@/components/common";
 
-import Blog_1 from "@/app/blog/blog_1.mdx";
+import Blog_1 from "@/app/blog/Blog_1.mdx";
 
 const allBlogs = [
   // {
