@@ -3,96 +3,387 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-inter: var(--font-inter);
+  --font-plus-jakarta-sans: var(--font-plus-jakarta-sans);
+  --font-manrope: var(--font-manrope);
 }
 
-.dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-inter);
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  font-family: var(--font-manrope);
 }
 
+main {
+  isolation: isolate;
+}
 
-.clipPathReveal {
-  clip-path: inset(0 0 100% 0);
-  animation: revealClipPath 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+/* html {
+  min-width: 360px;
+  scrollbar-gutter: stable;
 }
- 
-@keyframes revealClipPath {
-  from {
-    clip-path: inset(0 0 100% 0);
+
+body {
+  text-rendering: optimizeLegibility;
+} */
+/* 
+pre {
+  background-color: #16161e;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  line-height: 1;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+code {
+  font-family: "Menlo", "Monaco", "Courier New", monospace;
+  font-size: 14px;
+  padding: 0.2em 0.4em;
+  border-radius: 0.3em;
+  background-color: var(--color-gray-100);
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+pre code > span .sh__token--identifier {
+  color: white !important;
+}
+
+code:not(pre code) span {
+  font-weight: 500;
+  color: black !important;
+}
+
+pre code span {
+  font-weight: 500;
+}
+
+hr {
+  color: var(--color-gray-200);
+}
+
+input[type="text"],
+input[type="email"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+table {
+  display: block;
+  max-width: fit-content;
+  overflow-x: auto;
+  white-space: nowrap;
+} */
+
+body {
+  --day: #fffdfa;
+  --evening: #fccc83;
+  --dusk: #db7a2a;
+  --night: #0f131c;
+  --dawn: #16132b;
+  --morning: #9fb3bf;
+
+  --light: var(--day);
+  --dark: var(--night);
+  --shadow: #1a1917;
+  --bounce-light: #f5d7a6;
+  --timing-fn: cubic-bezier(0.455, 0.19, 0, 0.985);
+
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--light);
+
+  animation-duration: 0s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+
+body.animation-ready {
+  animation-play-state: running;
+  animation-duration: 1s;
+  animation-name: sunrise;
+}
+
+body.animation-ready.dark {
+  animation-duration: 1.7s;
+  animation-name: sunset;
+}
+
+body.dark {
+  --light: var(--night);
+  --dark: var(--day);
+  --shadow: #020204;
+  --bounce-light: #1b293f;
+}
+
+@keyframes sunrise {
+  0% {
+    background-color: var(--night);
   }
-  to {
-    clip-path: inset(0 0 0 0);
+
+  10% {
+    background-color: var(--dawn);
+  }
+
+  35% {
+    background-color: var(--morning);
+  }
+
+  100% {
+    background-color: var(--day);
   }
 }
- 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
+
+@keyframes sunset {
+  0% {
+    background-color: var(--day);
   }
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+
+  30% {
+    background-color: var(--evening);
+  }
+
+  60% {
+    background-color: var(--dusk);
+  }
+
+  90% {
+    background-color: var(--dawn);
+  }
+
+  100% {
+    background-color: var(--night);
   }
 }
- 
-@layer base {
-  * {
-    @apply border-border;
+
+#dappled-light {
+  pointer-events: none;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+}
+
+#progressive-blur {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+#progressive-blur>div {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  inset: 0;
+  backdrop-filter: blur(var(--blur-amount));
+  mask-image: linear-gradient(252deg,
+      transparent,
+      transparent var(--stop1),
+      black var(--stop2),
+      black);
+}
+
+#progressive-blur>div:nth-child(1) {
+  --blur-amount: 6px;
+  --stop1: 0%;
+  --stop2: 0%;
+}
+
+#progressive-blur>div:nth-child(2) {
+  --blur-amount: 12px;
+  --stop1: 40%;
+  --stop2: 80%;
+}
+
+#progressive-blur>div:nth-child(3) {
+  --blur-amount: 48px;
+  --stop1: 40%;
+  --stop2: 70%;
+}
+
+#progressive-blur>div:nth-child(4) {
+  --blur-amount: 96px;
+  --stop1: 70%;
+  --stop2: 80%;
+}
+
+#glow {
+  position: absolute;
+  background: linear-gradient(309deg,
+      var(--bounce-light),
+      var(--bounce-light) 20%,
+      transparent);
+  transition: background 1s var(--timing-fn);
+  height: 100%;
+  width: 100%;
+  opacity: 0.5;
+}
+
+#glow-bounce {
+  content: "";
+  position: absolute;
+  background: linear-gradient(355deg,
+      var(--bounce-light) 0%,
+      transparent 30%,
+      transparent 100%);
+  transition: background 1s var(--timing-fn);
+  opacity: 0.5;
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+}
+
+.perspective {
+  position: absolute;
+  transition: transform 1.7s var(--timing-fn), opacity 4s ease;
+  top: -30vh;
+  right: 0;
+  width: 80vw;
+  height: 130vh;
+  opacity: 0.07;
+  background-blend-mode: darken;
+  transform-origin: top right;
+  transform-style: preserve-3d;
+  transform: matrix3d(0.75,
+      -0.0625,
+      0,
+      0.0008,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1);
+}
+
+.dark .perspective {
+  opacity: 0.3;
+  transform: matrix3d(0.8333,
+      0.0833,
+      0,
+      0.0003,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1);
+}
+
+#leaves {
+  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
+  bottom: -20px;
+  right: -700px;
+  width: 1600px;
+  height: 1400px;
+  background-image: url("/leaves.png");
+  filter: url(#wind);
+  animation: billow 8s ease-in-out infinite;
+}
+
+#blinds {
+  position: relative;
+  width: 100%;
+}
+
+#blinds .shutter,
+#blinds .bar {
+  background-color: var(--shadow);
+}
+
+#blinds>.shutters {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 60px;
+  transition: gap 1s var(--timing-fn);
+}
+
+.dark #blinds>.shutters {
+  gap: 20px;
+}
+
+#blinds>.vertical {
+  top: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.vertical>.bar {
+  width: 5;
+  height: 100%;
+}
+
+.shutter {
+  width: 100%;
+  height: 40px;
+  transition: height 1s var(--timing-fn);
+}
+
+.dark .shutter {
+  height: 80px;
+}
+
+@keyframes billow {
+  0% {
+    transform: perspective(400px) rotateX(0deg) rotateY(0deg) scale(1);
   }
-  body {
-    @apply bg-background text-foreground;
+
+  25% {
+    transform: perspective(400px) rotateX(1deg) rotateY(2deg) scale(1.02);
+  }
+
+  50% {
+    transform: perspective(400px) rotateX(-4deg) rotateY(-2deg) scale(0.97);
+  }
+
+  75% {
+    transform: perspective(400px) rotateX(1deg) rotateY(-1deg) scale(1.04);
+  }
+
+  100% {
+    transform: perspective(400px) rotateX(0deg) rotateY(0deg) scale(1);
   }
 }
