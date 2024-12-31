@@ -34,6 +34,10 @@ module.exports = {
               marginTop: null,
               marginBottom: null,
             },
+            hr: {
+              marginTop: null,
+              marginBottom: null,
+            },
           },
         },
       },

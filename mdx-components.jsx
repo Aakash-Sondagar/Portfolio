@@ -2,7 +2,10 @@ import { Link } from "next-view-transitions";
 import { highlight } from "sugar-high";
 
 export const components = {
-  h1: (props, children) => (
+  hr: (props) => (
+    <hr className="border-stone-800 dark:border-stone-200" {...props} />
+  ),
+  h1: (props) => (
     <h1
       className="text-stone-800 dark:text-stone-200 font-medium pt-12 mb-0 fade-in"
       {...props}
@@ -23,6 +26,12 @@ export const components = {
   h4: (props) => (
     <h4 className="text-stone-800 dark:text-stone-200 font-medium" {...props} />
   ),
+  h5: (props) => (
+    <h5 className="text-stone-800 dark:text-stone-200 font-medium" {...props} />
+  ),
+  h6: (props) => (
+    <h6 className="text-stone-800 dark:text-stone-200 font-medium" {...props} />
+  ),
   p: (props) => (
     <p
       className="text-gray-700 dark:text-gray-300 font-normal mb-3 leading-snug"
@@ -31,13 +40,13 @@ export const components = {
   ),
   ol: (props) => (
     <ol
-      className="text-gray-700 dark:text-gray-300 list-decimal pl-5 space-y-2"
+      className="list-decimal pl-5 space-y-1 marker:text-gray-700 dark:marker:text-gray-300"
       {...props}
     />
   ),
-  ul: (props, children) => (
+  ul: (props) => (
     <ul
-      className="list-disc pl-5 space-y-1 marker:text-gray-700 dark:marker:dark:text-gray-300"
+      className="list-disc pl-5 space-y-1 marker:text-gray-700 dark:marker:text-gray-300"
       {...props}
     />
   ),
@@ -45,7 +54,12 @@ export const components = {
     <li className="pl-1 text-gray-700 dark:text-gray-300" {...props} />
   ),
   em: (props) => <em className="font-medium" {...props} />,
-  strong: (props) => <strong className="font-medium" {...props} />,
+  strong: (props) => (
+    <strong
+      className="text-gray-700 dark:text-gray-300 font-semibold"
+      {...props}
+    />
+  ),
   a: ({ href, children, ...props }) => {
     const className =
       "text-indigo-500 dark:text-indigo-400 hover:text-indigo-700 dark:hover:dark:text-indigo-300";

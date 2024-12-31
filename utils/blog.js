@@ -1,25 +1,27 @@
 import { formatDate } from "@/components/common";
 
-import Blog_1 from "@/app/blog/Blog_1.mdx";
+import OtherResources from "@/app/blog/OtherResources.mdx";
+import FrontendResources from "@/app/blog/FrontendResources.mdx";
 
 const allBlogs = [
-  // {
-  //   slug: "blog_3",
-  //   title: "Spaces vs. Tabs: The Indentation Debate Continues",
-  //   date: formatDate("2024-12-30"),
-  //   description:
-  //     "A debate about the pros and cons of using spaces vs. tabs for indentation in code.",
-  //   tags: ["coding", "development", "indentation"],
-  //   content: <Blog_1 />,
-  // },
-  // {
-  //   slug: "blog_1",
-  //   title: "Spaces vs. Tabs: The Indentation Debate Continues",
-  //   date: formatDate("2024-12-31"),
-  //   description: "A debate about the pros and cons of using spaces vs. tabs",
-  //   tags: ["coding", "development", "indentation"],
-  //   content: <Blog_1 />,
-  // },
+  {
+    slug: "other_resources",
+    title: "Other Resources",
+    date: formatDate("2024-12-31"),
+    description:
+      "A list of resources which help to build a good social profile and crake interviews",
+    tags: ["frontend", "resources", "important"],
+    content: <OtherResources />,
+  },
+  {
+    slug: "frontend_resources",
+    title: "Frontend Resources",
+    date: formatDate("2024-12-31"),
+    description:
+      "A curated collection of treasures from the web—libraries, tools, and documents",
+    tags: ["frontend", "resources", "important"],
+    content: <FrontendResources />,
+  },
 ];
 
 export default allBlogs;

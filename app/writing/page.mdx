@@ -8,9 +8,10 @@ export const metadata = getMetaData("Writing", "/writing");
 
 <AnimatedName />
 
-On my mission to satisfy my curious mind, I delve into countless articles, blogs, and tutorials. 
-This is my attempt to document those learnings so I can easily revisit them, 
-instead of searching for them again on the web.
+On my journey to learn and grow, 
+I dive into countless articles, blogs, and tutorials. 
+This is my way of capturing those learnings, 
+so I can easily revisit them without the hassle of searching the web all over again.
 
 <ul className="list-disc pl-5 space-y-1 marker:text-gray-700 dark:marker:dark:text-gray-300">
  {[...allBlogs].sort((a, b) => new Date(b.date) - new Date(a.date)).map((blog) => (
