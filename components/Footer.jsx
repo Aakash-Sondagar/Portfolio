@@ -17,7 +17,7 @@ const Footer = () => {
         ))}
       </div>
       <div className="text-stone-800 dark:text-stone-200 font-thin text-sm mt-2">
-        make by ♥️, aakash sondagar © 2025
+        made with ♥️ aakash sondagar © 2025
       </div>
     </footer>
   );

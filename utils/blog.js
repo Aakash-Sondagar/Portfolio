@@ -3,7 +3,7 @@ import { formatDate } from "@/components/common";
 import OtherResources from "@/app/blog/OtherResources.mdx";
 import FrontendResources from "@/app/blog/FrontendResources.mdx";
 
-const allBlogs = [
+export const allBlogs = [
   {
     slug: "other_resources",
     title: "Other Resources",
@@ -24,4 +24,3 @@ const allBlogs = [
   },
 ];
 
-export default allBlogs;

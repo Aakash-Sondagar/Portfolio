@@ -1,5 +1,5 @@
 import { getMetaData, AnimatedName, Small } from "@/components/common";
-import allBlogs from "@/utils/blog";
+import { allBlogs } from "@/utils/blog";
 
 export function generateMetadata({ params }) {
   if (!params.slug) return getMetaData("Blog not found", "/blog");
@@ -9,7 +9,6 @@ export function generateMetadata({ params }) {
 }
 
 const BlogPage = ({ params }) => {
-
   const blog = allBlogs.find((blog) => blog.slug === params.slug);
 
   if (!blog) {
