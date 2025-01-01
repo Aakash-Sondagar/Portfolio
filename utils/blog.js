@@ -10,7 +10,7 @@ const allBlogs = [
     date: formatDate("2024-12-31"),
     description:
       "A list of resources which help to build a good social profile and crake interviews",
-    tags: ["frontend", "resources", "important"],
+    tags: ["misc", "important"],
     content: <OtherResources />,
   },
   {
@@ -19,7 +19,7 @@ const allBlogs = [
     date: formatDate("2024-12-31"),
     description:
       "A curated collection of treasures from the web—libraries, tools, and documents",
-    tags: ["frontend", "resources", "important"],
+    tags: ["frontend", "important"],
     content: <FrontendResources />,
   },
 ];

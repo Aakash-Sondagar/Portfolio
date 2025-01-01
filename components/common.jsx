@@ -50,18 +50,19 @@ export const formatDate = (date, includeRelative = true) => {
   }
   let targetDate = new Date(date);
 
-  let yearsAgo = currentDate.getFullYear() - targetDate.getFullYear();
-  let monthsAgo = currentDate.getMonth() - targetDate.getMonth();
-  let daysAgo = currentDate.getDate() - targetDate.getDate();
+  const diffTime = currentDate - targetDate;
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+  const diffMonths = Math.floor(diffDays / 30);
+  const diffYears = Math.floor(diffDays / 365);
 
   let formattedDate = "";
 
-  if (yearsAgo > 0) {
-    formattedDate = `${yearsAgo}y ago`;
-  } else if (monthsAgo > 0) {
-    formattedDate = `${monthsAgo}mo ago`;
-  } else if (daysAgo > 0) {
-    formattedDate = `${daysAgo}d ago`;
+  if (diffYears > 0) {
+    formattedDate = `${diffYears}y ago`;
+  } else if (diffMonths > 0) {
+    formattedDate = `${diffMonths}mo ago`;
+  } else if (diffDays > 0) {
+    formattedDate = `${diffDays}d ago`;
   } else {
     formattedDate = "Today";
   }

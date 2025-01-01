@@ -45,6 +45,11 @@ export const metadata = {
     "Software Engineer specializing in full-stack development with expertise in frontend, backend, and cloud infrastructure.",
   keywords:
     "Aakash, Aakash Sondagar, portfolio, Software Engineer, Full Stack Developer, B.Tech, Mumbai",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
   authors: [{ name: "Aakash Sondagar" }],
   openGraph: {
     title: "Aakash Sondagar - Software Engineer",
@@ -52,6 +57,7 @@ export const metadata = {
       "Software Engineer specializing in full-stack development with expertise in frontend, backend, and cloud infrastructure.",
     url: "https://aakashsondagar.vercel.app",
     siteName: "Aakash Sondagar",
+    locale: "en_US",
     type: "website",
   },
   twitter: {
@@ -70,11 +76,6 @@ export const metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
-    apple: "/favicon.png",
   },
 };
 
