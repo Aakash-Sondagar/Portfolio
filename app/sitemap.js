@@ -1,5 +1,6 @@
 import { promises as fs } from "fs";
 import path from "path";
+import { baseUrl } from "@/utils/content";
 
 const getNoteSlugs = async (dir) => {
   const entries = await fs.readdir(dir, {
@@ -23,12 +24,12 @@ const sitemap = async () => {
   const slugs = await getNoteSlugs(notesDirectory);
 
   const notes = slugs.map((slug) => ({
-    url: `https://aakashsondagar.vercel.app/${slug}`,
+    url: `${baseUrl}/${slug}`,
     lastModified: new Date().toISOString(),
   }));
 
   const routes = ["", "/work"].map((route) => ({
-    url: `https://aakashsondagar.vercel.app${route}`,
+    url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
   }));
 

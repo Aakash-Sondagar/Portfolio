@@ -3,6 +3,7 @@ import { ViewTransitions } from "next-view-transitions";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
+import { baseUrl } from "@/utils/content";
 import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider";
 
@@ -28,12 +29,12 @@ export function robots() {
       allow: "/",
       disallow: "/private/",
     },
-    sitemap: "https://aakashsondagar.vercel.app/sitemap.xml",
+    sitemap: `${baseUrl}/sitemap.xml`,
   };
 }
 
 export const metadata = {
-  metadataBase: new URL("https://aakashsondagar.vercel.app/"),
+  metadataBase: new URL(baseUrl),
   alternates: {
     canonical: "/",
   },
@@ -55,7 +56,7 @@ export const metadata = {
     title: "Aakash Sondagar - Software Engineer",
     description:
       "Software Engineer specializing in full-stack development with expertise in frontend, backend, and cloud infrastructure.",
-    url: "https://aakashsondagar.vercel.app",
+    url: baseUrl,
     siteName: "Aakash Sondagar",
     locale: "en_US",
     type: "website",
@@ -91,7 +92,7 @@ const RootLayout = ({ children }) => {
                 "@context": "https://schema.org",
                 "@type": "Person",
                 name: "Aakash Sondagar",
-                url: "https://aakashsondagar.vercel.app/",
+                url: baseUrl,
                 jobTitle: "Software Engineer",
               }),
             }}

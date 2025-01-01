@@ -1,4 +1,5 @@
 import createMDX from "@next/mdx";
+import { baseUrl } from "./utils/content";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -7,7 +8,7 @@ const nextConfig = {
   reactStrictMode: true,
   optimizeFonts: true,
   images: {
-    domains: ["https://aakashsondagar.vercel.app"],
+    domains: [baseUrl],
   },
   pageExtensions: ["md", "mdx", "js", "jsx"],
 };

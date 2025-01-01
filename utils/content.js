@@ -1,3 +1,5 @@
+export const baseUrl = "https://aakashsondagar.vercel.app";
+
 export const navItems = {
   "/work": {
     name: "work",
