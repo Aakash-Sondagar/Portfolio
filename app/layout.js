@@ -19,19 +19,52 @@ export const manrope = Manrope({
   variable: "--font-manrope",
 });
 
+export function robots() {
+  return {
+    rules: {
+      userAgent: '*',
+      allow: '/',
+      disallow: '/private/',
+    },
+    sitemap: 'https://aakashsondagar.vercel.app/sitemap.xml',
+  };
+}
+
 export const metadata = {
   metadataBase: new URL("https://aakashsondagar.vercel.app/"),
   alternates: {
     canonical: "/",
   },
   title: {
-    default: "Aakash Sondagar",
-    template: "%s | Aakash Sondagar",
+    default: "Aakash Sondagar - Software Engineer",
+    template: "%s | Aakash Sondagar - Software Engineer",
+  },
+  description:
+    "Software Engineer specializing in full-stack development with expertise in frontend, backend, and cloud infrastructure. Currently working at Wohlig Transformations.",
+  openGraph: {
+    title: "Aakash Sondagar - Software Engineer",
+    description:
+      "Software Engineer specializing in full-stack development with expertise in frontend, backend, and cloud infrastructure.",
+    url: "https://aakashsondagar.vercel.app",
+    siteName: "Aakash Sondagar",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   icons: {
     icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
-  description: "Software Engineer, , .",
 };
 
 const RootLayout = ({ children }) => {
