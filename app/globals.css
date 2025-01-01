@@ -127,13 +127,13 @@ body {
 
 body.animation-ready {
   animation-play-state: running;
-  animation-duration: 2.5s; /* Increased from 1s */
+  animation-duration: 2s; /* Increased from 1s */
   animation-name: sunrise;
   animation-timing-function: ease-in-out; /* Added smooth easing */
 }
 
 body.animation-ready.dark {
-  animation-duration: 3s; /* Increased from 1.7s */
+  animation-duration: 2s; /* Increased from 1.7s */
   animation-name: sunset;
   animation-timing-function: ease-in-out;
 }
