@@ -1,5 +1,7 @@
 import { Inter, Manrope } from "next/font/google";
 import { ViewTransitions } from "next-view-transitions";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider";
@@ -22,11 +24,11 @@ export const manrope = Manrope({
 export function robots() {
   return {
     rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: '/private/',
+      userAgent: "*",
+      allow: "/",
+      disallow: "/private/",
     },
-    sitemap: 'https://aakashsondagar.vercel.app/sitemap.xml',
+    sitemap: "https://aakashsondagar.vercel.app/sitemap.xml",
   };
 }
 
@@ -40,7 +42,10 @@ export const metadata = {
     template: "%s | Aakash Sondagar - Software Engineer",
   },
   description:
-    "Software Engineer specializing in full-stack development with expertise in frontend, backend, and cloud infrastructure. Currently working at Wohlig Transformations.",
+    "Software Engineer specializing in full-stack development with expertise in frontend, backend, and cloud infrastructure.",
+  keywords:
+    "Aakash, Aakash Sondagar, portfolio, Software Engineer, Full Stack Developer, B.Tech, Mumbai",
+  authors: [{ name: "Aakash Sondagar" }],
   openGraph: {
     title: "Aakash Sondagar - Software Engineer",
     description:
@@ -48,6 +53,12 @@ export const metadata = {
     url: "https://aakashsondagar.vercel.app",
     siteName: "Aakash Sondagar",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Aakash Sondagar",
+    description:
+      "Professional portfolio of Aakash Sondagar, curious about Software Engineering, technology and AI",
   },
   robots: {
     index: true,
@@ -71,8 +82,22 @@ const RootLayout = ({ children }) => {
   return (
     <ViewTransitions>
       <html lang="en">
+        <head>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Person",
+                name: "Aakash Sondagar",
+                url: "https://aakashsondagar.vercel.app/",
+                jobTitle: "Software Engineer",
+              }),
+            }}
+          />
+        </head>
         <body
-          className={`${inter.variable} ${manrope.variable} antialiased tracking-tight relative flex flex-col`}
+          className={`${inter.variable} ${manrope.variable} antialiased tracking-tight relative`}
         >
           <ThemeProvider />
           <main className="mx-auto mb-14 w-full max-w-screen-sm flex-1 px-4 pt-8 pb-0 sm:py-14">
@@ -80,6 +105,8 @@ const RootLayout = ({ children }) => {
             <div className="prose">{children}</div>
             <Footer />
           </main>
+          <Analytics />
+          <SpeedInsights />
         </body>
       </html>
     </ViewTransitions>
@@ -87,6 +114,3 @@ const RootLayout = ({ children }) => {
 };
 
 export default RootLayout;
-
-// important -> Page
-// code required
