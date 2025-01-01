@@ -118,21 +118,24 @@ body {
   height: 100%;
   width: 100%;
   background-color: var(--light);
-
+  
   animation-duration: 0s;
   animation-fill-mode: forwards;
   animation-timing-function: linear;
+  transition: background-color 2s ease-in-out;
 }
 
 body.animation-ready {
   animation-play-state: running;
-  animation-duration: 1s;
+  animation-duration: 2.5s; /* Increased from 1s */
   animation-name: sunrise;
+  animation-timing-function: ease-in-out; /* Added smooth easing */
 }
 
 body.animation-ready.dark {
-  animation-duration: 1.7s;
+  animation-duration: 3s; /* Increased from 1.7s */
   animation-name: sunset;
+  animation-timing-function: ease-in-out;
 }
 
 body.dark {
@@ -146,37 +149,31 @@ body.dark {
   0% {
     background-color: var(--night);
   }
-
-  10% {
+  20% { /* Adjusted from 10% */
     background-color: var(--dawn);
   }
-
-  35% {
+  50% { /* Adjusted from 35% */
     background-color: var(--morning);
   }
-
   100% {
     background-color: var(--day);
   }
 }
 
+
 @keyframes sunset {
   0% {
     background-color: var(--day);
   }
-
-  30% {
+  40% { /* Adjusted from 30% */
     background-color: var(--evening);
   }
-
-  60% {
+  70% { /* Adjusted from 60% */
     background-color: var(--dusk);
   }
-
   90% {
     background-color: var(--dawn);
   }
-
   100% {
     background-color: var(--night);
   }
@@ -232,6 +229,10 @@ body.dark {
   --stop2: 80%;
 }
 
+#glow, #glow-bounce {
+  transition: background 2s var(--timing-fn);
+}
+
 #glow {
   position: absolute;
   background: linear-gradient(309deg,
@@ -260,7 +261,7 @@ body.dark {
 
 .perspective {
   position: absolute;
-  transition: transform 1.7s var(--timing-fn), opacity 4s ease;
+  transition: transform 2.5s var(--timing-fn), opacity 5s ease;
   top: -30vh;
   right: 0;
   width: 80vw;
