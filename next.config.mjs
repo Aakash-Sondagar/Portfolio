@@ -6,6 +6,7 @@ const nextConfig = {
   compress: true,
   reactStrictMode: true,
   optimizeFonts: true,
+  swcMinify: true,
   images: {
     domains: ["https://aakashsondagar.vercel.app"],
   },

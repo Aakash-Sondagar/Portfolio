@@ -82,36 +82,36 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
   return (
-    <ViewTransitions>
-      <html lang="en">
-        <head>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "Person",
-                name: "Aakash Sondagar",
-                url: baseUrl,
-                jobTitle: "Software Engineer",
-              }),
-            }}
-          />
-        </head>
-        <body
-          className={`${inter.variable} ${manrope.variable} antialiased tracking-tight relative`}
-        >
-          <ThemeProvider />
-          <main className="mx-auto mb-14 w-full max-w-screen-sm flex-1 px-4 pt-8 pb-0 sm:py-14">
+    <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Aakash Sondagar",
+              url: baseUrl,
+              jobTitle: "Software Engineer",
+            }),
+          }}
+        />
+      </head>
+      <body
+        className={`${inter.variable} ${manrope.variable} antialiased tracking-tight relative`}
+      >
+        <ThemeProvider />
+        <main className="mx-auto mb-14 w-full max-w-screen-sm flex-1 px-4 pt-8 pb-0 sm:py-14">
+          <ViewTransitions>
             <Navbar />
             <div className="prose">{children}</div>
             <Footer />
-          </main>
-          <Analytics />
-          <SpeedInsights />
-        </body>
-      </html>
-    </ViewTransitions>
+          </ViewTransitions>
+        </main>
+        <Analytics />
+        <SpeedInsights />
+      </body>
+    </html>
   );
 };
 

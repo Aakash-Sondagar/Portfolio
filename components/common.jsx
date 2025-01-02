@@ -7,9 +7,9 @@ export const Name = () => {
       <h3 className="flex text-xl text-stone-800 dark:text-stone-200 font-medium">
         Aakash Sondagar
       </h3>
-      <h5 className="text-zinc-500 dark:text-zinc-400 font-light text-sm">
+      <h4 className="text-zinc-500 dark:text-zinc-400 font-light text-sm">
         Software Development Engineer
-      </h5>
+      </h4>
     </div>
   );
 };

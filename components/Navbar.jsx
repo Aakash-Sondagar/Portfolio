@@ -40,7 +40,7 @@ const Navbar = () => {
               );
             })}
           </div>
-          <button onClick={toggleTheme}>
+          <button aria-label="theme" onClick={toggleTheme}>
             {isDarkMode ? (
               <Sun className="dark:text-stone-200 w-4 h-4" />
             ) : (
