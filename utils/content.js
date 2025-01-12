@@ -7,6 +7,10 @@ export const navItems = {
   "/writing": {
     name: "writing",
   },
+  "https://drive.google.com/file/d/1RcE2GSop7jC7k3zO9j4a2z_Lr667JVZY/view?usp=sharing":
+    {
+      name: "resume",
+    },
 };
 
 export const footerLinks = [
