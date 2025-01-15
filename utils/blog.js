@@ -10,7 +10,7 @@ export const allBlogs = [
     date: formatDate("2024-12-31"),
     description:
       "A list of resources which help to build a good social profile and crake interviews",
-    tags: ["misc", "important"],
+    tags: ["important"],
     content: <OtherResources />,
   },
   {
