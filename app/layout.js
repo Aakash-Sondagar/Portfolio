@@ -33,6 +33,10 @@ export function robots() {
   };
 }
 
+const description =
+  "Software Engineer skilled in crafting scalable full-stack solutions, cloud migrations, and microservices with a touch of innovation";
+// "Code artisan with a passion for backend scalability, frontend aesthetics, and cloud-native efficiency.";
+
 export const metadata = {
   metadataBase: new URL(baseUrl),
   alternates: {
@@ -42,10 +46,9 @@ export const metadata = {
     default: "Aakash Sondagar - Software Engineer",
     template: "%s | Aakash Sondagar - Software Engineer",
   },
-  description:
-    "Software Engineer specializing in full-stack development with expertise in frontend, backend, and cloud infrastructure.",
+  description: description,
   keywords:
-    "Aakash, Aakash Sondagar, portfolio, Software Engineer, Full Stack Developer, B.Tech, Mumbai",
+    "Aakash, Aakash Sondagar, portfolio, Software Engineer, SDE 1, Full Stack Developer, B.Tech, Mumbai",
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
@@ -54,8 +57,7 @@ export const metadata = {
   authors: [{ name: "Aakash Sondagar" }],
   openGraph: {
     title: "Aakash Sondagar - Software Engineer",
-    description:
-      "Software Engineer specializing in full-stack development with expertise in frontend, backend, and cloud infrastructure.",
+    description: description,
     url: baseUrl,
     siteName: "Aakash Sondagar",
     locale: "en_US",
@@ -64,8 +66,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Aakash Sondagar",
-    description:
-      "Professional portfolio of Aakash Sondagar, curious about Software Engineering, technology and AI",
+    description: description,
   },
   robots: {
     index: true,

@@ -7,13 +7,13 @@ export const components = {
   ),
   h1: (props) => (
     <h1
-      className="text-stone-800 dark:text-stone-200 font-medium pt-12 mb-0 fade-in"
+      className="text-stone-800 dark:text-stone-200 font-medium my-4"
       {...props}
     />
   ),
   h2: (props) => (
     <h2
-      className="text-stone-800 dark:text-stone-200 font-medium mt-8"
+      className="text-stone-800 dark:text-stone-200 font-medium my-4"
       {...props}
     />
   ),

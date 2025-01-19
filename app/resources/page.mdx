@@ -1,6 +1,6 @@
 import { Link } from "next-view-transitions";
 import { getMetaData, AnimatedName, Small } from "@/components/common";
-import { allBlogs } from "@/utils/blog";
+import { resourcesList } from "@/utils/content";
 
 export const metadata = getMetaData("Chaos Cabinet", "/important");
 
@@ -8,12 +8,11 @@ export const metadata = getMetaData("Chaos Cabinet", "/important");
 
 <AnimatedName />
 
-My curated collection of treasures from the web—libraries, articles, tools, and documents
-that I’ve found valuable or inspiring.
+My curated collection of treasures from the web, including articles, tools, libraries, and documents 
+that I find valuable.
 
 <ul className="list-disc pl-5 space-y-1 marker:text-gray-700 dark:marker:dark:text-gray-300">
-  {[...allBlogs]
-    .filter((blog) => blog.tags?.includes("important"))
+  {[...resourcesList]
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .map((blog) => (
       <li key={blog.slug}>

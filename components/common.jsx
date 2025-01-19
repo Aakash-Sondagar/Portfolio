@@ -8,7 +8,7 @@ export const Name = () => {
         Aakash Sondagar
       </h3>
       <h4 className="text-zinc-500 dark:text-zinc-400 font-light text-sm">
-        Software Development Engineer
+        Software Engineer
       </h4>
     </div>
   );

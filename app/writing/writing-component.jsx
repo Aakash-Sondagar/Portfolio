@@ -5,12 +5,12 @@ import { allBlogs } from "@/utils/blog";
 import { AnimatedName } from "@/components/common";
 
 const WritingComponent = () => {
-  const [activeFilter, setActiveFilter] = useState("all");
+  const [activeFilter, setActiveFilter] = useState("All");
 
-  const uniqueTags = ["all", ...new Set(allBlogs.flatMap((blog) => blog.tags))];
+  const uniqueTags = ["All", ...new Set(allBlogs.flatMap((blog) => blog.tags))];
 
   const filteredBlogs =
-    activeFilter === "all"
+    activeFilter === "All"
       ? allBlogs
       : allBlogs.filter((blog) => blog.tags.includes(activeFilter));
 
@@ -26,7 +26,7 @@ const WritingComponent = () => {
       <AnimatedName />
       <p className="text-gray-700 dark:text-gray-300 font-normal mb-3 leading-snug">
         On my journey to learn and grow, I dive into countless articles, blogs,
-        and tutorials. This is my way of capturing those learnings, so I can
+        and tutorials. This is my way of capturing those learnings so that I can
         easily revisit them without the hassle of searching the web all over
         again.
       </p>

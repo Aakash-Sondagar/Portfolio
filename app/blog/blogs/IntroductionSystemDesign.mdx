@@ -1,0 +1,60 @@
+{/* ---
+title: "Introduction to System Design"
+date: "2025-01-19"
+description: "Understanding the basics of system design by breaking down the process into architecture, components, and modules."
+--- */}
+
+## What is System Design?
+System design is the process of taking a set of requirements and building a product that fulfills those requirements.
+
+## Let’s Design a System
+Let’s consider the example of building Facebook to understand system design better.
+
+### Architecture
+- To design a system like Facebook, the first step is deciding on the architecture.
+- Key architectural components include:
+  - **Database**: To store user data.
+  - **API Server**: To serve requests from users and other systems.
+  - **CDNs (Content Delivery Networks)**: To efficiently serve assets like images.
+- The high-level architecture defines which all component are required, how these components interact and fit together.
+
+### Components
+- Once the architecture is in place, the next step is identifying the major components needed to power the system.
+- For example, in Facebook:
+  - One component handles **Authentication and Authorization**.
+  - Within this component, we might need:
+    - **1 App Server** to process authentication logic.
+    - **1 Database** to store user credentials securely.
+    - **1 Cache** to speed up repeated queries.
+
+### Modules
+- After deciding on the components, the final step is breaking them into modules.
+- For each component, determine what modules are required to implement it effectively.
+- For example:
+  - The **Authentication and Authorization** component can have modules like:
+    - User registration.
+    - Login and session management.
+    - Token validation.
+
+### Bringing It All Together
+- System design involves three strong pillars:
+  1. **Architecture**: The overall blueprint of the system.
+  2. **Components**: The building blocks of the system.
+  3. **Modules**: The smaller pieces within components that handle specific tasks.
+- More importantly, system design ensures that all these different parts come together and interact seamlessly to solve the bigger problem—in this case, building Facebook.
+
+## The Product Development Lifecycle
+In organizations, product development typically follows this structure:
+1. **Architecture** → 2. **Components** → 3. **Modules**
+
+Every single tech product is a “system” that has been “designed.”
+
+## When We Design a System
+When designing a system, we:
+1. Break down the problem statement into solvable sub-problems.
+2. Decide on the key components and their responsibilities.
+3. Define the boundaries (scope) of each component.
+4. Address key challenges in scaling the system.
+5. Make the architecture fault-tolerant and reliable (available).
+
+By following these steps, we can design systems that are scalable, robust, and effective in solving real-world problems.

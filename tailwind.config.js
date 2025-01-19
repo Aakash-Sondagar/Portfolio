@@ -14,29 +14,9 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
-            h2: {
-              marginTop: null,
-              marginBottom: null,
-            },
-            h3: {
-              marginTop: null,
-              marginBottom: null,
-            },
-            p: {
-              marginTop: null,
-              marginBottom: null,
-            },
-            ul: {
-              marginTop: null,
-              marginBottom: null,
-            },
-            li: {
-              marginTop: null,
-              marginBottom: null,
-            },
-            hr: {
-              marginTop: null,
-              marginBottom: null,
+            "h2, h3, p, ul, li, hr": {
+              marginTop: "0",
+              marginBottom: "0",
             },
           },
         },

@@ -1,26 +1,24 @@
 import { formatDate } from "@/components/common";
 
-import OtherResources from "@/app/blog/OtherResources.mdx";
-import FrontendResources from "@/app/blog/FrontendResources.mdx";
+import SystemDesign from "@/app/blog/blogs/SystemDesign.mdx";
+import IntroductionSystemDesign from "@/app/blog/blogs/IntroductionSystemDesign.mdx";
 
 export const allBlogs = [
   {
-    slug: "other_resources",
-    title: "Other Resources",
-    date: formatDate("2024-12-31"),
+    slug: "introduction_system_design",
+    title: "Introduction to System Design",
+    date: formatDate("2025-01-19"),
     description:
-      "A list of resources which help to build a good social profile and crake interviews",
-    tags: ["important"],
-    content: <OtherResources />,
+      "Understanding the basics of system design by breaking down the process into architecture, components, and modules",
+    tags: ["System Design"],
+    content: <IntroductionSystemDesign />,
   },
   {
-    slug: "frontend_resources",
-    title: "Frontend Resources",
-    date: formatDate("2024-12-31"),
-    description:
-      "A curated collection of treasures from the web—libraries, tools, and documents",
-    tags: ["frontend", "important"],
-    content: <FrontendResources />,
+    slug: "journey_system_design",
+    title: "My Journey into System Design",
+    date: formatDate("2025-01-19"),
+    description: "Documenting my learning journey of System Design.",
+    tags: ["System Design"],
+    content: <SystemDesign />,
   },
 ];
-
