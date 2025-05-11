@@ -9,8 +9,11 @@ export const navItems = {
   "/work": {
     name: "Work",
   },
-  "/writing": {
-    name: "Writing",
+  "/writings": {
+    name: "Writings",
+  },
+  "/resources": {
+    name: "Resources",
   },
   "https://drive.google.com/file/d/1RcE2GSop7jC7k3zO9j4a2z_Lr667JVZY/view?usp=sharing":
     {

@@ -7,15 +7,12 @@ export const components = {
   ),
   h1: (props) => (
     <h1
-      className="text-stone-800 dark:text-stone-200 font-medium my-4"
+      className="flex text-3xl text-stone-800 dark:text-stone-200 font-medium mb-0"
       {...props}
     />
   ),
   h2: (props) => (
-    <h2
-      className="text-stone-800 dark:text-stone-200 font-medium my-4"
-      {...props}
-    />
+    <h2 className="text-stone-800 dark:text-stone-200 font-medium" {...props} />
   ),
   h3: (props) => (
     <h3

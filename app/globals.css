@@ -15,125 +15,61 @@ h4,
 h5,
 h6 {
   font-family: var(--font-inter);
+  letter-spacing: -0.02em;
 }
 
 body {
   font-family: var(--font-manrope);
+  letter-spacing: -0.01em;
 }
 
 main {
   isolation: isolate;
 }
 
-/* html {
-  min-width: 360px;
-  scrollbar-gutter: stable;
-}
-
 body {
-  text-rendering: optimizeLegibility;
-} */
-/* 
-pre {
-  background-color: #16161e;
-  border-radius: 0.5rem;
-  overflow-x: auto;
-  padding: 1rem;
-  margin: 1.5rem 0;
-  line-height: 1;
-}
-
-pre::-webkit-scrollbar {
-  display: none;
-}
-
-pre {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-code {
-  font-family: "Menlo", "Monaco", "Courier New", monospace;
-  font-size: 14px;
-  padding: 0.2em 0.4em;
-  border-radius: 0.3em;
-  background-color: var(--color-gray-100);
-}
-
-pre code {
-  background-color: transparent;
-  padding: 0;
-  border: none;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-pre code > span .sh__token--identifier {
-  color: white !important;
-}
-
-code:not(pre code) span {
-  font-weight: 500;
-  color: black !important;
-}
-
-pre code span {
-  font-weight: 500;
-}
-
-hr {
-  color: var(--color-gray-200);
-}
-
-input[type="text"],
-input[type="email"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-table {
-  display: block;
-  max-width: fit-content;
-  overflow-x: auto;
-  white-space: nowrap;
-} */
-
-body {
-  --day: #fffdfa;
+  /* --day: #fffdfa;
   --evening: #fccc83;
   --dusk: #db7a2a;
   --night: #0f131c;
   --dawn: #16132b;
-  --morning: #9fb3bf;
+  --morning: #9fb3bf; */
+
+  --day: #fafafa;
+  --evening: #ffd7aa;
+  --dusk: #ff9966;
+  --night: #1a1a2e;
+  --dawn: #2d3436;
+  --morning: #a8c7d6;
 
   --light: var(--day);
   --dark: var(--night);
   --shadow: #1a1917;
   --bounce-light: #f5d7a6;
-  --timing-fn: cubic-bezier(0.455, 0.19, 0, 0.985);
+  --timing-fn: cubic-bezier(0.2, 0, 0.2, 1);
+  transition: background-color 1.5s var(--timing-fn);
 
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
   background-color: var(--light);
-  
+
   animation-duration: 0s;
   animation-fill-mode: forwards;
   animation-timing-function: linear;
-  transition: background-color 2s ease-in-out;
 }
 
 body.animation-ready {
   animation-play-state: running;
-  animation-duration: 2s; /* Increased from 1s */
+  animation-duration: 2.5s;
   animation-name: sunrise;
-  animation-timing-function: ease-in-out; /* Added smooth easing */
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body.animation-ready.dark {
-  animation-duration: 2s; /* Increased from 1.7s */
+  animation-duration: 2s;
+  /* Increased from 1.7s */
   animation-name: sunset;
   animation-timing-function: ease-in-out;
 }
@@ -149,12 +85,17 @@ body.dark {
   0% {
     background-color: var(--night);
   }
-  20% { /* Adjusted from 10% */
+
+  20% {
+    /* Adjusted from 10% */
     background-color: var(--dawn);
   }
-  50% { /* Adjusted from 35% */
+
+  50% {
+    /* Adjusted from 35% */
     background-color: var(--morning);
   }
+
   100% {
     background-color: var(--day);
   }
@@ -165,15 +106,21 @@ body.dark {
   0% {
     background-color: var(--day);
   }
-  40% { /* Adjusted from 30% */
+
+  40% {
+    /* Adjusted from 30% */
     background-color: var(--evening);
   }
-  70% { /* Adjusted from 60% */
+
+  70% {
+    /* Adjusted from 60% */
     background-color: var(--dusk);
   }
+
   90% {
     background-color: var(--dawn);
   }
+
   100% {
     background-color: var(--night);
   }
@@ -206,13 +153,13 @@ body.dark {
 }
 
 #progressive-blur>div:nth-child(1) {
-  --blur-amount: 6px;
+  --blur-amount: 4px;
   --stop1: 0%;
   --stop2: 0%;
 }
 
 #progressive-blur>div:nth-child(2) {
-  --blur-amount: 12px;
+  --blur-amount: 8px;
   --stop1: 40%;
   --stop2: 80%;
 }
@@ -229,7 +176,8 @@ body.dark {
   --stop2: 80%;
 }
 
-#glow, #glow-bounce {
+#glow,
+#glow-bounce {
   transition: background 2s var(--timing-fn);
 }
 
@@ -261,12 +209,12 @@ body.dark {
 
 .perspective {
   position: absolute;
-  transition: transform 2.5s var(--timing-fn), opacity 5s ease;
+  transition: transform 3s var(--timing-fn), opacity 6s ease;
+  opacity: 0.05;
   top: -30vh;
   right: 0;
   width: 80vw;
   height: 130vh;
-  opacity: 0.07;
   background-blend-mode: darken;
   transform-origin: top right;
   transform-style: preserve-3d;
@@ -289,7 +237,7 @@ body.dark {
 }
 
 .dark .perspective {
-  opacity: 0.3;
+  opacity: 0.25;
   transform: matrix3d(0.8333,
       0.0833,
       0,

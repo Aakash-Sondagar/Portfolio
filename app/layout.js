@@ -34,8 +34,7 @@ export function robots() {
 }
 
 const description =
-  "Software Engineer skilled in crafting scalable full-stack solutions, cloud migrations, and microservices with a touch of innovation";
-// "Code artisan with a passion for backend scalability, frontend aesthetics, and cloud-native efficiency.";
+  "Crafting elegant solutions at the intersection of cloud architecture and full-stack development. Transforming complex challenges into seamless experiences through innovative engineering.";
 
 export const metadata = {
   metadataBase: new URL(baseUrl),
@@ -48,7 +47,7 @@ export const metadata = {
   },
   description: description,
   keywords:
-    "Aakash, Aakash Sondagar, portfolio, Software Engineer, SDE 1, Full Stack Developer, B.Tech, Mumbai",
+    "Aakash Sondagar, Software Engineer, Full Stack Developer, Solution Architect, Cloud Architect, Web Development, System Design, Cloud Solutions, Microservices, Software Architecture, Tech Lead, Mumbai, Engineering Leadership, Cloud Migration, Scalable Systems, Backend Development, Frontend Development, AWS, GCP",
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
@@ -56,6 +55,14 @@ export const metadata = {
   },
   authors: [{ name: "Aakash Sondagar" }],
   openGraph: {
+    images: [
+      {
+        url: "/favicon.png",
+        width: 1200,
+        height: 630,
+        alt: "Aakash Sondagar - Software Engineer",
+      },
+    ],
     title: "Aakash Sondagar - Software Engineer",
     description: description,
     url: baseUrl,
@@ -64,6 +71,7 @@ export const metadata = {
     type: "website",
   },
   twitter: {
+    images: ["/favicon.png"],
     card: "summary_large_image",
     title: "Aakash Sondagar",
     description: description,
@@ -94,6 +102,12 @@ const RootLayout = ({ children }) => {
               name: "Aakash Sondagar",
               url: baseUrl,
               jobTitle: "Software Engineer",
+              description: description,
+              sameAs: [
+                "https://github.com/Aakash-Sondagar",
+                "https://www.linkedin.com/in/aakash-sondagar",
+                "https://x.com/AakashSondagar",
+              ],
             }),
           }}
         />

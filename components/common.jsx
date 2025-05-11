@@ -3,11 +3,11 @@ import { ChevronLeft } from "lucide-react";
 
 export const Name = () => {
   return (
-    <div className="mb-8 ">
-      <h3 className="flex text-xl text-stone-800 dark:text-stone-200 font-medium">
+    <div className="mb-8">
+      <h1 className="flex text-3xl text-stone-800 dark:text-stone-200 font-semibold mb-0">
         Aakash Sondagar
-      </h3>
-      <h4 className="text-zinc-500 dark:text-zinc-400 font-light text-sm">
+      </h1>
+      <h4 className="text-zinc-500 dark:text-zinc-400 font-light text-base my-0">
         Software Engineer
       </h4>
     </div>
@@ -28,9 +28,9 @@ export const AnimatedName = ({ href }) => {
 
 export const Small = ({ children }) => {
   return (
-    <small className="flex text-sm text-gray-700 dark:text-gray-300 font-normal -mt-3 mb-3">
+    <div className="text-sm text-gray-700 dark:text-gray-300 font-normal">
       {children}
-    </small>
+    </div>
   );
 };
 
@@ -58,11 +58,11 @@ export const formatDate = (date, includeRelative = true) => {
   let formattedDate = "";
 
   if (diffYears > 0) {
-    formattedDate = `${diffYears}y ago`;
+    formattedDate = `${diffYears} y ago`;
   } else if (diffMonths > 0) {
-    formattedDate = `${diffMonths}mo ago`;
+    formattedDate = `${diffMonths} m ago`;
   } else if (diffDays > 0) {
-    formattedDate = `${diffDays}d ago`;
+    formattedDate = `${diffDays} d ago`;
   } else {
     formattedDate = "Today";
   }
