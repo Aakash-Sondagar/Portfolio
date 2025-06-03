@@ -7,7 +7,9 @@ const nextConfig = {
   reactStrictMode: true,
   optimizeFonts: true,
   swcMinify: true,
+  output: 'export',
   images: {
+    unoptimized: true,
     domains: ["https://aakashsondagar.vercel.app"],
   },
   pageExtensions: ["md", "mdx", "js", "jsx"],
