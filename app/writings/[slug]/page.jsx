@@ -9,6 +9,16 @@ export function generateMetadata({ params }) {
   return getMetaData(blog.title, `/writings/${blog.slug}`);
 }
 
+export async function generateStaticParams() {
+  // Combine slugs from both blogs and resources
+  const allSlugs = [
+    ...allBlogs.map((blog) => ({ slug: blog.slug })),
+    ...resourcesList.map((resource) => ({ slug: resource.slug }))
+  ];
+  
+  return allSlugs;
+}
+
 const BlogPage = ({ params }) => {
   const blog = allBlogs.find((blog) => blog.slug === params.slug);
   const resource = resourcesList.find(
