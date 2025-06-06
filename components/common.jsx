@@ -3,11 +3,11 @@ import { ChevronLeft } from "lucide-react";
 
 export const Name = () => {
   return (
-    <div className="mb-12">
-      <h1 className="flex text-4xl sm:text-5xl text-gray-900 dark:text-gray-100 font-bold mb-2 tracking-tight">
+    <div className="mb-12 mt-6 sm:mt-0">
+      <h1 className="flex text-3xl sm:text-4xl lg:text-5xl text-gray-900 dark:text-gray-100 font-bold mb-2 tracking-tight">
         Aakash Sondagar
       </h1>
-      <h4 className="text-gray-600 dark:text-gray-400 font-normal text-lg my-0">
+      <h4 className="text-gray-600 dark:text-gray-400 font-normal text-base sm:text-lg my-0">
         Software Engineer
       </h4>
     </div>
