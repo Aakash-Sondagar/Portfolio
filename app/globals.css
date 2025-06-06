@@ -28,32 +28,25 @@ main {
 }
 
 body {
-  /* --day: #fffdfa;
-  --evening: #fccc83;
-  --dusk: #db7a2a;
-  --night: #0f131c;
-  --dawn: #16132b;
-  --morning: #9fb3bf; */
-
-  --day: #fafafa;
-  --evening: #ffd7aa;
-  --dusk: #ff9966;
-  --night: #1a1a2e;
-  --dawn: #2d3436;
-  --morning: #a8c7d6;
+  --day: #fefefe;
+  --evening: #fff4e6;
+  --dusk: #ffe0b3;
+  --night: #0a0a0f;
+  --dawn: #1a1a2e;
+  --morning: #e8f4f8;
 
   --light: var(--day);
   --dark: var(--night);
-  --shadow: #1a1917;
-  --bounce-light: #f5d7a6;
-  --timing-fn: cubic-bezier(0.2, 0, 0.2, 1);
-  transition: background-color 1.5s var(--timing-fn);
-
+  --shadow: rgba(26, 25, 23, 0.1);
+  --bounce-light: rgba(245, 215, 166, 0.3);
+  --timing-fn: cubic-bezier(0.4, 0, 0.2, 1);
+  
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
   background-color: var(--light);
+  transition: background-color 1.2s var(--timing-fn);
 
   animation-duration: 0s;
   animation-fill-mode: forwards;
@@ -62,14 +55,13 @@ body {
 
 body.animation-ready {
   animation-play-state: running;
-  animation-duration: 2.5s;
+  animation-duration: 2s;
   animation-name: sunrise;
   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body.animation-ready.dark {
-  animation-duration: 2s;
-  /* Increased from 1.7s */
+  animation-duration: 1.8s;
   animation-name: sunset;
   animation-timing-function: ease-in-out;
 }
@@ -77,50 +69,38 @@ body.animation-ready.dark {
 body.dark {
   --light: var(--night);
   --dark: var(--day);
-  --shadow: #020204;
-  --bounce-light: #1b293f;
+  --shadow: rgba(2, 2, 4, 0.3);
+  --bounce-light: rgba(27, 41, 63, 0.4);
 }
 
 @keyframes sunrise {
   0% {
     background-color: var(--night);
   }
-
-  20% {
-    /* Adjusted from 10% */
+  25% {
     background-color: var(--dawn);
   }
-
-  50% {
-    /* Adjusted from 35% */
+  60% {
     background-color: var(--morning);
   }
-
   100% {
     background-color: var(--day);
   }
 }
 
-
 @keyframes sunset {
   0% {
     background-color: var(--day);
   }
-
-  40% {
-    /* Adjusted from 30% */
+  30% {
     background-color: var(--evening);
   }
-
-  70% {
-    /* Adjusted from 60% */
+  60% {
     background-color: var(--dusk);
   }
-
-  90% {
+  85% {
     background-color: var(--dawn);
   }
-
   100% {
     background-color: var(--night);
   }
@@ -131,6 +111,7 @@ body.dark {
   position: fixed;
   height: 100vh;
   width: 100vw;
+  z-index: -1;
 }
 
 #progressive-blur {
@@ -139,69 +120,72 @@ body.dark {
   width: 100%;
 }
 
-#progressive-blur>div {
+#progressive-blur > div {
   position: absolute;
   height: 100%;
   width: 100%;
   inset: 0;
   backdrop-filter: blur(var(--blur-amount));
-  mask-image: linear-gradient(252deg,
-      transparent,
-      transparent var(--stop1),
-      black var(--stop2),
-      black);
+  mask-image: linear-gradient(
+    252deg,
+    transparent,
+    transparent var(--stop1),
+    black var(--stop2),
+    black
+  );
 }
 
-#progressive-blur>div:nth-child(1) {
-  --blur-amount: 4px;
+#progressive-blur > div:nth-child(1) {
+  --blur-amount: 2px;
   --stop1: 0%;
   --stop2: 0%;
 }
 
-#progressive-blur>div:nth-child(2) {
-  --blur-amount: 8px;
-  --stop1: 40%;
-  --stop2: 80%;
+#progressive-blur > div:nth-child(2) {
+  --blur-amount: 4px;
+  --stop1: 30%;
+  --stop2: 70%;
 }
 
-#progressive-blur>div:nth-child(3) {
-  --blur-amount: 48px;
+#progressive-blur > div:nth-child(3) {
+  --blur-amount: 24px;
   --stop1: 40%;
   --stop2: 70%;
 }
 
-#progressive-blur>div:nth-child(4) {
-  --blur-amount: 96px;
-  --stop1: 70%;
+#progressive-blur > div:nth-child(4) {
+  --blur-amount: 48px;
+  --stop1: 60%;
   --stop2: 80%;
 }
 
 #glow,
 #glow-bounce {
-  transition: background 2s var(--timing-fn);
+  transition: background 1.5s var(--timing-fn);
 }
 
 #glow {
   position: absolute;
-  background: linear-gradient(309deg,
-      var(--bounce-light),
-      var(--bounce-light) 20%,
-      transparent);
-  transition: background 1s var(--timing-fn);
+  background: linear-gradient(
+    309deg,
+    var(--bounce-light),
+    var(--bounce-light) 15%,
+    transparent 40%
+  );
   height: 100%;
   width: 100%;
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 #glow-bounce {
-  content: "";
   position: absolute;
-  background: linear-gradient(355deg,
-      var(--bounce-light) 0%,
-      transparent 30%,
-      transparent 100%);
-  transition: background 1s var(--timing-fn);
-  opacity: 0.5;
+  background: linear-gradient(
+    355deg,
+    var(--bounce-light) 0%,
+    transparent 25%,
+    transparent 100%
+  );
+  opacity: 0.4;
   height: 100%;
   width: 100%;
   bottom: 0;
@@ -209,64 +193,68 @@ body.dark {
 
 .perspective {
   position: absolute;
-  transition: transform 3s var(--timing-fn), opacity 6s ease;
-  opacity: 0.05;
-  top: -30vh;
+  transition: transform 2.5s var(--timing-fn), opacity 4s ease;
+  opacity: 0.08;
+  top: -25vh;
   right: 0;
-  width: 80vw;
-  height: 130vh;
-  background-blend-mode: darken;
+  width: 75vw;
+  height: 125vh;
+  background-blend-mode: multiply;
   transform-origin: top right;
   transform-style: preserve-3d;
-  transform: matrix3d(0.75,
-      -0.0625,
-      0,
-      0.0008,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      1);
+  transform: matrix3d(
+    0.8,
+    -0.05,
+    0,
+    0.0006,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+  );
 }
 
 .dark .perspective {
-  opacity: 0.25;
-  transform: matrix3d(0.8333,
-      0.0833,
-      0,
-      0.0003,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      1);
+  opacity: 0.15;
+  transform: matrix3d(
+    0.85,
+    0.06,
+    0,
+    0.0004,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+  );
 }
 
 #leaves {
   position: absolute;
   background-size: cover;
   background-repeat: no-repeat;
-  bottom: -20px;
-  right: -700px;
-  width: 1600px;
-  height: 1400px;
+  bottom: -30px;
+  right: -600px;
+  width: 1400px;
+  height: 1200px;
   background-image: url("/leaves.png");
   filter: url(#wind);
-  animation: billow 8s ease-in-out infinite;
+  animation: gentleFloat 12s ease-in-out infinite;
 }
 
 #blinds {
@@ -279,19 +267,19 @@ body.dark {
   background-color: var(--shadow);
 }
 
-#blinds>.shutters {
+#blinds > .shutters {
   display: flex;
   flex-direction: column;
   align-items: end;
-  gap: 60px;
-  transition: gap 1s var(--timing-fn);
+  gap: 50px;
+  transition: gap 1.2s var(--timing-fn);
 }
 
-.dark #blinds>.shutters {
-  gap: 20px;
+.dark #blinds > .shutters {
+  gap: 15px;
 }
 
-#blinds>.vertical {
+#blinds > .vertical {
   top: 0;
   position: absolute;
   height: 100%;
@@ -300,39 +288,88 @@ body.dark {
   justify-content: space-around;
 }
 
-.vertical>.bar {
-  width: 5;
+.vertical > .bar {
+  width: 3px;
   height: 100%;
+  opacity: 0.6;
 }
 
 .shutter {
   width: 100%;
-  height: 40px;
-  transition: height 1s var(--timing-fn);
+  height: 30px;
+  transition: height 1.2s var(--timing-fn);
+  opacity: 0.7;
 }
 
 .dark .shutter {
-  height: 80px;
+  height: 60px;
+  opacity: 0.9;
 }
 
-@keyframes billow {
+@keyframes gentleFloat {
   0% {
-    transform: perspective(400px) rotateX(0deg) rotateY(0deg) scale(1);
+    transform: perspective(400px) rotateX(0deg) rotateY(0deg) scale(1) translateY(0px);
   }
-
   25% {
-    transform: perspective(400px) rotateX(1deg) rotateY(2deg) scale(1.02);
+    transform: perspective(400px) rotateX(0.5deg) rotateY(1deg) scale(1.01) translateY(-5px);
   }
-
   50% {
-    transform: perspective(400px) rotateX(-4deg) rotateY(-2deg) scale(0.97);
+    transform: perspective(400px) rotateX(-2deg) rotateY(-1deg) scale(0.98) translateY(3px);
   }
-
   75% {
-    transform: perspective(400px) rotateX(1deg) rotateY(-1deg) scale(1.04);
+    transform: perspective(400px) rotateX(0.5deg) rotateY(-0.5deg) scale(1.02) translateY(-2px);
   }
-
   100% {
-    transform: perspective(400px) rotateX(0deg) rotateY(0deg) scale(1);
+    transform: perspective(400px) rotateX(0deg) rotateY(0deg) scale(1) translateY(0px);
   }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.5);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(75, 85, 99, 0.4);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(75, 85, 99, 0.6);
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid rgb(99, 102, 241);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Selection styles */
+::selection {
+  background-color: rgba(99, 102, 241, 0.2);
+  color: inherit;
+}
+
+.dark ::selection {
+  background-color: rgba(129, 140, 248, 0.3);
 }

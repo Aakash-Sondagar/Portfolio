@@ -20,23 +20,24 @@ const WritingComponent = () => {
 
   return (
     <div>
-      <h2 className="text-stone-800 dark:text-stone-200 font-medium mt-8">
+      <h2 className="text-gray-900 dark:text-gray-100 font-semibold text-2xl sm:text-3xl mb-4 tracking-tight">
         Writings
       </h2>
       <AnimatedName />
-      <p className="text-gray-700 dark:text-gray-300 font-normal mb-6 leading-relaxed">
+      <p className="text-gray-700 dark:text-gray-300 font-normal mb-8 leading-relaxed text-base">
         A collection of thoughts, learnings, and discoveries from my journey in
         software engineering. Each piece captures insights that shape my
         understanding of technology and development.
       </p>
-      <div className="flex flex-wrap gap-2 mb-8">
+      
+      <div className="flex flex-wrap gap-2 mb-10">
         {uniqueTags.map((tag) => (
           <button
             key={tag}
-            className={`px-3 py-1 text-sm rounded-lg transition-all duration-300 ${
+            className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 ${
               activeFilter === tag
-                ? "bg-stone-100 dark:bg-stone-800 text-stone-800 dark:text-stone-200"
-                : "text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800/50"
+                ? "bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800"
+                : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800/50 border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700"
             }`}
             onClick={() => setActiveFilter(tag)}
           >
@@ -44,38 +45,33 @@ const WritingComponent = () => {
           </button>
         ))}
       </div>
-      <ul className="list-disc pl-5 space-y-4 marker:text-gray-700 dark:marker:text-gray-300">
+
+      <div className="space-y-4">
         {blogs.map((blog) => (
-          <li
+          <Link
             key={blog.slug}
-            className="transition-all duration-300 hover:translate-x-1"
+            href={`/writings/${blog.slug}`}
+            className="block p-6 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-200 hover:shadow-sm dark:hover:shadow-none bg-white/50 dark:bg-gray-900/50 hover:bg-blue-50/50 dark:hover:bg-blue-950/20 group no-underline"
           >
-            <Link
-              href={`/writings/${blog.slug}`}
-              className="no-underline block mb-1"
-            >
-              <div>
-                <h6 className="pl-1 text-gray-700 dark:text-gray-300 font-medium">
-                  {blog.title}
-                </h6>
-                {blog.description && (
-                  <div className="space-y-2">
-                    <p className="text-gray-700 dark:text-gray-300 font-light m-0 text-sm pl-1">
-                      {blog.description}
-                    </p>
-                    <div className="flex items-center space-x-2 pl-1">
-                      <Small>{blog.date}</Small>
-                      <span className="text-sm text-indigo-500 dark:text-indigo-300 font-medium hover:underline">
-                        Read more →
-                      </span>
-                    </div>
-                  </div>
-                )}
+            <div>
+              <h6 className="font-semibold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+                {blog.title}
+              </h6>
+              {blog.description && (
+                <p className="text-gray-600 dark:text-gray-400 font-normal mb-3 leading-relaxed text-sm">
+                  {blog.description}
+                </p>
+              )}
+              <div className="flex items-center justify-between">
+                <Small>{blog.date}</Small>
+                <span className="text-sm text-blue-600 dark:text-blue-400 font-medium group-hover:translate-x-1 transition-transform duration-200">
+                  Read more →
+                </span>
               </div>
-            </Link>
-          </li>
+            </div>
+          </Link>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

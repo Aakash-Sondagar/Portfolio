@@ -3,22 +3,34 @@ import { allBlogs } from "@/utils/blogs";
 
 <Name />
 
-This space is my evolving digital garden — a messy but meaningful dump of thoughts, ideas, notes, and things I'm experimenting with. It's a living archive, updated as I learn, build, and break things.
+This space is my evolving digital garden — a thoughtful collection of ideas, learnings, and experiments. It's a living archive that grows as I explore new technologies, solve complex problems, and share insights from my engineering journey.
 
-Everything I’m working on is  [over here](/work).
+Everything I'm working on is [over here](/work).
 
 #### What I'm Learning
+
+<ul className="space-y-3 mb-8">
 {
     allBlogs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 3).map((blog) => (
-        <li key={blog.slug} className="font-normal">
-            <a href={`/writings/${blog.slug}`} className="text-stone-700 dark:text-stone-300 hover:text-indigo-500 dark:hover:text-indigo-300 transition-colors">
-                {blog.title}
+        <li key={blog.slug} className="group">
+            <a 
+                href={`/writings/${blog.slug}`} 
+                className="block p-4 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-200 hover:shadow-sm dark:hover:shadow-none bg-white/50 dark:bg-gray-900/50 hover:bg-blue-50/50 dark:hover:bg-blue-950/20"
+            >
+                <h6 className="font-semibold text-gray-900 dark:text-gray-100 mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+                    {blog.title}
+                </h6>
+                <p className="text-gray-600 dark:text-gray-400 text-sm mb-2 leading-relaxed">
+                    {blog.description}
+                </p>
+                <span className="text-gray-500 dark:text-gray-500 text-xs font-medium">
+                    {blog.date}
+                </span>
             </a>
-            <span className="text-stone-600 dark:text-stone-400 text-sm"> - ({blog.date})</span>
         </li>
     ))
 }
-
+</ul>
 
 #### Certification
 
