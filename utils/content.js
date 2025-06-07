@@ -1,7 +1,9 @@
 import { formatDate } from "@/components/common";
+import { lazy } from "react";
 
-import OtherResources from "@/app/blog/resourcesList/OtherResources.mdx";
-import FrontendResources from "@/app/blog/resourcesList/FrontendResources.mdx";
+// Lazy load resource components
+const OtherResources = lazy(() => import("@/app/blog/resourcesList/OtherResources.mdx"));
+const FrontendResources = lazy(() => import("@/app/blog/resourcesList/FrontendResources.mdx"));
 
 export const baseUrl = "https://aakashsondagar.me";
 
@@ -28,23 +30,45 @@ export const footerLinks = [
   { name: "Github", url: "https://github.com/Aakash-Sondagar" },
 ];
 
-export const resourcesList = [
+// Resource metadata without content for better performance
+export const resourcesMetadata = [
   {
     slug: "other_resources",
     title: "Other Resources",
-    date: formatDate("2024-12-31"),
-    description:
-      "A list of resources that help in building a strong social profile and cracking interviews.",
+    date: "2024-12-31",
+    description: "A list of resources that help in building a strong social profile and cracking interviews.",
     tags: ["resources"],
-    content: <OtherResources />,
+    readTime: "8 min read",
   },
   {
     slug: "frontend_resources",
     title: "Frontend Resources",
-    date: formatDate("2024-12-31"),
-    description:
-      "A curated collection of treasures from the web that are useful for creating frontends.",
+    date: "2024-12-31",
+    description: "A curated collection of treasures from the web that are useful for creating frontends.",
     tags: ["resources"],
+    readTime: "6 min read",
+  },
+];
+
+// Full resources data with content (only loaded when needed)
+export const resourcesList = [
+  {
+    ...resourcesMetadata[0],
+    date: formatDate("2024-12-31"),
+    content: <OtherResources />,
+  },
+  {
+    ...resourcesMetadata[1],
+    date: formatDate("2024-12-31"),
     content: <FrontendResources />,
   },
 ];
+
+// Utility functions for resources
+export const getResourceBySlug = (slug) => {
+  return resourcesList.find(resource => resource.slug === slug);
+};
+
+export const getResourceMetadataBySlug = (slug) => {
+  return resourcesMetadata.find(resource => resource.slug === slug);
+};

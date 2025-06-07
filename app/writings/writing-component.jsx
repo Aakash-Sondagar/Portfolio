@@ -1,22 +1,32 @@
 "use client";
-import { useState } from "react";
+import { useState, useMemo, Suspense } from "react";
 import { Link } from "next-view-transitions";
-import { allBlogs } from "@/utils/blogs";
+import { blogMetadata, getAllTags, getBlogsByTag } from "@/utils/blogs";
 import { AnimatedName, Small } from "@/components/common";
+
+const BlogSkeleton = () => (
+  <div className="animate-pulse space-y-4">
+    {[...Array(6)].map((_, i) => (
+      <div key={i} className="p-6 rounded-lg border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50">
+        <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
+        <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded mb-3 w-3/4"></div>
+        <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-1/4"></div>
+      </div>
+    ))}
+  </div>
+);
 
 const WritingComponent = () => {
   const [activeFilter, setActiveFilter] = useState("All");
 
-  const uniqueTags = ["All", ...new Set(allBlogs.flatMap((blog) => blog.tags))];
-
-  const filteredBlogs =
-    activeFilter === "All"
-      ? allBlogs
-      : allBlogs.filter((blog) => blog.tags.includes(activeFilter));
-
-  const blogs = filteredBlogs.sort(
-    (a, b) => new Date(b.date) - new Date(a.date)
-  );
+  // Memoize expensive computations
+  const uniqueTags = useMemo(() => getAllTags(), []);
+  
+  const filteredBlogs = useMemo(() => {
+    return getBlogsByTag(activeFilter).sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
+    );
+  }, [activeFilter]);
 
   return (
     <div>
@@ -46,32 +56,39 @@ const WritingComponent = () => {
         ))}
       </div>
 
-      <div className="space-y-4">
-        {blogs.map((blog) => (
-          <Link
-            key={blog.slug}
-            href={`/writings/${blog.slug}`}
-            className="block p-6 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 hover:shadow-sm dark:hover:shadow-none bg-white/50 dark:bg-gray-900/50 hover:bg-blue-50/50 dark:hover:bg-blue-950/20 group no-underline card-hover"
-          >
-            <div>
-              <h6 className="font-semibold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
-                {blog.title}
-              </h6>
-              {blog.description && (
-                <p className="text-gray-600 dark:text-gray-400 font-normal mb-3 leading-relaxed text-sm">
-                  {blog.description}
-                </p>
-              )}
-              <div className="flex items-center justify-between">
-                <Small>{blog.date}</Small>
-                <span className="text-sm text-blue-600 dark:text-blue-400 font-medium group-hover:translate-x-1 transition-transform duration-200">
-                  Read more →
-                </span>
+      <Suspense fallback={<BlogSkeleton />}>
+        <div className="space-y-4">
+          {filteredBlogs.map((blog) => (
+            <Link
+              key={blog.slug}
+              href={`/writings/${blog.slug}`}
+              className="block p-6 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 hover:shadow-sm dark:hover:shadow-none bg-white/50 dark:bg-gray-900/50 hover:bg-blue-50/50 dark:hover:bg-blue-950/20 group no-underline card-hover"
+            >
+              <div>
+                <h6 className="font-semibold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+                  {blog.title}
+                </h6>
+                {blog.description && (
+                  <p className="text-gray-600 dark:text-gray-400 font-normal mb-3 leading-relaxed text-sm">
+                    {blog.description}
+                  </p>
+                )}
+                <div className="flex items-center justify-between">
+                  <Small>{blog.date}</Small>
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs text-gray-500 dark:text-gray-500">
+                      {blog.readTime}
+                    </span>
+                    <span className="text-sm text-blue-600 dark:text-blue-400 font-medium group-hover:translate-x-1 transition-transform duration-200">
+                      Read more →
+                    </span>
+                  </div>
+                </div>
               </div>
-            </div>
-          </Link>
-        ))}
-      </div>
+            </Link>
+          ))}
+        </div>
+      </Suspense>
     </div>
   );
 };

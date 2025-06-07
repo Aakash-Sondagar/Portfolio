@@ -1,7 +1,8 @@
 import { Link } from "next-view-transitions";
 import { ChevronLeft } from "lucide-react";
+import { memo } from "react";
 
-export const Name = () => {
+export const Name = memo(() => {
   return (
     <div className="mb-6 sm:mb-12 mt-6 sm:mt-0">
       <h1 className="flex text-3xl sm:text-4xl lg:text-5xl text-gray-900 dark:text-gray-100 font-bold mb-2 tracking-tight">
@@ -12,9 +13,11 @@ export const Name = () => {
       </h4>
     </div>
   );
-};
+});
 
-export const AnimatedName = ({ href }) => {
+Name.displayName = "Name";
+
+export const AnimatedName = memo(({ href }) => {
   if (!href) href = "/";
   return (
     <Link
@@ -25,15 +28,19 @@ export const AnimatedName = ({ href }) => {
       Aakash Sondagar
     </Link>
   );
-};
+});
 
-export const Small = ({ children }) => {
+AnimatedName.displayName = "AnimatedName";
+
+export const Small = memo(({ children }) => {
   return (
     <div className="text-sm text-gray-500 dark:text-gray-500 font-normal mb-4">
       {children}
     </div>
   );
-};
+});
+
+Small.displayName = "Small";
 
 export const getMetaData = (title, canonical) => {
   return {
@@ -44,7 +51,16 @@ export const getMetaData = (title, canonical) => {
   };
 };
 
+// Optimized date formatting with caching
+const dateCache = new Map();
+
 export const formatDate = (date, includeRelative = true) => {
+  const cacheKey = `${date}-${includeRelative}`;
+  
+  if (dateCache.has(cacheKey)) {
+    return dateCache.get(cacheKey);
+  }
+
   let currentDate = new Date();
   if (!date.includes("T")) {
     date = `${date}T00:00:00`;
@@ -74,9 +90,10 @@ export const formatDate = (date, includeRelative = true) => {
     year: "numeric",
   });
 
-  if (!includeRelative) {
-    return fullDate;
-  }
-
-  return `${fullDate} (${formattedDate})`;
+  const result = includeRelative ? `${fullDate} (${formattedDate})` : fullDate;
+  
+  // Cache the result
+  dateCache.set(cacheKey, result);
+  
+  return result;
 };
