@@ -35,7 +35,7 @@ const Navbar = () => {
     }
   }, [isDarkMode]);
 
-  const toggleTheme = () => {
+  const toggleTheme = (event) => {
     setIsTransitioning(true);
     
     // Create a smooth transition overlay effect
