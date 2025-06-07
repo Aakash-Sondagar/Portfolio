@@ -49,8 +49,11 @@ export const metadata = {
   keywords:
     "Aakash Sondagar, Software Engineer, Full Stack Developer, Solution Architect, Cloud Architect, Web Development, System Design, Cloud Solutions, Microservices, Software Architecture, Tech Lead, Mumbai, Engineering Leadership, Cloud Migration, Scalable Systems, Backend Development, Frontend Development, AWS, GCP",
   icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.png", type: "image/png" }
+    ],
+    shortcut: "/favicon.svg",
     apple: "/favicon.png",
   },
   authors: [{ name: "Aakash Sondagar" }],

@@ -51,7 +51,7 @@ const WritingComponent = () => {
           <Link
             key={blog.slug}
             href={`/writings/${blog.slug}`}
-            className="block p-6 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-200 hover:shadow-sm dark:hover:shadow-none bg-white/50 dark:bg-gray-900/50 hover:bg-blue-50/50 dark:hover:bg-blue-950/20 group no-underline"
+            className="block p-6 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 hover:shadow-sm dark:hover:shadow-none bg-white/50 dark:bg-gray-900/50 hover:bg-blue-50/50 dark:hover:bg-blue-950/20 group no-underline card-hover"
           >
             <div>
               <h6 className="font-semibold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
