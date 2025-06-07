@@ -14,14 +14,12 @@ export const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
-  preload: true,
 });
 
 export const manrope = Manrope({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-manrope",
-  preload: true,
 });
 
 export function robots() {
@@ -99,15 +97,6 @@ const RootLayout = ({ children }) => {
   return (
     <html lang="en">
       <head>
-        {/* Preconnect to external domains */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
-        {/* DNS prefetch for performance */}
-        <link rel="dns-prefetch" href="//vercel.live" />
-        <link rel="dns-prefetch" href="//vitals.vercel-analytics.com" />
-        
-        {/* Structured data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -128,7 +117,7 @@ const RootLayout = ({ children }) => {
         />
       </head>
       <body
-        className={`${inter.variable} ${manrope.variable} antialiased tracking-tight relative min-h-screen critical-css`}
+        className={`${inter.variable} ${manrope.variable} antialiased tracking-tight relative min-h-screen`}
       >
         <ThemeProvider />
         <main className="mx-auto mb-6 w-full max-w-2xl flex-1 px-4 pt-6 pb-0 sm:px-8 sm:pt-16 lg:max-w-3xl">

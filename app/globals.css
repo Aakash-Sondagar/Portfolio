@@ -115,7 +115,6 @@ body.dark {
   }
 }
 
-/* Performance optimizations */
 #dappled-light {
   pointer-events: none;
   position: fixed;
@@ -123,7 +122,6 @@ body.dark {
   width: 100vw;
   z-index: -1;
   transition: opacity 2.5s var(--timing-fn);
-  will-change: opacity;
 }
 
 #progressive-blur {
@@ -146,7 +144,6 @@ body.dark {
     black
   );
   transition: backdrop-filter 2s var(--timing-fn);
-  will-change: backdrop-filter;
 }
 
 #progressive-blur > div:nth-child(1) {
@@ -176,7 +173,6 @@ body.dark {
 #glow,
 #glow-bounce {
   transition: background 2.5s var(--timing-fn), opacity 2s var(--timing-fn);
-  will-change: background, opacity;
 }
 
 #glow {
@@ -235,7 +231,6 @@ body.dark {
     0,
     1
   );
-  will-change: transform, opacity;
 }
 
 .dark .perspective {
@@ -272,7 +267,6 @@ body.dark {
   filter: url(#wind);
   animation: gentleFloat 12s ease-in-out infinite;
   transition: opacity 2.5s var(--timing-fn), filter 2s var(--timing-fn);
-  will-change: transform, opacity, filter;
 }
 
 .dark #leaves {
@@ -289,7 +283,6 @@ body.dark {
 #blinds .bar {
   background-color: var(--shadow);
   transition: background-color 2.5s var(--timing-fn), height 2s var(--timing-fn), opacity 2s var(--timing-fn);
-  will-change: background-color, height, opacity;
 }
 
 #blinds > .shutters {
@@ -298,7 +291,6 @@ body.dark {
   align-items: end;
   gap: 50px;
   transition: gap 2s var(--timing-fn);
-  will-change: gap;
 }
 
 .dark #blinds > .shutters {
@@ -325,7 +317,6 @@ body.dark {
   height: 30px;
   transition: height 2s var(--timing-fn), opacity 2s var(--timing-fn);
   opacity: 0.7;
-  will-change: height, opacity;
 }
 
 .dark .shutter {
@@ -408,7 +399,6 @@ body.dark {
 /* Enhanced card hover effects with smoother animations */
 .card-hover {
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: transform, box-shadow;
 }
 
 .card-hover:hover {
@@ -420,37 +410,11 @@ body.dark {
   box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.4), 0 15px 15px -5px rgba(0, 0, 0, 0.25);
 }
 
-/* Performance optimizations for mobile */
+/* Improved mobile spacing */
 @media (max-width: 640px) {
   .mobile-spacing {
     padding-top: 1rem;
     padding-bottom: 1rem;
-  }
-  
-  /* Reduce animations on mobile for better performance */
-  .card-hover:hover {
-    transform: translateY(-2px) scale(1.005);
-  }
-  
-  /* Optimize background animations for mobile */
-  #leaves {
-    animation-duration: 16s;
-  }
-}
-
-/* Reduce motion for users who prefer it */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-  
-  .card-hover:hover {
-    transform: none;
   }
 }
 
@@ -516,7 +480,6 @@ body.dark {
 /* Enhanced button transitions */
 button {
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: transform;
 }
 
 button:hover {
@@ -541,20 +504,4 @@ h1, h2, h3, h4, h5, h6, p, span, div {
 .bg-white\/50,
 .dark\:bg-gray-900\/50 {
   transition: background-color 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* Critical CSS for above-the-fold content */
-.critical-css {
-  font-display: swap;
-}
-
-/* Optimize font loading */
-@font-face {
-  font-family: 'Inter';
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Manrope';
-  font-display: swap;
 }

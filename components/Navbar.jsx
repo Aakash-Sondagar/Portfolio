@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { Sun, Moon, Menu, X } from "lucide-react";
 import { navItems } from "@/utils/content";
 
@@ -20,11 +20,9 @@ const Navbar = () => {
     }
     
     // Add animation ready class after a short delay
-    const timer = setTimeout(() => {
+    setTimeout(() => {
       document.body.classList.add("animation-ready");
     }, 100);
-
-    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -37,9 +35,7 @@ const Navbar = () => {
     }
   }, [isDarkMode]);
 
-  const toggleTheme = useCallback((event) => {
-    if (isTransitioning) return;
-    
+  const toggleTheme = (event) => {
     setIsTransitioning(true);
     
     // Create a smooth transition overlay effect
@@ -83,15 +79,7 @@ const Navbar = () => {
       ripple.remove();
       setIsTransitioning(false);
     }, 800);
-  }, [isDarkMode, isTransitioning]);
-
-  const handleMenuToggle = useCallback(() => {
-    setIsMenuOpen(prev => !prev);
-  }, []);
-
-  const handleLinkClick = useCallback(() => {
-    setIsMenuOpen(false);
-  }, []);
+  };
 
   return (
     <aside className="mb-6 md:mb-12 tracking-tight">
@@ -110,8 +98,7 @@ const Navbar = () => {
                 key={path}
                 href={path}
                 className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-all duration-300 relative px-3 py-2 rounded-lg hover:bg-gray-100/50 dark:hover:bg-gray-800/50 group block"
-                onClick={handleLinkClick}
-                prefetch={path.startsWith('/')}
+                onClick={() => setIsMenuOpen(false)}
               >
                 <span className="relative z-10">
                   {name}
@@ -128,7 +115,7 @@ const Navbar = () => {
               aria-label="Toggle theme"
               onClick={toggleTheme}
               disabled={isTransitioning}
-              className="p-2 rounded-lg hover:bg-gray-100/50 dark:hover:bg-gray-800/50 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 mr-2 relative overflow-hidden group disabled:opacity-50"
+              className="p-2 rounded-lg hover:bg-gray-100/50 dark:hover:bg-gray-800/50 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 mr-2 relative overflow-hidden group"
             >
               <div className="relative z-10 transition-transform duration-300 group-hover:scale-110">
                 {isDarkMode ? (
@@ -143,7 +130,7 @@ const Navbar = () => {
             {/* Mobile menu button */}
             <button
               className="sm:hidden p-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-lg transition-all duration-300 group"
-              onClick={handleMenuToggle}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
             >
               <div className="transition-transform duration-300 group-hover:scale-110">

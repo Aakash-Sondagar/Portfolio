@@ -1,28 +1,22 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { Link } from "next-view-transitions";
-import { getBlogMetadata } from "@/utils/blogs";
+import { allBlogs } from "@/utils/blogs";
 import { AnimatedName, Small } from "@/components/common";
 
 const WritingComponent = () => {
   const [activeFilter, setActiveFilter] = useState("All");
-  
-  // Memoize blog metadata to prevent unnecessary re-renders
-  const blogMetadata = useMemo(() => getBlogMetadata(), []);
-  
-  // Memoize unique tags calculation
-  const uniqueTags = useMemo(() => {
-    return ["All", ...new Set(blogMetadata.flatMap((blog) => blog.tags))];
-  }, [blogMetadata]);
 
-  // Memoize filtered blogs
-  const filteredBlogs = useMemo(() => {
-    const filtered = activeFilter === "All"
-      ? blogMetadata
-      : blogMetadata.filter((blog) => blog.tags.includes(activeFilter));
-    
-    return filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
-  }, [blogMetadata, activeFilter]);
+  const uniqueTags = ["All", ...new Set(allBlogs.flatMap((blog) => blog.tags))];
+
+  const filteredBlogs =
+    activeFilter === "All"
+      ? allBlogs
+      : allBlogs.filter((blog) => blog.tags.includes(activeFilter));
+
+  const blogs = filteredBlogs.sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
+  );
 
   return (
     <div>
@@ -53,7 +47,7 @@ const WritingComponent = () => {
       </div>
 
       <div className="space-y-4">
-        {filteredBlogs.map((blog) => (
+        {blogs.map((blog) => (
           <Link
             key={blog.slug}
             href={`/writings/${blog.slug}`}
@@ -70,16 +64,9 @@ const WritingComponent = () => {
               )}
               <div className="flex items-center justify-between">
                 <Small>{blog.date}</Small>
-                <div className="flex items-center gap-3">
-                  {blog.readTime && (
-                    <span className="text-xs text-gray-400 dark:text-gray-500">
-                      {blog.readTime}
-                    </span>
-                  )}
-                  <span className="text-sm text-blue-600 dark:text-blue-400 font-medium group-hover:translate-x-1 transition-transform duration-200">
-                    Read more →
-                  </span>
-                </div>
+                <span className="text-sm text-blue-600 dark:text-blue-400 font-medium group-hover:translate-x-1 transition-transform duration-200">
+                  Read more →
+                </span>
               </div>
             </div>
           </Link>

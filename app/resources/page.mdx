@@ -1,6 +1,6 @@
 import { Link } from "next-view-transitions";
 import { getMetaData, AnimatedName, Small } from "@/components/common";
-import { getResourcesMetadata } from "@/utils/content";
+import { resourcesList } from "@/utils/content";
 
 export const metadata = getMetaData("Chaos Cabinet", "/resources");
 
@@ -11,25 +11,25 @@ export const metadata = getMetaData("Chaos Cabinet", "/resources");
 A curated collection of digital artifacts — tools, articles, and insights that shape my engineering journey. Each resource here has contributed to my growth and might help yours too.
 
 <div className="space-y-4 mt-8">
-  {getResourcesMetadata()
+  {[...resourcesList]
     .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .map((resource) => (
+    .map((blog) => (
       <Link 
-        key={resource.slug} 
-        href={`/writings/${resource.slug}`} 
+        key={blog.slug} 
+        href={`/writings/${blog.slug}`} 
         className="block p-6 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 hover:shadow-sm dark:hover:shadow-none bg-white/50 dark:bg-gray-900/50 hover:bg-blue-50/50 dark:hover:bg-blue-950/20 group no-underline card-hover"
       >
         <div>
           <h6 className="font-semibold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
-            {resource.title}
+            {blog.title}
           </h6>
-          {resource.description && (
+          {blog.description && (
             <p className="text-gray-600 dark:text-gray-400 font-normal mb-3 leading-relaxed text-sm">
-              {resource.description}
+              {blog.description}
             </p>
           )}
           <div className="flex items-center justify-between">
-            <Small>{resource.date}</Small>
+            <Small>{blog.date}</Small>
             <span className="text-sm text-blue-600 dark:text-blue-400 font-medium group-hover:translate-x-1 transition-transform duration-200">
               Read more →
             </span>

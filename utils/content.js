@@ -1,9 +1,7 @@
 import { formatDate } from "@/components/common";
-import { lazy } from "react";
 
-// Lazy load resource components
-const OtherResources = lazy(() => import("@/app/blog/resourcesList/OtherResources.mdx"));
-const FrontendResources = lazy(() => import("@/app/blog/resourcesList/FrontendResources.mdx"));
+import OtherResources from "@/app/blog/resourcesList/OtherResources.mdx";
+import FrontendResources from "@/app/blog/resourcesList/FrontendResources.mdx";
 
 export const baseUrl = "https://aakashsondagar.me";
 
@@ -30,42 +28,23 @@ export const footerLinks = [
   { name: "Github", url: "https://github.com/Aakash-Sondagar" },
 ];
 
-// Resource metadata for faster loading
-export const resourcesMetadata = [
+export const resourcesList = [
   {
     slug: "other_resources",
     title: "Other Resources",
-    date: "2024-12-31",
-    description: "A list of resources that help in building a strong social profile and cracking interviews.",
+    date: formatDate("2024-12-31"),
+    description:
+      "A list of resources that help in building a strong social profile and cracking interviews.",
     tags: ["resources"],
+    content: <OtherResources />,
   },
   {
     slug: "frontend_resources",
     title: "Frontend Resources",
-    date: "2024-12-31",
-    description: "A curated collection of treasures from the web that are useful for creating frontends.",
+    date: formatDate("2024-12-31"),
+    description:
+      "A curated collection of treasures from the web that are useful for creating frontends.",
     tags: ["resources"],
-  },
-];
-
-// Full resources list with content
-export const resourcesList = [
-  {
-    ...resourcesMetadata[0],
-    date: formatDate(resourcesMetadata[0].date),
-    content: <OtherResources />,
-  },
-  {
-    ...resourcesMetadata[1],
-    date: formatDate(resourcesMetadata[1].date),
     content: <FrontendResources />,
   },
 ];
-
-// Function to get resource metadata without content
-export const getResourcesMetadata = () => {
-  return resourcesMetadata.map(resource => ({
-    ...resource,
-    date: formatDate(resource.date),
-  }));
-};
