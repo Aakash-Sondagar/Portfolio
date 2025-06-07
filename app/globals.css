@@ -98,16 +98,16 @@ body.dark {
   0% {
     background-color: var(--day);
   }
-  20% {
-    background-color: var(--evening);
+  25% {
+    background-color: #f7fafc;
   }
-  40% {
-    background-color: var(--dusk);
+  45% {
+    background-color: #e2e8f0;
   }
-  60% {
-    background-color: #ff9500;
+  65% {
+    background-color: #4a5568;
   }
-  80% {
+  85% {
     background-color: var(--dawn);
   }
   100% {
