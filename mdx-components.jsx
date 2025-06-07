@@ -7,7 +7,7 @@ export const components = {
   ),
   h1: (props) => (
     <h1
-      className="flex text-3xl sm:text-4xl text-gray-900 dark:text-gray-100 font-bold mb-6 tracking-tight"
+      className="flex text-3xl sm:text-4xl text-gray-900 dark:text-gray-100 font-bold mb-2 tracking-tight"
       {...props}
     />
   ),
@@ -16,7 +16,7 @@ export const components = {
   ),
   h3: (props) => (
     <h3
-      className="text-gray-900 dark:text-gray-100 font-semibold text-xl sm:text-2xl mt-10 mb-4 tracking-tight"
+      className="text-gray-900 dark:text-gray-100 font-semibold text-xl sm:text-2xl mt-10 mb-2 tracking-tight"
       {...props}
     />
   ),
@@ -34,6 +34,9 @@ export const components = {
       className="text-gray-700 dark:text-gray-300 font-normal mb-4 leading-relaxed text-base"
       {...props}
     />
+  ),
+  div: (props) => (
+    <div className="mb-2" {...props} />
   ),
   ol: (props) => (
     <ol

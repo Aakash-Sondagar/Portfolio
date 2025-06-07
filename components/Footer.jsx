@@ -2,7 +2,7 @@ import { footerLinks } from "@/utils/content";
 
 const Footer = () => {
   return (
-    <footer className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
+    <footer className="mt-6 pt-8 border-t border-gray-200 dark:border-gray-800">
       <div className="flex flex-wrap items-center gap-x-3 gap-y-2 tracking-tight mb-6">
         {footerLinks.map((link, index) => (
           <span key={link.name} className="flex items-center">

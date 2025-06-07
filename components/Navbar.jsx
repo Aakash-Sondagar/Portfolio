@@ -39,9 +39,32 @@ const Navbar = () => {
   };
 
   return (
-    <aside className="mb-12 tracking-tight">
+    <aside className="mb-6 md:mb-12 tracking-tight">
       <div className="lg:sticky lg:top-20">
-        <nav className="relative">
+        <nav className="flex justify-end">
+          {/* Navigation links */}
+          <div
+            className={`flex flex-col sm:flex-row sm:space-x-1 w-full transition-all duration-300 ease-in-out ${
+              isMenuOpen
+                ? "opacity-100 translate-y-0 space-y-2 sm:space-y-0"
+                : "opacity-0 -translate-y-4 sm:opacity-100 sm:translate-y-0 hidden sm:flex"
+            }`}
+          >
+            {Object.entries(navItems).map(([path, { name }]) => (
+              <Link
+                key={path}
+                href={path}
+                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-all duration-200 relative px-3 py-2 rounded-lg hover:bg-gray-100/50 dark:hover:bg-gray-800/50 group block"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <span className="relative z-10">
+                  {name}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 group-hover:w-full transition-all duration-300 ease-out"></span>
+                </span>
+              </Link>
+            ))}
+          </div>
+
           {/* Top bar with theme toggle and mobile menu button */}
           <div className="flex items-center justify-end mb-6 sm:mb-0">
             {/* Theme toggle */}
@@ -69,29 +92,6 @@ const Navbar = () => {
                 <Menu className="w-5 h-5" />
               )}
             </button>
-          </div>
-
-          {/* Navigation links */}
-          <div
-            className={`flex flex-col sm:flex-row sm:space-x-1 w-full transition-all duration-300 ease-in-out ${
-              isMenuOpen
-                ? "opacity-100 translate-y-0 space-y-2 sm:space-y-0"
-                : "opacity-0 -translate-y-4 sm:opacity-100 sm:translate-y-0 hidden sm:flex"
-            }`}
-          >
-            {Object.entries(navItems).map(([path, { name }]) => (
-              <Link
-                key={path}
-                href={path}
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-all duration-200 relative px-3 py-2 rounded-lg hover:bg-gray-100/50 dark:hover:bg-gray-800/50 group block"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <span className="relative z-10">
-                  {name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 group-hover:w-full transition-all duration-300 ease-out"></span>
-                </span>
-              </Link>
-            ))}
           </div>
         </nav>
       </div>

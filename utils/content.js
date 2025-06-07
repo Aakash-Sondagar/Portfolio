@@ -3,7 +3,7 @@ import { formatDate } from "@/components/common";
 import OtherResources from "@/app/blog/resourcesList/OtherResources.mdx";
 import FrontendResources from "@/app/blog/resourcesList/FrontendResources.mdx";
 
-export const baseUrl = "https://aakashsondagar.vercel.app";
+export const baseUrl = "https://aakashsondagar.me";
 
 export const navItems = {
   "/work": {

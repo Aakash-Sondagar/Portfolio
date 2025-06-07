@@ -10,7 +10,7 @@ const nextConfig = {
   output: 'export',
   images: {
     unoptimized: true,
-    domains: ["https://aakashsondagar.vercel.app"],
+    domains: ["https://aakashsondagar.me"],
   },
   pageExtensions: ["md", "mdx", "js", "jsx"],
 };
