@@ -27,7 +27,8 @@ main {
   isolation: isolate;
 }
 
-body {
+/* CRITICAL: Define theme variables at root level */
+:root {
   --day: #fefefe;
   --evening: #fff4e6;
   --dusk: #ffe0b3;
@@ -40,14 +41,34 @@ body {
   --shadow: rgba(26, 25, 23, 0.1);
   --bounce-light: rgba(245, 215, 166, 0.3);
   --timing-fn: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  
+}
+
+/* Dark theme variables */
+.dark {
+  --light: var(--night);
+  --dark: var(--day);
+  --shadow: rgba(2, 2, 4, 0.3);
+  --bounce-light: rgba(27, 41, 63, 0.4);
+}
+
+/* Apply theme to html element to prevent any flash */
+html {
+  background-color: var(--light);
+  transition: none;
+}
+
+html.dark {
+  background-color: var(--night);
+}
+
+body {
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
   
-  /* CRITICAL: Start with the correct background immediately based on saved theme */
-  background-color: var(--light);
+  /* Inherit background from html to prevent flash */
+  background-color: inherit;
   
   /* NO transitions during initial load */
   transition: none;
@@ -63,9 +84,6 @@ body.dark {
   --dark: var(--day);
   --shadow: rgba(2, 2, 4, 0.3);
   --bounce-light: rgba(27, 41, 63, 0.4);
-  
-  /* Set dark background immediately, no transition */
-  background-color: var(--night);
 }
 
 /* Only enable transitions after page is fully loaded */

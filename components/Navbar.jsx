@@ -16,20 +16,22 @@ const Navbar = () => {
     if (savedTheme === "dark") {
       setIsDarkMode(true);
       document.body.classList.add("dark");
+      document.documentElement.classList.add("dark");
     } else {
       setIsDarkMode(false);
       document.body.classList.remove("dark");
+      document.documentElement.classList.remove("dark");
     }
 
     // Enable smooth transitions only after everything is loaded and styled
     const enableTransitions = setTimeout(() => {
       document.body.classList.add("transitions-enabled");
-    }, 500); // Increased delay to ensure no flash
+    }, 800); // Increased delay to ensure no flash
 
     // Add animation ready class after transitions are enabled
     const enableAnimations = setTimeout(() => {
       document.body.classList.add("animation-ready");
-    }, 600);
+    }, 900);
 
     return () => {
       clearTimeout(enableTransitions);
@@ -41,9 +43,11 @@ const Navbar = () => {
     // Update theme classes and localStorage
     if (isDarkMode) {
       document.body.classList.add("dark");
+      document.documentElement.classList.add("dark");
       localStorage.setItem('theme', 'dark');
     } else {
       document.body.classList.remove("dark");
+      document.documentElement.classList.remove("dark");
       localStorage.setItem('theme', 'light');
     }
   }, [isDarkMode]);

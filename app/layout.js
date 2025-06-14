@@ -105,6 +105,31 @@ const RootLayout = ({ children }) => {
   return (
     <html lang="en">
       <head>
+        {/* CRITICAL: Apply theme BEFORE any rendering to prevent flash */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const savedTheme = localStorage.getItem('theme');
+                  const isDark = savedTheme === 'dark';
+                  
+                  // Apply theme class immediately to html element
+                  if (isDark) {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.style.backgroundColor = '#0a0a0f';
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.style.backgroundColor = '#fefefe';
+                  }
+                } catch (e) {
+                  // Fallback to light theme
+                  document.documentElement.style.backgroundColor = '#fefefe';
+                }
+              })();
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
