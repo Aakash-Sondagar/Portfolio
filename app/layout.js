@@ -105,7 +105,6 @@ const RootLayout = ({ children }) => {
   return (
     <html lang="en">
       <head>
-        {/* CRITICAL: Apply theme BEFORE any rendering to prevent flash */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -114,17 +113,13 @@ const RootLayout = ({ children }) => {
                   const savedTheme = localStorage.getItem('theme');
                   const isDark = savedTheme === 'dark';
                   
-                  // Apply theme class immediately to html element
                   if (isDark) {
                     document.documentElement.classList.add('dark');
-                    document.documentElement.style.backgroundColor = '#0a0a0f';
                   } else {
                     document.documentElement.classList.remove('dark');
-                    document.documentElement.style.backgroundColor = '#fefefe';
                   }
                 } catch (e) {
                   // Fallback to light theme
-                  document.documentElement.style.backgroundColor = '#fefefe';
                 }
               })();
             `,
@@ -150,13 +145,13 @@ const RootLayout = ({ children }) => {
         />
       </head>
       <body
-        className={`${inter.variable} ${manrope.variable} antialiased tracking-tight relative min-h-screen`}
+        className={`${inter.variable} ${manrope.variable} antialiased`}
       >
         <ThemeProvider />
         <main className="mx-auto mb-6 w-full max-w-2xl flex-1 px-4 pt-6 pb-0 sm:px-8 sm:pt-16 lg:max-w-3xl">
           <ViewTransitions>
             <Navbar />
-            <div className="prose prose-neutral dark:prose-invert max-w-none prose-headings:font-medium prose-headings:tracking-tight prose-p:leading-relaxed prose-a:font-medium prose-a:no-underline prose-a:text-blue-600 dark:prose-a:text-blue-400 hover:prose-a:text-blue-700 dark:hover:prose-a:text-blue-300 prose-code:font-medium prose-code:text-sm prose-pre:bg-gray-50 dark:prose-pre:bg-gray-900 prose-pre:border prose-pre:border-gray-200 dark:prose-pre:border-gray-800">
+            <div className="prose prose-neutral dark:prose-invert max-w-none">
               {children}
             </div>
             <Footer />
