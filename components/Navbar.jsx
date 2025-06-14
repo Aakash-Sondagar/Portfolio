@@ -14,7 +14,7 @@ const Navbar = () => {
     // Check for saved theme preference
     const savedTheme = localStorage.getItem("theme");
 
-    // Default to light mode unless saved theme is dark
+    // Set initial theme immediately without any transitions
     if (savedTheme === "dark") {
       setIsDarkMode(true);
       document.body.classList.add("dark");
@@ -23,18 +23,23 @@ const Navbar = () => {
       document.body.classList.remove("dark");
     }
 
-    // Mark as initialized to prevent flash
+    // Mark as initialized
     setIsInitialized(true);
 
-    // Enable transitions after a short delay to prevent initial flash
-    setTimeout(() => {
+    // Enable transitions after a longer delay to ensure everything is loaded
+    const transitionTimer = setTimeout(() => {
       document.body.classList.add("transitions-ready");
-    }, 100);
+    }, 300);
 
     // Add animation ready class after transitions are enabled
-    setTimeout(() => {
+    const animationTimer = setTimeout(() => {
       document.body.classList.add("animation-ready");
-    }, 200);
+    }, 500);
+
+    return () => {
+      clearTimeout(transitionTimer);
+      clearTimeout(animationTimer);
+    };
   }, []);
 
   useEffect(() => {
