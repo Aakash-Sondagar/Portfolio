@@ -1,13 +1,10 @@
 "use client";
-import { useState } from "react";
 
 const ClientLayout = ({ children }) => {
   return (
-    <>
-      <div className="transition-opacity duration-500 opacity-100">
-        {children}
-      </div>
-    </>
+    <div className="content-wrapper page-transition">
+      {children}
+    </div>
   );
 };
 

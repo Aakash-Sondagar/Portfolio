@@ -8,428 +8,232 @@
   --font-manrope: var(--font-manrope);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-inter);
-  letter-spacing: -0.02em;
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: var(--font-manrope);
-  letter-spacing: -0.01em;
+  line-height: 1.6;
+  color: #374151;
+  background-color: #fefefe;
+  transition: all 0.3s ease;
 }
 
-main {
-  isolation: isolate;
+.dark body {
+  color: #d1d5db;
+  background-color: #0f172a;
 }
 
-/* CRITICAL: Define theme variables at root level */
-:root {
-  --day: #fefefe;
-  --evening: #fff4e6;
-  --dusk: #ffe0b3;
-  --night: #0a0a0f;
-  --dawn: #1a1a2e;
-  --morning: #e8f4f8;
-
-  --light: var(--day);
-  --dark: var(--night);
-  --shadow: rgba(26, 25, 23, 0.1);
-  --bounce-light: rgba(245, 215, 166, 0.3);
-  --timing-fn: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-inter);
+  font-weight: 600;
+  line-height: 1.3;
+  color: #111827;
 }
 
-/* Dark theme variables */
-.dark {
-  --light: var(--night);
-  --dark: var(--day);
-  --shadow: rgba(2, 2, 4, 0.3);
-  --bounce-light: rgba(27, 41, 63, 0.4);
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: #f9fafb;
 }
 
-/* Apply theme to html element to prevent any flash */
-html {
-  background-color: var(--light);
-  transition: none;
+/* Atmospheric Effects Container */
+.atmospheric-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
 }
 
-html.dark {
-  background-color: var(--night);
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+/* Dappled Light Effect */
+.dappled-light {
+  position: absolute;
   width: 100%;
-  
-  /* Inherit background from html to prevent flash */
-  background-color: inherit;
-  
-  /* NO transitions during initial load */
-  transition: none;
-
-  animation-duration: 0s;
-  animation-fill-mode: forwards;
-  animation-timing-function: linear;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(255, 248, 220, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 235, 205, 0.3) 0%, transparent 40%),
+    radial-gradient(circle at 40% 70%, rgba(255, 245, 215, 0.2) 0%, transparent 30%),
+    radial-gradient(circle at 90% 80%, rgba(255, 250, 225, 0.3) 0%, transparent 45%);
+  animation: dappledShift 20s ease-in-out infinite;
+  opacity: 0.6;
+  transition: opacity 0.5s ease;
 }
 
-/* Apply dark theme variables immediately if dark class is present */
-body.dark {
-  --light: var(--night);
-  --dark: var(--day);
-  --shadow: rgba(2, 2, 4, 0.3);
-  --bounce-light: rgba(27, 41, 63, 0.4);
+.dark .dappled-light {
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(30, 41, 59, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(51, 65, 85, 0.3) 0%, transparent 40%),
+    radial-gradient(circle at 40% 70%, rgba(15, 23, 42, 0.2) 0%, transparent 30%),
+    radial-gradient(circle at 90% 80%, rgba(30, 41, 59, 0.3) 0%, transparent 45%);
+  opacity: 0.8;
 }
 
-/* Only enable transitions after page is fully loaded */
-body.transitions-enabled {
-  transition: background-color 2.5s var(--timing-fn);
-}
-
-body.animation-ready {
-  animation-play-state: running;
-  animation-duration: 3s;
-  animation-name: sunrise;
-  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-body.animation-ready.dark {
-  animation-duration: 2.8s;
-  animation-name: sunset;
-  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-@keyframes sunrise {
-  0% {
-    background-color: var(--night);
+@keyframes dappledShift {
+  0%, 100% { 
+    transform: translateX(0) translateY(0) scale(1);
+    filter: blur(0px);
   }
-  15% {
-    background-color: var(--dawn);
+  25% { 
+    transform: translateX(-10px) translateY(-5px) scale(1.02);
+    filter: blur(1px);
   }
-  35% {
-    background-color: #2d3748;
+  50% { 
+    transform: translateX(5px) translateY(10px) scale(0.98);
+    filter: blur(0.5px);
   }
-  55% {
-    background-color: var(--morning);
-  }
-  75% {
-    background-color: #f7fafc;
-  }
-  100% {
-    background-color: var(--day);
+  75% { 
+    transform: translateX(8px) translateY(-8px) scale(1.01);
+    filter: blur(1.5px);
   }
 }
 
-@keyframes sunset {
-  0% {
-    background-color: var(--day);
+/* Leaves Effect */
+.leaves-container {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  top: -10%;
+  left: -10%;
+}
+
+.leaf {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(45deg, #22c55e, #16a34a);
+  border-radius: 0 100% 0 100%;
+  opacity: 0.3;
+  animation: leafFloat 15s ease-in-out infinite;
+}
+
+.dark .leaf {
+  background: linear-gradient(45deg, #166534, #15803d);
+  opacity: 0.2;
+}
+
+.leaf:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
+.leaf:nth-child(2) { top: 20%; left: 85%; animation-delay: -3s; }
+.leaf:nth-child(3) { top: 60%; left: 25%; animation-delay: -6s; }
+.leaf:nth-child(4) { top: 80%; left: 75%; animation-delay: -9s; }
+.leaf:nth-child(5) { top: 40%; left: 90%; animation-delay: -12s; }
+.leaf:nth-child(6) { top: 70%; left: 10%; animation-delay: -2s; }
+
+@keyframes leafFloat {
+  0%, 100% {
+    transform: translateX(0) translateY(0) rotate(0deg);
   }
   25% {
-    background-color: #f7fafc;
+    transform: translateX(10px) translateY(-15px) rotate(90deg);
   }
-  45% {
-    background-color: #e2e8f0;
+  50% {
+    transform: translateX(-5px) translateY(10px) rotate(180deg);
   }
-  65% {
-    background-color: #4a5568;
-  }
-  85% {
-    background-color: var(--dawn);
-  }
-  100% {
-    background-color: var(--night);
+  75% {
+    transform: translateX(15px) translateY(-5px) rotate(270deg);
   }
 }
 
-#dappled-light {
-  pointer-events: none;
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  z-index: -1;
-  
-  /* Start with correct opacity immediately based on theme */
-  opacity: 0.08;
-  transition: none;
-}
-
-/* Dark mode opacity - applied immediately */
-body.dark #dappled-light {
-  opacity: 0.15;
-}
-
-/* Enable transitions only after page is loaded */
-body.transitions-enabled #dappled-light {
-  transition: opacity 2.5s var(--timing-fn);
-}
-
-#progressive-blur {
+/* Window Shutters */
+.shutters-container {
   position: absolute;
-  height: 100%;
-  width: 100%;
-}
-
-#progressive-blur > div {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  inset: 0;
-  backdrop-filter: blur(var(--blur-amount));
-  mask-image: linear-gradient(
-    252deg,
-    transparent,
-    transparent var(--stop1),
-    black var(--stop2),
-    black
-  );
-  transition: none;
-}
-
-/* Enable transitions only after page is loaded */
-body.transitions-enabled #progressive-blur > div {
-  transition: backdrop-filter 2s var(--timing-fn);
-}
-
-#progressive-blur > div:nth-child(1) {
-  --blur-amount: 2px;
-  --stop1: 0%;
-  --stop2: 0%;
-}
-
-#progressive-blur > div:nth-child(2) {
-  --blur-amount: 4px;
-  --stop1: 30%;
-  --stop2: 70%;
-}
-
-#progressive-blur > div:nth-child(3) {
-  --blur-amount: 24px;
-  --stop1: 40%;
-  --stop2: 70%;
-}
-
-#progressive-blur > div:nth-child(4) {
-  --blur-amount: 48px;
-  --stop1: 60%;
-  --stop2: 80%;
-}
-
-#glow,
-#glow-bounce {
-  transition: none;
-}
-
-/* Enable transitions only after page is loaded */
-body.transitions-enabled #glow,
-body.transitions-enabled #glow-bounce {
-  transition: background 2.5s var(--timing-fn), opacity 2s var(--timing-fn);
-}
-
-#glow {
-  position: absolute;
-  background: linear-gradient(
-    309deg,
-    var(--bounce-light),
-    var(--bounce-light) 15%,
-    transparent 40%
-  );
-  height: 100%;
-  width: 100%;
-  opacity: 0.6;
-}
-
-#glow-bounce {
-  position: absolute;
-  background: linear-gradient(
-    355deg,
-    var(--bounce-light) 0%,
-    transparent 25%,
-    transparent 100%
-  );
-  opacity: 0.4;
-  height: 100%;
-  width: 100%;
-  bottom: 0;
-}
-
-.perspective {
-  position: absolute;
-  transition: none;
-  opacity: 0.08;
-  top: -25vh;
-  right: 0;
-  width: 75vw;
-  height: 125vh;
-  background-blend-mode: multiply;
-  transform-origin: top right;
-  transform-style: preserve-3d;
-  transform: matrix3d(
-    0.8,
-    -0.05,
-    0,
-    0.0006,
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    1
-  );
-}
-
-/* Enable transitions only after page is loaded */
-body.transitions-enabled .perspective {
-  transition: transform 3s var(--timing-fn), opacity 4s ease;
-}
-
-.dark .perspective {
-  opacity: 0.15;
-  transform: matrix3d(
-    0.85,
-    0.06,
-    0,
-    0.0004,
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    1
-  );
-}
-
-#leaves {
-  position: absolute;
-  background-size: cover;
-  background-repeat: no-repeat;
-  bottom: -30px;
-  right: -600px;
-  width: 1400px;
-  height: 1200px;
-  background-image: url("/leaves.png");
-  filter: url(#wind);
-  animation: gentleFloat 12s ease-in-out infinite;
-  
-  /* Start with correct opacity immediately */
-  opacity: 1;
-  transition: none;
-}
-
-/* Enable transitions only after page is loaded */
-body.transitions-enabled #leaves {
-  transition: opacity 2.5s var(--timing-fn), filter 2s var(--timing-fn);
-}
-
-.dark #leaves {
-  opacity: 0.7;
-  filter: url(#wind) brightness(0.8) contrast(1.2);
-}
-
-#blinds {
-  position: relative;
-  width: 100%;
-}
-
-#blinds .shutter,
-#blinds .bar {
-  background-color: var(--shadow);
-  transition: none;
-}
-
-/* Enable transitions only after page is loaded */
-body.transitions-enabled #blinds .shutter,
-body.transitions-enabled #blinds .bar {
-  transition: background-color 2.5s var(--timing-fn), height 2s var(--timing-fn), opacity 2s var(--timing-fn);
-}
-
-#blinds > .shutters {
-  display: flex;
-  flex-direction: column;
-  align-items: end;
-  gap: 50px;
-  transition: none;
-}
-
-/* Enable transitions only after page is loaded */
-body.transitions-enabled #blinds > .shutters {
-  transition: gap 2s var(--timing-fn);
-}
-
-.dark #blinds > .shutters {
-  gap: 15px;
-}
-
-#blinds > .vertical {
-  top: 0;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-}
-
-.vertical > .bar {
-  width: 3px;
-  height: 100%;
-  opacity: 0.6;
+  bottom: 20px;
+  right: 20px;
+  width: 120px;
+  height: 200px;
 }
 
 .shutter {
-  width: 100%;
-  height: 30px;
-  transition: none;
-  opacity: 0.7;
-}
-
-/* Enable transitions only after page is loaded */
-body.transitions-enabled .shutter {
-  transition: height 2s var(--timing-fn), opacity 2s var(--timing-fn);
+  position: absolute;
+  width: 50px;
+  height: 100%;
+  background: linear-gradient(to right, #6b7280, #9ca3af);
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .dark .shutter {
-  height: 60px;
-  opacity: 0.9;
+  background: linear-gradient(to right, #374151, #4b5563);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes gentleFloat {
-  0% {
-    transform: perspective(400px) rotateX(0deg) rotateY(0deg) scale(1) translateY(0px);
-  }
-  25% {
-    transform: perspective(400px) rotateX(0.5deg) rotateY(1deg) scale(1.01) translateY(-5px);
+.shutter-left {
+  left: 0;
+  transform-origin: left center;
+  animation: shutterSway 8s ease-in-out infinite;
+}
+
+.shutter-right {
+  right: 0;
+  transform-origin: right center;
+  animation: shutterSway 8s ease-in-out infinite reverse;
+}
+
+.shutter::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 60%;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 1px;
+}
+
+.dark .shutter::before {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes shutterSway {
+  0%, 100% {
+    transform: rotateY(0deg);
   }
   50% {
-    transform: perspective(400px) rotateX(-2deg) rotateY(-1deg) scale(0.98) translateY(3px);
-  }
-  75% {
-    transform: perspective(400px) rotateX(0.5deg) rotateY(-0.5deg) scale(1.02) translateY(-2px);
-  }
-  100% {
-    transform: perspective(400px) rotateX(0deg) rotateY(0deg) scale(1) translateY(0px);
+    transform: rotateY(2deg);
   }
 }
 
-/* Custom scrollbar with smooth transitions */
+/* Responsive shutters */
+@media (max-width: 768px) {
+  .shutters-container {
+    width: 80px;
+    height: 140px;
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  .shutter {
+    width: 35px;
+  }
+}
+
+/* Content styling */
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+/* Smooth transitions */
+.page-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
-  transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar-track {
@@ -439,7 +243,6 @@ body.transitions-enabled .shutter {
 ::-webkit-scrollbar-thumb {
   background: rgba(156, 163, 175, 0.3);
   border-radius: 3px;
-  transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -454,64 +257,60 @@ body.transitions-enabled .shutter {
   background: rgba(75, 85, 99, 0.6);
 }
 
-/* DISABLE ALL TRANSITIONS INITIALLY */
-* {
-  transition: none !important;
-}
-
-/* Enable smooth transitions for all interactive elements ONLY after page is loaded */
-body.transitions-enabled * {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter !important;
-  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-  transition-duration: 300ms !important;
-}
-
-/* Focus styles with smooth transitions */
+/* Focus styles */
 *:focus-visible {
-  outline: 2px solid rgb(99, 102, 241);
+  outline: 2px solid #3b82f6;
   outline-offset: 2px;
   border-radius: 4px;
-  transition: outline 0.2s ease;
 }
 
-/* Selection styles with smooth color transitions */
+/* Selection styles */
 ::selection {
-  background-color: rgba(99, 102, 241, 0.2);
+  background-color: rgba(59, 130, 246, 0.2);
   color: inherit;
-  transition: background-color 0.3s ease;
 }
 
 .dark ::selection {
   background-color: rgba(129, 140, 248, 0.3);
 }
 
-/* Enhanced card hover effects with smoother animations */
+/* Button hover effects */
+button {
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Link hover effects */
+a {
+  transition: all 0.2s ease;
+}
+
+/* Card hover effects */
 .card-hover {
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.3s ease;
 }
 
 .card-hover:hover {
-  transform: translateY(-3px) scale(1.01);
-  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.12), 0 15px 15px -5px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 .dark .card-hover:hover {
-  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.4), 0 15px 15px -5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
-/* Improved mobile spacing */
-@media (max-width: 640px) {
-  .mobile-spacing {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
-}
-
-/* Subtle animations for content with staggered delays */
+/* Animation utilities */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -520,31 +319,10 @@ body.transitions-enabled * {
 }
 
 .animate-fade-in-up {
-  animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 
-/* Enhanced link underlines with smoother animations */
-.enhanced-link {
-  position: relative;
-  text-decoration: none;
-}
-
-.enhanced-link::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -2px;
-  left: 0;
-  background: linear-gradient(90deg, #3b82f6, #1d4ed8);
-  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.enhanced-link:hover::after {
-  width: 100%;
-}
-
-/* Smooth theme transition overlay */
+/* Theme transition overlay */
 .theme-transition-overlay {
   position: fixed;
   top: 0;
@@ -564,41 +342,4 @@ body.transitions-enabled * {
 
 .dark .theme-transition-overlay {
   background: radial-gradient(circle at center, rgba(0, 0, 0, 0.1) 0%, transparent 70%);
-}
-
-/* Enhanced button transitions */
-button {
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-button:hover {
-  transform: translateY(-1px);
-}
-
-button:active {
-  transform: translateY(0);
-}
-
-/* Smooth text color transitions - only after transitions are enabled */
-body.transitions-enabled h1, 
-body.transitions-enabled h2, 
-body.transitions-enabled h3, 
-body.transitions-enabled h4, 
-body.transitions-enabled h5, 
-body.transitions-enabled h6, 
-body.transitions-enabled p, 
-body.transitions-enabled span, 
-body.transitions-enabled div {
-  transition: color 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-}
-
-/* Enhanced border transitions - only after transitions are enabled */
-body.transitions-enabled .border {
-  transition: border-color 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-}
-
-/* Smooth background transitions for cards and containers - only after transitions are enabled */
-body.transitions-enabled .bg-white\/50,
-body.transitions-enabled .dark\:bg-gray-900\/50 {
-  transition: background-color 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }

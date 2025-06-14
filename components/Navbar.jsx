@@ -10,7 +10,6 @@ const Navbar = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
-    // CRITICAL: Apply theme IMMEDIATELY on page load to prevent any flash
     const savedTheme = localStorage.getItem("theme");
     
     if (savedTheme === "dark") {
@@ -22,25 +21,9 @@ const Navbar = () => {
       document.body.classList.remove("dark");
       document.documentElement.classList.remove("dark");
     }
-
-    // Enable smooth transitions only after everything is loaded and styled
-    const enableTransitions = setTimeout(() => {
-      document.body.classList.add("transitions-enabled");
-    }, 800); // Increased delay to ensure no flash
-
-    // Add animation ready class after transitions are enabled
-    const enableAnimations = setTimeout(() => {
-      document.body.classList.add("animation-ready");
-    }, 900);
-
-    return () => {
-      clearTimeout(enableTransitions);
-      clearTimeout(enableAnimations);
-    };
   }, []);
 
   useEffect(() => {
-    // Update theme classes and localStorage
     if (isDarkMode) {
       document.body.classList.add("dark");
       document.documentElement.classList.add("dark");
@@ -55,12 +38,10 @@ const Navbar = () => {
   const toggleTheme = (event) => {
     setIsTransitioning(true);
     
-    // Create a smooth transition overlay effect
     const overlay = document.createElement('div');
     overlay.className = 'theme-transition-overlay active';
     document.body.appendChild(overlay);
     
-    // Add a subtle ripple effect from the button
     const button = event.currentTarget;
     const rect = button.getBoundingClientRect();
     const ripple = document.createElement('div');
@@ -78,19 +59,16 @@ const Navbar = () => {
     `;
     document.body.appendChild(ripple);
     
-    // Trigger the ripple animation
     requestAnimationFrame(() => {
       ripple.style.width = '200vmax';
       ripple.style.height = '200vmax';
       ripple.style.transform = 'translate(-50%, -50%)';
     });
     
-    // Toggle theme after a short delay for smooth transition
     setTimeout(() => {
       setIsDarkMode((prevMode) => !prevMode);
     }, 150);
     
-    // Clean up overlay and ripple
     setTimeout(() => {
       overlay.remove();
       ripple.remove();
@@ -99,14 +77,14 @@ const Navbar = () => {
   };
 
   return (
-    <aside className="mb-6 md:mb-12 tracking-tight">
+    <aside className="mb-8 md:mb-12">
       <div className="lg:sticky lg:top-20">
-        <nav className="flex justify-end">
+        <nav className="flex justify-between items-center">
           {/* Navigation links */}
           <div
-            className={`flex flex-col sm:flex-row sm:space-x-1 w-full transition-all duration-500 ease-out ${
+            className={`flex flex-col sm:flex-row sm:space-x-6 transition-all duration-300 ${
               isMenuOpen
-                ? "opacity-100 translate-y-0 space-y-2 sm:space-y-0"
+                ? "opacity-100 translate-y-0 space-y-4 sm:space-y-0 absolute top-16 left-0 right-0 bg-white dark:bg-slate-900 p-4 rounded-lg shadow-lg sm:relative sm:top-0 sm:bg-transparent sm:dark:bg-transparent sm:shadow-none sm:p-0"
                 : "opacity-0 -translate-y-4 sm:opacity-100 sm:translate-y-0 hidden sm:flex"
             }`}
           >
@@ -114,49 +92,41 @@ const Navbar = () => {
               <Link
                 key={path}
                 href={path}
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-all duration-300 relative px-3 py-2 rounded-lg hover:bg-gray-100/50 dark:hover:bg-gray-800/50 group block"
+                className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <span className="relative z-10">
-                  {name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 group-hover:w-full transition-all duration-400 ease-out"></span>
-                </span>
+                {name}
               </Link>
             ))}
           </div>
 
-          {/* Top bar with theme toggle and mobile menu button */}
-          <div className="flex items-center justify-end mb-6 sm:mb-0">
+          {/* Controls */}
+          <div className="flex items-center space-x-2">
             {/* Theme toggle */}
             <button
               aria-label="Toggle theme"
               onClick={toggleTheme}
               disabled={isTransitioning}
-              className="p-2 rounded-lg hover:bg-gray-100/50 dark:hover:bg-gray-800/50 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 mr-2 relative overflow-hidden group"
+              className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200"
             >
-              <div className="relative z-10 transition-transform duration-300 group-hover:scale-110">
-                {isDarkMode ? (
-                  <Sun className="w-5 h-5 transition-transform duration-300 group-hover:rotate-12" />
-                ) : (
-                  <Moon className="w-5 h-5 transition-transform duration-300 group-hover:-rotate-12" />
-                )}
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
+              {isDarkMode ? (
+                <Sun className="w-5 h-5" />
+              ) : (
+                <Moon className="w-5 h-5" />
+              )}
             </button>
 
             {/* Mobile menu button */}
             <button
-              className="sm:hidden p-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-lg transition-all duration-300 group"
+              className="sm:hidden p-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-all duration-200"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
             >
-              <div className="transition-transform duration-300 group-hover:scale-110">
-                {isMenuOpen ? (
-                  <X className="w-5 h-5 transition-transform duration-300 group-hover:rotate-90" />
-                ) : (
-                  <Menu className="w-5 h-5 transition-transform duration-300 group-hover:rotate-180" />
-                )}
-              </div>
+              {isMenuOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
             </button>
           </div>
         </nav>

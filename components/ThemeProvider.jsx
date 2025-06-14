@@ -1,51 +1,26 @@
 "use client";
 
-const ThemeProvider = ({ children }) => {
+const ThemeProvider = () => {
   return (
-    <div>
-      {/* Dappled Light Effects */}
-      <div id="dappled-light">
-        <div id="glow"></div>
-        <div id="glow-bounce"></div>
-        <div className="perspective">
-          <div id="leaves"></div>
-          <div id="blinds">
-            <div className="shutters">
-              {[...Array(10)].map((_, i) => (
-                <div key={i} className="shutter"></div>
-              ))}
-            </div>
-            <div className="vertical">
-              <div className="bar"></div>
-              <div className="bar"></div>
-            </div>
-          </div>
-        </div>
-        <div id="progressive-blur">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+    <div className="atmospheric-container">
+      {/* Dappled Light Effect */}
+      <div className="dappled-light"></div>
+      
+      {/* Leaves Effect */}
+      <div className="leaves-container">
+        <div className="leaf"></div>
+        <div className="leaf"></div>
+        <div className="leaf"></div>
+        <div className="leaf"></div>
+        <div className="leaf"></div>
+        <div className="leaf"></div>
       </div>
-
-      {/* SVG Filter for wind effect */}
-      <svg width="0" height="0" style={{ position: 'absolute' }}>
-        <defs>
-          <filter id="wind">
-            <feTurbulence 
-              baseFrequency="0.02 0.1" 
-              numOctaves="3" 
-              result="noise"
-            />
-            <feDisplacementMap 
-              in="SourceGraphic" 
-              in2="noise" 
-              scale="2"
-            />
-          </filter>
-        </defs>
-      </svg>
+      
+      {/* Window Shutters */}
+      <div className="shutters-container">
+        <div className="shutter shutter-left"></div>
+        <div className="shutter shutter-right"></div>
+      </div>
     </div>
   );
 };
