@@ -142,15 +142,22 @@ body.dark:not(.transitions-ready) {
   height: 100vh;
   width: 100vw;
   z-index: -1;
-  /* Disable transitions initially */
+  /* Start completely hidden and disable transitions initially */
+  opacity: 0 !important;
+  visibility: hidden;
   transition: none !important;
-  opacity: 0;
 }
 
-/* Only enable transitions after page is ready */
+/* Only show and enable transitions after page is ready */
 body.transitions-ready #dappled-light {
+  visibility: visible;
+  opacity: 0.08;
   transition: opacity 2.5s var(--timing-fn) !important;
-  opacity: 1;
+}
+
+/* Dark mode opacity for dappled light */
+body.dark.transitions-ready #dappled-light {
+  opacity: 0.15;
 }
 
 #progressive-blur {
@@ -274,10 +281,13 @@ body.transitions-ready #glow-bounce {
     0,
     1
   );
+  /* Start hidden until ready */
+  visibility: hidden;
 }
 
 /* Only enable transitions after page is ready */
 body.transitions-ready .perspective {
+  visibility: visible;
   transition: transform 3s var(--timing-fn), opacity 4s ease !important;
 }
 
@@ -314,18 +324,27 @@ body.transitions-ready .perspective {
   background-image: url("/leaves.png");
   filter: url(#wind);
   animation: gentleFloat 12s ease-in-out infinite;
-  /* Disable transitions initially */
+  /* Disable transitions initially and start hidden */
   transition: none !important;
+  opacity: 0 !important;
+  visibility: hidden;
 }
 
-/* Only enable transitions after page is ready */
+/* Only show and enable transitions after page is ready */
 body.transitions-ready #leaves {
+  visibility: visible;
+  opacity: 1 !important;
   transition: opacity 2.5s var(--timing-fn), filter 2s var(--timing-fn) !important;
 }
 
 .dark #leaves {
   opacity: 0.7;
   filter: url(#wind) brightness(0.8) contrast(1.2);
+}
+
+/* Override dark mode opacity only when transitions are ready */
+body.dark.transitions-ready #leaves {
+  opacity: 0.7 !important;
 }
 
 #blinds {
