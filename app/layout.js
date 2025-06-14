@@ -50,18 +50,26 @@ export const metadata = {
     "Aakash Sondagar, Software Engineer, Full Stack Developer, Solution Architect, Cloud Architect, Web Development, System Design, Cloud Solutions, Microservices, Software Architecture, Tech Lead, Mumbai, Engineering Leadership, Cloud Migration, Scalable Systems, Backend Development, Frontend Development, AWS, GCP",
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml", media: "(prefers-color-scheme: light)" },
-      { url: "/favicon-dark.svg", type: "image/svg+xml", media: "(prefers-color-scheme: dark)" },
-      { url: "/favicon.png", type: "image/png" }
+      {
+        url: "/favicon.svg",
+        type: "image/svg+xml",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/favicon.svg",
+        type: "image/svg+xml",
+        media: "(prefers-color-scheme: dark)",
+      },
+      { url: "/favicon.svg", type: "image/svg" },
     ],
     shortcut: "/favicon.svg",
-    apple: "/favicon.png",
+    apple: "/favicon.svg",
   },
   authors: [{ name: "Aakash Sondagar" }],
   openGraph: {
     images: [
       {
-        url: "/favicon.png",
+        url: "/favicon.svg",
         width: 1200,
         height: 630,
         alt: "Aakash Sondagar - Software Engineer",
@@ -75,7 +83,7 @@ export const metadata = {
     type: "website",
   },
   twitter: {
-    images: ["/favicon.png"],
+    images: ["/favicon.svg"],
     card: "summary_large_image",
     title: "Aakash Sondagar",
     description: description,
