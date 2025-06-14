@@ -19,7 +19,7 @@ const Navbar = () => {
       document.body.classList.add("dark");
     } else {
       setIsDarkMode(false);
-      document.body.classList.remove("dark");
+      document.body.classList.remove("light");
     }
 
     // Add animation ready class after a short delay
