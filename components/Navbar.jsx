@@ -8,6 +8,7 @@ const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
     // Check for saved theme preference
@@ -19,17 +20,27 @@ const Navbar = () => {
       document.body.classList.add("dark");
     } else {
       setIsDarkMode(false);
-      document.body.classList.remove("light");
+      document.body.classList.remove("dark");
     }
 
-    // Add animation ready class after a short delay
+    // Mark as initialized to prevent flash
+    setIsInitialized(true);
+
+    // Enable transitions after a short delay to prevent initial flash
+    setTimeout(() => {
+      document.body.classList.add("transitions-ready");
+    }, 100);
+
+    // Add animation ready class after transitions are enabled
     setTimeout(() => {
       document.body.classList.add("animation-ready");
-    }, 100);
+    }, 200);
   }, []);
 
-
   useEffect(() => {
+    // Only update theme after initialization to prevent flash
+    if (!isInitialized) return;
+
     if (isDarkMode) {
       document.body.classList.add("dark");
       localStorage.setItem('theme', 'dark');
@@ -37,7 +48,7 @@ const Navbar = () => {
       document.body.classList.remove("dark");
       localStorage.setItem('theme', 'light');
     }
-  }, [isDarkMode]);
+  }, [isDarkMode, isInitialized]);
 
   const toggleTheme = (event) => {
     setIsTransitioning(true);

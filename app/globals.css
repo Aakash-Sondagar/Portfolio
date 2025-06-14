@@ -46,11 +46,18 @@ body {
   height: 100%;
   width: 100%;
   background-color: var(--light);
-  transition: background-color 2.5s var(--timing-fn);
+  
+  /* Remove automatic transition on initial load */
+  transition: none;
 
   animation-duration: 0s;
   animation-fill-mode: forwards;
   animation-timing-function: linear;
+}
+
+/* Only enable transitions after page is ready */
+body.transitions-ready {
+  transition: background-color 2.5s var(--timing-fn);
 }
 
 body.animation-ready {
@@ -121,6 +128,12 @@ body.dark {
   height: 100vh;
   width: 100vw;
   z-index: -1;
+  /* Remove automatic transition on initial load */
+  transition: none;
+}
+
+/* Only enable transitions after page is ready */
+body.transitions-ready #dappled-light {
   transition: opacity 2.5s var(--timing-fn);
 }
 
@@ -143,6 +156,12 @@ body.dark {
     black var(--stop2),
     black
   );
+  /* Remove automatic transition on initial load */
+  transition: none;
+}
+
+/* Only enable transitions after page is ready */
+body.transitions-ready #progressive-blur > div {
   transition: backdrop-filter 2s var(--timing-fn);
 }
 
@@ -172,6 +191,13 @@ body.dark {
 
 #glow,
 #glow-bounce {
+  /* Remove automatic transition on initial load */
+  transition: none;
+}
+
+/* Only enable transitions after page is ready */
+body.transitions-ready #glow,
+body.transitions-ready #glow-bounce {
   transition: background 2.5s var(--timing-fn), opacity 2s var(--timing-fn);
 }
 
@@ -204,7 +230,8 @@ body.dark {
 
 .perspective {
   position: absolute;
-  transition: transform 3s var(--timing-fn), opacity 4s ease;
+  /* Remove automatic transition on initial load */
+  transition: none;
   opacity: 0.08;
   top: -25vh;
   right: 0;
@@ -231,6 +258,11 @@ body.dark {
     0,
     1
   );
+}
+
+/* Only enable transitions after page is ready */
+body.transitions-ready .perspective {
+  transition: transform 3s var(--timing-fn), opacity 4s ease;
 }
 
 .dark .perspective {
@@ -266,6 +298,12 @@ body.dark {
   background-image: url("/leaves.png");
   filter: url(#wind);
   animation: gentleFloat 12s ease-in-out infinite;
+  /* Remove automatic transition on initial load */
+  transition: none;
+}
+
+/* Only enable transitions after page is ready */
+body.transitions-ready #leaves {
   transition: opacity 2.5s var(--timing-fn), filter 2s var(--timing-fn);
 }
 
@@ -282,6 +320,13 @@ body.dark {
 #blinds .shutter,
 #blinds .bar {
   background-color: var(--shadow);
+  /* Remove automatic transition on initial load */
+  transition: none;
+}
+
+/* Only enable transitions after page is ready */
+body.transitions-ready #blinds .shutter,
+body.transitions-ready #blinds .bar {
   transition: background-color 2.5s var(--timing-fn), height 2s var(--timing-fn), opacity 2s var(--timing-fn);
 }
 
@@ -290,6 +335,12 @@ body.dark {
   flex-direction: column;
   align-items: end;
   gap: 50px;
+  /* Remove automatic transition on initial load */
+  transition: none;
+}
+
+/* Only enable transitions after page is ready */
+body.transitions-ready #blinds > .shutters {
   transition: gap 2s var(--timing-fn);
 }
 
@@ -315,8 +366,14 @@ body.dark {
 .shutter {
   width: 100%;
   height: 30px;
-  transition: height 2s var(--timing-fn), opacity 2s var(--timing-fn);
+  /* Remove automatic transition on initial load */
+  transition: none;
   opacity: 0.7;
+}
+
+/* Only enable transitions after page is ready */
+body.transitions-ready .shutter {
+  transition: height 2s var(--timing-fn), opacity 2s var(--timing-fn);
 }
 
 .dark .shutter {
@@ -490,18 +547,26 @@ button:active {
   transform: translateY(0);
 }
 
-/* Smooth text color transitions */
-h1, h2, h3, h4, h5, h6, p, span, div {
+/* Smooth text color transitions - only after page is ready */
+body.transitions-ready h1, 
+body.transitions-ready h2, 
+body.transitions-ready h3, 
+body.transitions-ready h4, 
+body.transitions-ready h5, 
+body.transitions-ready h6, 
+body.transitions-ready p, 
+body.transitions-ready span, 
+body.transitions-ready div {
   transition: color 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Enhanced border transitions */
-.border {
+/* Enhanced border transitions - only after page is ready */
+body.transitions-ready .border {
   transition: border-color 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Smooth background transitions for cards and containers */
-.bg-white\/50,
-.dark\:bg-gray-900\/50 {
+/* Smooth background transitions for cards and containers - only after page is ready */
+body.transitions-ready .bg-white\/50,
+body.transitions-ready .dark\:bg-gray-900\/50 {
   transition: background-color 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
