@@ -10,7 +10,7 @@ const Navbar = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
-    // Check for saved theme preference and apply immediately
+    // CRITICAL: Apply theme IMMEDIATELY on page load to prevent any flash
     const savedTheme = localStorage.getItem("theme");
     
     if (savedTheme === "dark") {
@@ -21,19 +21,19 @@ const Navbar = () => {
       document.body.classList.remove("dark");
     }
 
-    // Enable smooth transitions after a short delay to ensure everything is loaded
-    const pageLoadTimer = setTimeout(() => {
-      document.body.classList.add("page-loaded");
-    }, 200);
+    // Enable smooth transitions only after everything is loaded and styled
+    const enableTransitions = setTimeout(() => {
+      document.body.classList.add("transitions-enabled");
+    }, 500); // Increased delay to ensure no flash
 
-    // Add animation ready class after page is loaded
-    const animationTimer = setTimeout(() => {
+    // Add animation ready class after transitions are enabled
+    const enableAnimations = setTimeout(() => {
       document.body.classList.add("animation-ready");
-    }, 400);
+    }, 600);
 
     return () => {
-      clearTimeout(pageLoadTimer);
-      clearTimeout(animationTimer);
+      clearTimeout(enableTransitions);
+      clearTimeout(enableAnimations);
     };
   }, []);
 
