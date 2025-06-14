@@ -10,20 +10,24 @@ const Navbar = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
-    // Check for saved theme preference or default to light mode
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem("theme");
+
+    // Default to light mode unless saved theme is dark
+    if (savedTheme === "dark") {
       setIsDarkMode(true);
       document.body.classList.add("dark");
+    } else {
+      setIsDarkMode(false);
+      document.body.classList.remove("dark");
     }
-    
+
     // Add animation ready class after a short delay
     setTimeout(() => {
       document.body.classList.add("animation-ready");
     }, 100);
   }, []);
+
 
   useEffect(() => {
     if (isDarkMode) {
