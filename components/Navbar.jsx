@@ -8,13 +8,11 @@ const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
-    // Check for saved theme preference
+    // Check for saved theme preference and apply immediately
     const savedTheme = localStorage.getItem("theme");
-
-    // Set initial theme immediately without any transitions
+    
     if (savedTheme === "dark") {
       setIsDarkMode(true);
       document.body.classList.add("dark");
@@ -23,29 +21,24 @@ const Navbar = () => {
       document.body.classList.remove("dark");
     }
 
-    // Mark as initialized
-    setIsInitialized(true);
+    // Enable smooth transitions after a short delay to ensure everything is loaded
+    const pageLoadTimer = setTimeout(() => {
+      document.body.classList.add("page-loaded");
+    }, 200);
 
-    // Enable transitions after a longer delay to ensure everything is loaded
-    const transitionTimer = setTimeout(() => {
-      document.body.classList.add("transitions-ready");
-    }, 300);
-
-    // Add animation ready class after transitions are enabled
+    // Add animation ready class after page is loaded
     const animationTimer = setTimeout(() => {
       document.body.classList.add("animation-ready");
-    }, 500);
+    }, 400);
 
     return () => {
-      clearTimeout(transitionTimer);
+      clearTimeout(pageLoadTimer);
       clearTimeout(animationTimer);
     };
   }, []);
 
   useEffect(() => {
-    // Only update theme after initialization to prevent flash
-    if (!isInitialized) return;
-
+    // Update theme classes and localStorage
     if (isDarkMode) {
       document.body.classList.add("dark");
       localStorage.setItem('theme', 'dark');
@@ -53,7 +46,7 @@ const Navbar = () => {
       document.body.classList.remove("dark");
       localStorage.setItem('theme', 'light');
     }
-  }, [isDarkMode, isInitialized]);
+  }, [isDarkMode]);
 
   const toggleTheme = (event) => {
     setIsTransitioning(true);

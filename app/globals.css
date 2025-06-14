@@ -46,21 +46,20 @@ body {
   height: 100%;
   width: 100%;
   
-  /* Set initial background without any transitions */
-  background-color: var(--day);
+  /* Set correct initial background based on theme preference */
+  background-color: var(--light);
   
-  /* Completely disable all transitions initially */
-  transition: none !important;
-  animation: none !important;
+  /* Disable transitions only during initial load */
+  transition: none;
 
   animation-duration: 0s;
   animation-fill-mode: forwards;
   animation-timing-function: linear;
 }
 
-/* Only enable smooth transitions after page is fully loaded and ready */
-body.transitions-ready {
-  transition: background-color 2.5s var(--timing-fn) !important;
+/* Enable smooth transitions after page is ready */
+body.page-loaded {
+  transition: background-color 2.5s var(--timing-fn);
 }
 
 body.animation-ready {
@@ -76,18 +75,7 @@ body.animation-ready.dark {
   animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Dark mode variables - only apply after initialization */
-body.dark.transitions-ready {
-  --light: var(--night);
-  --dark: var(--day);
-  --shadow: rgba(2, 2, 4, 0.3);
-  --bounce-light: rgba(27, 41, 63, 0.4);
-  background-color: var(--night);
-}
-
-/* Prevent dark mode flash on initial load */
-body.dark:not(.transitions-ready) {
-  background-color: var(--night) !important;
+body.dark {
   --light: var(--night);
   --dark: var(--day);
   --shadow: rgba(2, 2, 4, 0.3);
@@ -142,21 +130,19 @@ body.dark:not(.transitions-ready) {
   height: 100vh;
   width: 100vw;
   z-index: -1;
-  /* Start completely hidden and disable transitions initially */
-  opacity: 0 !important;
-  visibility: hidden;
-  transition: none !important;
-}
-
-/* Only show and enable transitions after page is ready */
-body.transitions-ready #dappled-light {
-  visibility: visible;
+  
+  /* Start with correct opacity immediately, no transition during load */
   opacity: 0.08;
-  transition: opacity 2.5s var(--timing-fn) !important;
+  transition: none;
 }
 
-/* Dark mode opacity for dappled light */
-body.dark.transitions-ready #dappled-light {
+/* Enable smooth transitions after page is loaded */
+body.page-loaded #dappled-light {
+  transition: opacity 2.5s var(--timing-fn);
+}
+
+/* Dark mode opacity adjustment */
+body.dark #dappled-light {
   opacity: 0.15;
 }
 
@@ -179,13 +165,12 @@ body.dark.transitions-ready #dappled-light {
     black var(--stop2),
     black
   );
-  /* Disable transitions initially */
-  transition: none !important;
+  transition: none;
 }
 
-/* Only enable transitions after page is ready */
-body.transitions-ready #progressive-blur > div {
-  transition: backdrop-filter 2s var(--timing-fn) !important;
+/* Enable transitions after page is loaded */
+body.page-loaded #progressive-blur > div {
+  transition: backdrop-filter 2s var(--timing-fn);
 }
 
 #progressive-blur > div:nth-child(1) {
@@ -214,14 +199,13 @@ body.transitions-ready #progressive-blur > div {
 
 #glow,
 #glow-bounce {
-  /* Disable transitions initially */
-  transition: none !important;
+  transition: none;
 }
 
-/* Only enable transitions after page is ready */
-body.transitions-ready #glow,
-body.transitions-ready #glow-bounce {
-  transition: background 2.5s var(--timing-fn), opacity 2s var(--timing-fn) !important;
+/* Enable transitions after page is loaded */
+body.page-loaded #glow,
+body.page-loaded #glow-bounce {
+  transition: background 2.5s var(--timing-fn), opacity 2s var(--timing-fn);
 }
 
 #glow {
@@ -253,8 +237,7 @@ body.transitions-ready #glow-bounce {
 
 .perspective {
   position: absolute;
-  /* Disable transitions initially */
-  transition: none !important;
+  transition: none;
   opacity: 0.08;
   top: -25vh;
   right: 0;
@@ -281,14 +264,11 @@ body.transitions-ready #glow-bounce {
     0,
     1
   );
-  /* Start hidden until ready */
-  visibility: hidden;
 }
 
-/* Only enable transitions after page is ready */
-body.transitions-ready .perspective {
-  visibility: visible;
-  transition: transform 3s var(--timing-fn), opacity 4s ease !important;
+/* Enable transitions after page is loaded */
+body.page-loaded .perspective {
+  transition: transform 3s var(--timing-fn), opacity 4s ease;
 }
 
 .dark .perspective {
@@ -324,27 +304,20 @@ body.transitions-ready .perspective {
   background-image: url("/leaves.png");
   filter: url(#wind);
   animation: gentleFloat 12s ease-in-out infinite;
-  /* Disable transitions initially and start hidden */
-  transition: none !important;
-  opacity: 0 !important;
-  visibility: hidden;
+  
+  /* Start with correct opacity immediately */
+  opacity: 1;
+  transition: none;
 }
 
-/* Only show and enable transitions after page is ready */
-body.transitions-ready #leaves {
-  visibility: visible;
-  opacity: 1 !important;
-  transition: opacity 2.5s var(--timing-fn), filter 2s var(--timing-fn) !important;
+/* Enable transitions after page is loaded */
+body.page-loaded #leaves {
+  transition: opacity 2.5s var(--timing-fn), filter 2s var(--timing-fn);
 }
 
 .dark #leaves {
   opacity: 0.7;
   filter: url(#wind) brightness(0.8) contrast(1.2);
-}
-
-/* Override dark mode opacity only when transitions are ready */
-body.dark.transitions-ready #leaves {
-  opacity: 0.7 !important;
 }
 
 #blinds {
@@ -355,14 +328,13 @@ body.dark.transitions-ready #leaves {
 #blinds .shutter,
 #blinds .bar {
   background-color: var(--shadow);
-  /* Disable transitions initially */
-  transition: none !important;
+  transition: none;
 }
 
-/* Only enable transitions after page is ready */
-body.transitions-ready #blinds .shutter,
-body.transitions-ready #blinds .bar {
-  transition: background-color 2.5s var(--timing-fn), height 2s var(--timing-fn), opacity 2s var(--timing-fn) !important;
+/* Enable transitions after page is loaded */
+body.page-loaded #blinds .shutter,
+body.page-loaded #blinds .bar {
+  transition: background-color 2.5s var(--timing-fn), height 2s var(--timing-fn), opacity 2s var(--timing-fn);
 }
 
 #blinds > .shutters {
@@ -370,13 +342,12 @@ body.transitions-ready #blinds .bar {
   flex-direction: column;
   align-items: end;
   gap: 50px;
-  /* Disable transitions initially */
-  transition: none !important;
+  transition: none;
 }
 
-/* Only enable transitions after page is ready */
-body.transitions-ready #blinds > .shutters {
-  transition: gap 2s var(--timing-fn) !important;
+/* Enable transitions after page is loaded */
+body.page-loaded #blinds > .shutters {
+  transition: gap 2s var(--timing-fn);
 }
 
 .dark #blinds > .shutters {
@@ -401,14 +372,13 @@ body.transitions-ready #blinds > .shutters {
 .shutter {
   width: 100%;
   height: 30px;
-  /* Disable transitions initially */
-  transition: none !important;
+  transition: none;
   opacity: 0.7;
 }
 
-/* Only enable transitions after page is ready */
-body.transitions-ready .shutter {
-  transition: height 2s var(--timing-fn), opacity 2s var(--timing-fn) !important;
+/* Enable transitions after page is loaded */
+body.page-loaded .shutter {
+  transition: height 2s var(--timing-fn), opacity 2s var(--timing-fn);
 }
 
 .dark .shutter {
@@ -462,17 +432,16 @@ body.transitions-ready .shutter {
   background: rgba(75, 85, 99, 0.6);
 }
 
-/* Enhanced smooth transitions for all interactive elements - only after ready */
-body.transitions-ready * {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transition-duration: 300ms;
+/* Disable all transitions initially, enable after page load */
+* {
+  transition: none !important;
 }
 
-/* Disable all transitions initially */
-body:not(.transitions-ready) * {
-  transition: none !important;
-  animation: none !important;
+/* Enhanced smooth transitions for all interactive elements - only after page is loaded */
+body.page-loaded * {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter !important;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  transition-duration: 300ms !important;
 }
 
 /* Focus styles with smooth transitions */
@@ -588,26 +557,26 @@ button:active {
   transform: translateY(0);
 }
 
-/* Smooth text color transitions - only after page is ready */
-body.transitions-ready h1, 
-body.transitions-ready h2, 
-body.transitions-ready h3, 
-body.transitions-ready h4, 
-body.transitions-ready h5, 
-body.transitions-ready h6, 
-body.transitions-ready p, 
-body.transitions-ready span, 
-body.transitions-ready div {
+/* Smooth text color transitions - only after page is loaded */
+body.page-loaded h1, 
+body.page-loaded h2, 
+body.page-loaded h3, 
+body.page-loaded h4, 
+body.page-loaded h5, 
+body.page-loaded h6, 
+body.page-loaded p, 
+body.page-loaded span, 
+body.page-loaded div {
   transition: color 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
-/* Enhanced border transitions - only after page is ready */
-body.transitions-ready .border {
+/* Enhanced border transitions - only after page is loaded */
+body.page-loaded .border {
   transition: border-color 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
-/* Smooth background transitions for cards and containers - only after page is ready */
-body.transitions-ready .bg-white\/50,
-body.transitions-ready .dark\:bg-gray-900\/50 {
+/* Smooth background transitions for cards and containers - only after page is loaded */
+body.page-loaded .bg-white\/50,
+body.page-loaded .dark\:bg-gray-900\/50 {
   transition: background-color 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
