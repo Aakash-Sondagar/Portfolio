@@ -28,6 +28,24 @@ const ThemeProvider = ({ children }) => {
           <div></div>
         </div>
       </div>
+
+      {/* SVG Filter for wind effect */}
+      <svg width="0" height="0" style={{ position: 'absolute' }}>
+        <defs>
+          <filter id="wind">
+            <feTurbulence 
+              baseFrequency="0.02 0.1" 
+              numOctaves="3" 
+              result="noise"
+            />
+            <feDisplacementMap 
+              in="SourceGraphic" 
+              in2="noise" 
+              scale="2"
+            />
+          </filter>
+        </defs>
+      </svg>
     </div>
   );
 };
