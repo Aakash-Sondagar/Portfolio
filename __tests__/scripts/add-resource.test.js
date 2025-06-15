@@ -1,8 +1,10 @@
-import fs from 'fs';
-import path from 'path';
+#!/usr/bin/env node
 
-// Mock fs module
-jest.mock('fs');
+// Script to easily add new resources
+// Usage: node scripts/add-resource.js "Title" "URL" "Description" "Category" "tag1,tag2"
+
+const fs = require('fs');
+const path = require('path');
 
 describe('Add Resource Script', () => {
   const mockFs = fs;
