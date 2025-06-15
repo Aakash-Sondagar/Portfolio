@@ -1,4 +1,4 @@
-import { formatDate } from "@/components/common";
+import { formatDate } from "@/utils/formatDate";
 
 import OtherResources from "@/app/blog/resourcesList/OtherResources.mdx";
 import FrontendResources from "@/app/blog/resourcesList/FrontendResources.mdx";
