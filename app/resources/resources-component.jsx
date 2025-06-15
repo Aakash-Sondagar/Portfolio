@@ -1,135 +1,81 @@
 "use client";
 import { useState } from "react";
-import { Search, ExternalLink } from "lucide-react";
-import { 
-  allResources, 
-  resourceCategories, 
-  searchResources,
-  getAllResourceTags
-} from "@/content/resources";
+import { Link } from "next-view-transitions";
+import { allResources, getAllResourceTags } from "@/content/resources";
+import { AnimatedName, Small } from "@/components/common";
 
 const ResourcesComponent = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedTag, setSelectedTag] = useState("All");
+  const [activeFilter, setActiveFilter] = useState("All");
 
-  const tags = ["All", ...getAllResourceTags()];
+  const uniqueTags = ["All", ...getAllResourceTags()];
 
-  // Filter resources based on search and tag
-  let filteredResources = allResources;
+  const filteredResources =
+    activeFilter === "All"
+      ? allResources
+      : allResources.filter((resource) => resource.tags.includes(activeFilter));
 
-  if (searchQuery) {
-    filteredResources = searchResources(searchQuery);
-  }
-
-  if (selectedTag !== "All") {
-    filteredResources = filteredResources.filter(
-      resource => resource.tags.includes(selectedTag)
-    );
-  }
-
-  // Group resources by category
-  const groupedResources = filteredResources.reduce((acc, resource) => {
-    const category = resource.category;
-    if (!acc[category]) {
-      acc[category] = [];
-    }
-    acc[category].push(resource);
-    return acc;
-  }, {});
+  const resources = filteredResources.sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
+  );
 
   return (
-    <div className="space-y-12">
-      {/* Search and Filters */}
-      <div className="space-y-6">
-        {/* Search Bar */}
-        <div className="relative max-w-md">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-          <input
-            type="text"
-            placeholder="Search resources..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-200 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-300 dark:focus:ring-gray-600 focus:border-transparent text-sm"
-          />
-        </div>
-
-        {/* Tag Filter */}
-        <div className="flex flex-wrap gap-2">
-          {tags.slice(0, 12).map((tag) => (
-            <button
-              key={tag}
-              onClick={() => setSelectedTag(tag)}
-              className={`px-3 py-1 text-sm rounded-md transition-all duration-200 ${
-                selectedTag === tag
-                  ? "bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900"
-                  : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
-              }`}
-            >
-              {tag}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Resources by Category */}
-      <div className="space-y-12">
-        {Object.entries(groupedResources)
-          .sort(([a], [b]) => a.localeCompare(b))
-          .map(([category, categoryResources]) => (
-          <section key={category} className="space-y-4">
-            <h2 className="text-xl font-medium text-gray-900 dark:text-gray-100 lowercase">
-              {category.toLowerCase()}
-            </h2>
-            <ul className="list-disc pl-6 space-y-3 marker:text-gray-600 dark:marker:text-gray-400">
-              {categoryResources.map((resource, index) => (
-                <li key={index} className="transition-all duration-300 hover:translate-x-1">
-                  <a
-                    href={resource.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group block no-underline"
-                  >
-                    <div className="flex items-center gap-2 mb-1">
-                      <h3 className="font-medium text-gray-900 dark:text-gray-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-200">
-                        {resource.title}
-                      </h3>
-                      <ExternalLink className="w-3 h-3 text-gray-400 group-hover:text-indigo-500 transition-colors duration-200 flex-shrink-0" />
-                    </div>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-2">
-                      {resource.description}
-                    </p>
-                    
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-1">
-                      {resource.tags.slice(0, 3).map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-2 py-0.5 text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                      {resource.tags.length > 3 && (
-                        <span className="px-2 py-0.5 text-xs text-gray-500 dark:text-gray-500">
-                          +{resource.tags.length - 3} more
-                        </span>
-                      )}
-                    </div>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
+    <div>
+      <h2 className="text-gray-900 dark:text-gray-100 font-semibold text-2xl mt-8 mb-4">
+        Resources
+      </h2>
+      <AnimatedName />
+      <p className="text-gray-700 dark:text-gray-300 font-normal mb-6 leading-relaxed">
+        A curated collection of digital artifacts — tools, articles, and insights that shape my engineering journey. Each resource here has contributed to my growth and might help yours too.
+      </p>
+      <div className="flex flex-wrap gap-2 mb-8">
+        {uniqueTags.map((tag) => (
+          <button
+            key={tag}
+            className={`px-3 py-1.5 text-sm rounded-lg transition-all duration-300 border ${
+              activeFilter === tag
+                ? "bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 border-indigo-300 dark:border-indigo-600"
+                : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
+            }`}
+            onClick={() => setActiveFilter(tag)}
+          >
+            {tag}
+          </button>
         ))}
       </div>
-
-      {filteredResources.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-gray-500 dark:text-gray-400">
-            No resources found matching your criteria.
-          </p>
-        </div>
-      )}
+      <ul className="list-disc pl-6 space-y-4 marker:text-gray-600 dark:marker:text-gray-400">
+        {resources.map((resource) => (
+          <li
+            key={resource.url}
+            className="transition-all duration-300 hover:translate-x-1"
+          >
+            <a
+              href={resource.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="no-underline block mb-1 group"
+            >
+              <div>
+                <h6 className="text-gray-800 dark:text-gray-200 font-medium group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-200">
+                  {resource.title}
+                </h6>
+                {resource.description && (
+                  <div className="space-y-2">
+                    <p className="text-gray-600 dark:text-gray-400 font-light m-0 text-sm">
+                      {resource.description}
+                    </p>
+                    <div className="flex items-center space-x-2">
+                      <Small>{resource.date}</Small>
+                      <span className="text-sm text-indigo-600 dark:text-indigo-400 font-medium group-hover:underline">
+                        Visit →
+                      </span>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
