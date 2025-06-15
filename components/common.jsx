@@ -19,7 +19,7 @@ export const AnimatedName = ({ href }) => {
   return (
     <Link
       href={href}
-      className="flex items-center mb-8 font-light text-base text-gray-600 dark:text-gray-400 no-underline fade-in hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200"
+      className="flex items-center mb-4 font-light text-base text-gray-600 dark:text-gray-400 no-underline fade-in hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200"
     >
       <ChevronLeft className="h-4 w-4 ml-1" /> Aakash Sondagar
     </Link>

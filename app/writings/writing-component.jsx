@@ -20,7 +20,7 @@ const WritingComponent = () => {
 
   return (
     <div>
-      <h2 className="text-gray-900 dark:text-gray-100 font-semibold text-2xl mt-8 mb-4">
+      <h2 className="text-gray-900 dark:text-gray-100 font-semibold text-2xl mt-8 mb-0">
         Writings
       </h2>
       <AnimatedName />
