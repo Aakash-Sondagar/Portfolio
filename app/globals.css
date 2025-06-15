@@ -28,18 +28,12 @@ main {
 }
 
 body {
-  /* --day: #fffdfa;
-  --evening: #fccc83;
-  --dusk: #db7a2a;
-  --night: #0f131c;
-  --dawn: #16132b;
-  --morning: #9fb3bf; */
-
+  /* Light mode colors */
   --day: #fafafa;
   --evening: #ffd7aa;
   --dusk: #ff9966;
-  --night: #1a1a2e;
-  --dawn: #2d3436;
+  --night: #0a0a0f;
+  --dawn: #1a1a2e;
   --morning: #a8c7d6;
 
   --light: var(--day);
@@ -69,7 +63,6 @@ body.animation-ready {
 
 body.animation-ready.dark {
   animation-duration: 2s;
-  /* Increased from 1.7s */
   animation-name: sunset;
   animation-timing-function: ease-in-out;
 }
@@ -87,12 +80,10 @@ body.dark {
   }
 
   20% {
-    /* Adjusted from 10% */
     background-color: var(--dawn);
   }
 
   50% {
-    /* Adjusted from 35% */
     background-color: var(--morning);
   }
 
@@ -101,19 +92,16 @@ body.dark {
   }
 }
 
-
 @keyframes sunset {
   0% {
     background-color: var(--day);
   }
 
   40% {
-    /* Adjusted from 30% */
     background-color: var(--evening);
   }
 
   70% {
-    /* Adjusted from 60% */
     background-color: var(--dusk);
   }
 
@@ -131,6 +119,7 @@ body.dark {
   position: fixed;
   height: 100vh;
   width: 100vw;
+  will-change: transform;
 }
 
 #progressive-blur {
@@ -234,6 +223,7 @@ body.dark {
       0,
       0,
       1);
+  will-change: transform, opacity;
 }
 
 .dark .perspective {
@@ -267,6 +257,7 @@ body.dark {
   background-image: url("/leaves.png");
   filter: url(#wind);
   animation: billow 8s ease-in-out infinite;
+  will-change: transform;
 }
 
 #blinds {
@@ -334,5 +325,61 @@ body.dark {
 
   100% {
     transform: perspective(400px) rotateX(0deg) rotateY(0deg) scale(1);
+  }
+}
+
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Custom scrollbar for dark mode */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.3);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(75, 85, 99, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.5);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(75, 85, 99, 0.7);
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  #leaves {
+    animation: none;
+  }
+  
+  .perspective {
+    transition: none;
   }
 }

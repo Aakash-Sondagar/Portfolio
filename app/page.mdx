@@ -5,20 +5,23 @@ import { allBlogs } from "@/utils/blogs";
 
 This space is my evolving digital garden — a messy but meaningful dump of thoughts, ideas, notes, and things I'm experimenting with. It's a living archive, updated as I learn, build, and break things.
 
-Everything I’m working on is  [over here](/work).
+Everything I'm working on is [over here](/work).
 
 #### What I'm Learning
 {
     allBlogs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 3).map((blog) => (
         <li key={blog.slug} className="font-normal">
-            <a href={`/writings/${blog.slug}`} className="text-stone-700 dark:text-stone-300 hover:text-indigo-500 dark:hover:text-indigo-300 transition-colors">
+            <a 
+              href={`/writings/${blog.slug}`} 
+              className="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200"
+              aria-label={`Read article: ${blog.title}`}
+            >
                 {blog.title}
             </a>
-            <span className="text-stone-600 dark:text-stone-400 text-sm"> - ({blog.date})</span>
+            <span className="text-gray-600 dark:text-gray-400 text-sm"> - ({blog.date})</span>
         </li>
     ))
 }
-
 
 #### Certification
 

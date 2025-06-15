@@ -1,6 +1,6 @@
 import { getMetaData, AnimatedName, Small } from "@/components/common";
 import { allBlogs } from "@/utils/blogs";
-import { resourcesList } from "@/utils/content";
+import { allResources } from "@/content/resources";
 
 export function generateMetadata({ params }) {
   if (!params.slug) return getMetaData("Blog not found", "/blog");
@@ -13,7 +13,7 @@ export async function generateStaticParams() {
   // Combine slugs from both blogs and resources
   const allSlugs = [
     ...allBlogs.map((blog) => ({ slug: blog.slug })),
-    ...resourcesList.map((resource) => ({ slug: resource.slug }))
+    ...allResources.map((resource) => ({ slug: resource.slug }))
   ];
   
   return allSlugs;
@@ -21,7 +21,7 @@ export async function generateStaticParams() {
 
 const BlogPage = ({ params }) => {
   const blog = allBlogs.find((blog) => blog.slug === params.slug);
-  const resource = resourcesList.find(
+  const resource = allResources.find(
     (resource) => resource.slug === params.slug
   );
 
@@ -30,7 +30,7 @@ const BlogPage = ({ params }) => {
 
   if (!blog && !resource) {
     return (
-      <h2 className="text-stone-800 dark:text-stone-200 font-medium mt-8">
+      <h2 className="text-gray-900 dark:text-gray-100 font-semibold text-2xl mt-8">
         404 - Blog not found
       </h2>
     );
@@ -38,12 +38,12 @@ const BlogPage = ({ params }) => {
 
   return (
     <div className="">
-      <h2 className="text-stone-800 dark:text-stone-200 font-medium mt-8">
+      <h2 className="text-gray-900 dark:text-gray-100 font-semibold text-2xl mt-8 mb-4">
         {render.title}
       </h2>
       <AnimatedName href={sourcePath} />
       <Small>{render.date}</Small>
-      <div className="prose">{render.content}</div>
+      <div className="prose max-w-none">{render.content}</div>
     </div>
   );
 };

@@ -1,33 +1,31 @@
 "use client";
 import { useState } from "react";
 import { Link } from "next-view-transitions";
-import { allBlogs } from "@/utils/blogs";
+import { allResources, getAllResourceTags } from "@/content/resources";
 import { AnimatedName, Small } from "@/components/common";
 
-const WritingComponent = () => {
+const ResourcesComponent = () => {
   const [activeFilter, setActiveFilter] = useState("All");
 
-  const uniqueTags = ["All", ...new Set(allBlogs.flatMap((blog) => blog.tags))];
+  const uniqueTags = ["All", ...getAllResourceTags()];
 
-  const filteredBlogs =
+  const filteredResources =
     activeFilter === "All"
-      ? allBlogs
-      : allBlogs.filter((blog) => blog.tags.includes(activeFilter));
+      ? allResources
+      : allResources.filter((resource) => resource.tags.includes(activeFilter));
 
-  const blogs = filteredBlogs.sort(
+  const resources = filteredResources.sort(
     (a, b) => new Date(b.date) - new Date(a.date)
   );
 
   return (
     <div>
       <h2 className="text-gray-900 dark:text-gray-100 font-semibold text-2xl mt-8 mb-0">
-        Writings
+        Resources
       </h2>
       <AnimatedName />
       <p className="text-gray-700 dark:text-gray-300 font-normal mb-6 leading-relaxed">
-        A collection of thoughts, learnings, and discoveries from my journey in
-        software engineering. Each piece captures insights that shape my
-        understanding of technology and development.
+        A curated collection of digital artifacts — tools, articles, and insights that shape my engineering journey. Each resource here has contributed to my growth and might help yours too.
       </p>
       <div className="flex flex-wrap gap-2 mb-8">
         {uniqueTags.map((tag) => (
@@ -45,34 +43,36 @@ const WritingComponent = () => {
         ))}
       </div>
       <ul className="list-disc pl-6 space-y-4 marker:text-gray-600 dark:marker:text-gray-400">
-        {blogs.map((blog) => (
+        {resources.map((resource) => (
           <li
-            key={blog.slug}
+            key={resource.url}
             className="transition-all duration-300 hover:translate-x-1"
           >
-            <Link
-              href={`/writings/${blog.slug}`}
+            <a
+              href={resource.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="no-underline block mb-1 group"
             >
               <div>
                 <h6 className="text-gray-800 dark:text-gray-200 font-medium group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-200">
-                  {blog.title}
+                  {resource.title}
                 </h6>
-                {blog.description && (
+                {resource.description && (
                   <div className="space-y-2">
                     <p className="text-gray-600 dark:text-gray-400 font-light m-0 text-sm">
-                      {blog.description}
+                      {resource.description}
                     </p>
                     <div className="flex items-center space-x-2">
-                      <Small>{blog.date}</Small>
+                      <Small>{resource.date}</Small>
                       <span className="text-sm text-indigo-600 dark:text-indigo-400 font-medium group-hover:underline">
-                        Read more →
+                        Visit →
                       </span>
                     </div>
                   </div>
                 )}
               </div>
-            </Link>
+            </a>
           </li>
         ))}
       </ul>
@@ -80,4 +80,4 @@ const WritingComponent = () => {
   );
 };
 
-export default WritingComponent;
+export default ResourcesComponent;

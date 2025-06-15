@@ -9,10 +9,23 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
+    // Check for saved theme preference or default to light mode
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      setIsDarkMode(true);
+      document.body.classList.add("dark");
+    }
+  }, []);
+
+  useEffect(() => {
     if (isDarkMode) {
       document.body.classList.add("dark");
+      localStorage.setItem('theme', 'dark');
     } else {
       document.body.classList.remove("dark");
+      localStorage.setItem('theme', 'light');
     }
   }, [isDarkMode]);
 
@@ -26,6 +39,8 @@ const Navbar = () => {
         <nav
           className="flex flex-col sm:flex-row items-start sm:items-center justify-between relative px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative bg-transparent"
           id="nav"
+          role="navigation"
+          aria-label="Main navigation"
         >
           <div
             className={`flex flex-col sm:flex-row sm:space-x-1 w-full sm:w-auto transition-all duration-300 ease-in-out ${
@@ -34,42 +49,57 @@ const Navbar = () => {
                 : "opacity-0 -translate-y-4 sm:opacity-100 sm:translate-y-0 hidden sm:flex"
             }`}
           >
-            {Object.entries(navItems).map(([path, { name }]) => (
-              <Link
-                key={path}
-                href={path}
-                className="text-stone-800 dark:text-stone-200 font-medium transition-all relative p-2 group"
-              >
-                <span className="relative z-10">
-                  {name}
-                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-indigo-500 group-hover:w-full transition-all duration-300 ease-in-out"></span>
-                </span>
-              </Link>
-            ))}
+            {Object.entries(navItems).map(([path, { name }]) => {
+              const isExternal = path.startsWith('http');
+              const linkProps = isExternal 
+                ? { 
+                    href: path, 
+                    target: "_blank", 
+                    rel: "noopener noreferrer",
+                    as: "a"
+                  }
+                : { href: path };
+              
+              const LinkComponent = isExternal ? 'a' : Link;
+              
+              return (
+                <LinkComponent
+                  key={path}
+                  {...linkProps}
+                  className="text-gray-800 dark:text-gray-200 font-medium transition-all relative p-2 group hover:text-gray-900 dark:hover:text-gray-100"
+                >
+                  <span className="relative z-10">
+                    {name}
+                    <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-indigo-500 dark:bg-indigo-400 group-hover:w-full transition-all duration-300 ease-in-out"></span>
+                  </span>
+                </LinkComponent>
+              );
+            })}
           </div>
 
           <div className="flex items-center space-x-4 absolute sm:relative right-0 top-3 -translate-y-1/2">
             <button
-              aria-label="theme"
+              aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
               onClick={toggleTheme}
-              className="p-1 rounded-full hover:bg-stone-100/50 dark:hover:bg-stone-800/50"
+              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
               {isDarkMode ? (
-                <Sun className="dark:text-stone-200 w-4 h-4" />
+                <Sun className="text-gray-200 w-4 h-4" aria-hidden="true" />
               ) : (
-                <Moon className="w-4 h-4" />
+                <Moon className="text-gray-800 w-4 h-4" aria-hidden="true" />
               )}
             </button>
 
             <button
-              className="sm:hidden p-2 text-stone-800 dark:text-stone-200 hover:bg-stone-100/50 dark:hover:bg-stone-800/50 rounded-full transition-all duration-300"
+              className="sm:hidden p-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMenuOpen}
             >
               {isMenuOpen ? (
-                <X className="w-4 h-4" />
+                <X className="w-4 h-4" aria-hidden="true" />
               ) : (
-                <div className="w-4 h-4 relative">
+                <div className="w-4 h-4 relative" aria-hidden="true">
                   <span className="absolute w-4 h-0.5 bg-current top-1"></span>
                   <span className="absolute w-4 h-0.5 bg-current top-2"></span>
                   <span className="absolute w-4 h-0.5 bg-current top-3"></span>

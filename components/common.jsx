@@ -4,10 +4,10 @@ import { ChevronLeft } from "lucide-react";
 export const Name = () => {
   return (
     <div className="mb-8">
-      <h1 className="flex text-3xl text-stone-800 dark:text-stone-200 font-semibold mb-0">
+      <h1 className="flex text-3xl text-gray-900 dark:text-gray-100 font-semibold mb-0">
         Aakash Sondagar
       </h1>
-      <h4 className="text-zinc-500 dark:text-zinc-400 font-light text-base my-0">
+      <h4 className="text-gray-600 dark:text-gray-400 font-light text-base my-0">
         Software Engineer
       </h4>
     </div>
@@ -19,7 +19,7 @@ export const AnimatedName = ({ href }) => {
   return (
     <Link
       href={href}
-      className="flex items-center mb-8 font-light text-base text-zinc-500 dark:text-zinc-400 no-underline fade-in"
+      className="flex items-center mb-4 font-light text-base text-gray-600 dark:text-gray-400 no-underline fade-in hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200"
     >
       <ChevronLeft className="h-4 w-4 ml-1" /> Aakash Sondagar
     </Link>
@@ -28,7 +28,7 @@ export const AnimatedName = ({ href }) => {
 
 export const Small = ({ children }) => {
   return (
-    <div className="text-sm text-gray-700 dark:text-gray-300 font-normal">
+    <div className="text-sm text-gray-600 dark:text-gray-400 font-normal">
       {children}
     </div>
   );
