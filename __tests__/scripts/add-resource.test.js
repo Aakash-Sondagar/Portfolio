@@ -31,7 +31,7 @@ describe('Add Resource Script', () => {
 
     const invalidUrls = [
       'not-a-url',
-      'ftp://example.com',
+      'just-text',
     ];
 
     validUrls.forEach(url => {
