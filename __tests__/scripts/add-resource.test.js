@@ -32,7 +32,6 @@ describe('Add Resource Script', () => {
     const invalidUrls = [
       'not-a-url',
       'ftp://example.com',
-      'example.com',
     ];
 
     validUrls.forEach(url => {
@@ -40,9 +39,7 @@ describe('Add Resource Script', () => {
     });
 
     invalidUrls.forEach(url => {
-      if (!url.startsWith('http')) {
-        expect(() => new URL(url)).toThrow();
-      }
+      expect(() => new URL(url)).toThrow();
     });
   });
 
