@@ -1,4 +1,8 @@
 import '@testing-library/jest-dom';
+import React from 'react';
+
+// Make React available globally for JSX
+global.React = React;
 
 // Mock next/navigation
 jest.mock('next/navigation', () => ({
@@ -44,18 +48,18 @@ jest.mock('@vercel/speed-insights/next', () => ({
   },
 }));
 
-// Mock MDX components
+// Mock all MDX files with a generic component
 jest.mock('@/app/blog/blogs/SystemDesign.mdx', () => {
   return function MockSystemDesign() {
     return React.createElement('div', { 'data-testid': 'system-design-content' }, 'System Design Content');
   };
-});
+}, { virtual: true });
 
 jest.mock('@/app/blog/blogs/IntroductionSystemDesign.mdx', () => {
   return function MockIntroductionSystemDesign() {
     return React.createElement('div', { 'data-testid': 'intro-system-design-content' }, 'Introduction to System Design Content');
   };
-});
+}, { virtual: true });
 
 // Mock window.matchMedia
 Object.defineProperty(window, 'matchMedia', {
@@ -88,6 +92,3 @@ global.IntersectionObserver = class IntersectionObserver {
   observe() {}
   unobserve() {}
 };
-
-// Make React available globally for JSX
-global.React = require('react');

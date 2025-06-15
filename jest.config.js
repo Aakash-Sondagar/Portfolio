@@ -33,7 +33,16 @@ const customJestConfig = {
       statements: 70
     }
   },
-  coverageReporters: ['text', 'lcov', 'html']
+  coverageReporters: ['text', 'lcov', 'html'],
+  // Handle MDX files
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'mdx'],
+  transform: {
+    '^.+\\.(js|jsx|ts|tsx)$': ['@swc/jest'],
+    '^.+\\.mdx$': '@swc/jest'
+  },
+  transformIgnorePatterns: [
+    'node_modules/(?!(next-view-transitions)/)'
+  ]
 }
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
