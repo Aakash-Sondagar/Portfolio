@@ -80,75 +80,45 @@ const ResourcesComponent = () => {
             <h2 className="text-xl font-medium text-gray-900 dark:text-gray-100 lowercase">
               {category.toLowerCase()}
             </h2>
-            <div className="space-y-3">
+            <ul className="list-disc pl-6 space-y-3 marker:text-gray-600 dark:marker:text-gray-400">
               {categoryResources.map((resource, index) => (
-                <div key={index} className="group">
+                <li key={index} className="transition-all duration-300 hover:translate-x-1">
                   <a
                     href={resource.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-start gap-3 p-0 hover:no-underline"
+                    className="group block no-underline"
                   >
-                    {/* Icon placeholder - you can customize these based on category */}
-                    <div className="flex-shrink-0 mt-1">
-                      {resource.category === resourceCategories.FRONTEND && (
-                        <div className="w-4 h-4 bg-blue-500 rounded-sm"></div>
-                      )}
-                      {resource.category === resourceCategories.TOOLS && (
-                        <div className="w-4 h-4 bg-green-500 rounded-sm"></div>
-                      )}
-                      {resource.category === resourceCategories.LEARNING && (
-                        <div className="w-4 h-4 bg-purple-500 rounded-sm"></div>
-                      )}
-                      {resource.category === resourceCategories.NEWSLETTERS && (
-                        <div className="w-4 h-4 bg-orange-500 rounded-sm"></div>
-                      )}
-                      {resource.category === resourceCategories.DSA && (
-                        <div className="w-4 h-4 bg-red-500 rounded-sm"></div>
-                      )}
-                      {resource.category === resourceCategories.CAREER && (
-                        <div className="w-4 h-4 bg-indigo-500 rounded-sm"></div>
-                      )}
-                      {resource.category === resourceCategories.SYSTEM_DESIGN && (
-                        <div className="w-4 h-4 bg-yellow-500 rounded-sm"></div>
-                      )}
-                      {!Object.values(resourceCategories).slice(0, 7).includes(resource.category) && (
-                        <div className="w-4 h-4 bg-gray-500 rounded-sm"></div>
-                      )}
+                    <div className="flex items-center gap-2 mb-1">
+                      <h3 className="font-medium text-gray-900 dark:text-gray-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-200">
+                        {resource.title}
+                      </h3>
+                      <ExternalLink className="w-3 h-3 text-gray-400 group-hover:text-indigo-500 transition-colors duration-200 flex-shrink-0" />
                     </div>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-2">
+                      {resource.description}
+                    </p>
                     
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2">
-                        <h3 className="font-medium text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
-                          {resource.title}
-                        </h3>
-                        <ExternalLink className="w-3 h-3 text-gray-400 group-hover:text-blue-500 transition-colors duration-200 flex-shrink-0" />
-                      </div>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">
-                        {resource.description}
-                      </p>
-                      
-                      {/* Tags */}
-                      <div className="flex flex-wrap gap-1 mt-2">
-                        {resource.tags.slice(0, 3).map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-2 py-0.5 text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                        {resource.tags.length > 3 && (
-                          <span className="px-2 py-0.5 text-xs text-gray-500 dark:text-gray-500">
-                            +{resource.tags.length - 3} more
-                          </span>
-                        )}
-                      </div>
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-1">
+                      {resource.tags.slice(0, 3).map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2 py-0.5 text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                      {resource.tags.length > 3 && (
+                        <span className="px-2 py-0.5 text-xs text-gray-500 dark:text-gray-500">
+                          +{resource.tags.length - 3} more
+                        </span>
+                      )}
                     </div>
                   </a>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </section>
         ))}
       </div>
