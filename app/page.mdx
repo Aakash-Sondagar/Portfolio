@@ -1,29 +1,50 @@
 import { Name } from "@/components/common";
 import { allBlogs } from "@/utils/blogs";
+import { motion } from "framer-motion";
 
 <Name />
 
 <div className="space-content">
-  <div className="text-body text-gray-700 dark:text-gray-300 leading-relaxed">
+  <motion.div 
+    className="text-body text-neutral-700 dark:text-neutral-300 leading-relaxed"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: 0.6 }}
+  >
     This space is my evolving digital garden — a messy but meaningful dump of thoughts, ideas, notes, and things I'm experimenting with. It's a living archive, updated as I learn, build, and break things.
-  </div>
+  </motion.div>
 
-  <div className="text-body text-gray-700 dark:text-gray-300">
+  <motion.div 
+    className="text-body text-neutral-700 dark:text-neutral-300"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: 0.8 }}
+  >
     Everything I'm working on is <a href="/work" className="link-primary">over here</a>.
-  </div>
+  </motion.div>
 
-  <div className="space-tight">
-    <h4 className="text-title text-gray-900 dark:text-gray-100 mb-4">What I'm Learning</h4>
-    <ul className="space-y-3">
+  <motion.div 
+    className="space-tight"
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: 1.0 }}
+  >
+    <h4 className="text-title text-neutral-900 dark:text-neutral-100 mb-6">What I'm Learning</h4>
+    <div className="space-y-3">
       {
-        allBlogs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 3).map((blog) => (
-          <li key={blog.slug} className="group">
+        allBlogs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 3).map((blog, index) => (
+          <motion.div
+            key={blog.slug}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
+          >
             <a 
               href={`/writings/${blog.slug}`} 
-              className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-all duration-200 border border-transparent hover:border-gray-200 dark:hover:border-gray-800"
+              className="block p-4 rounded-xl hover:bg-neutral-50/50 dark:hover:bg-neutral-900/50 transition-all duration-300 border border-transparent hover:border-neutral-200/50 dark:hover:border-neutral-800/50 group card-interactive"
             >
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                <span className="text-gray-800 dark:text-gray-200 font-medium group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-200">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <span className="text-neutral-800 dark:text-neutral-200 font-medium group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300">
                   {blog.title}
                 </span>
                 <span className="text-caption">
@@ -31,29 +52,42 @@ import { allBlogs } from "@/utils/blogs";
                 </span>
               </div>
             </a>
-          </li>
+          </motion.div>
         ))
       }
-    </ul>
-  </div>
+    </div>
+  </motion.div>
 
-  <div className="space-tight">
-    <h4 className="text-title text-gray-900 dark:text-gray-100 mb-4">Certification</h4>
-    <ul className="space-y-2">
-      <li>
-        <a href="https://scq.io/rsolS68" className="link-primary">
+  <motion.div 
+    className="space-tight"
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: 1.4 }}
+  >
+    <h4 className="text-title text-neutral-900 dark:text-neutral-100 mb-6">Certification</h4>
+    <div className="space-y-3">
+      <motion.div
+        whileHover={{ x: 4 }}
+        transition={{ duration: 0.2 }}
+      >
+        <a href="https://scq.io/rsolS68" className="link-primary text-base">
           GCP Professional Cloud Developer
         </a>
-      </li>
-    </ul>
-  </div>
+      </motion.div>
+    </div>
+  </motion.div>
 
-  <div className="space-tight">
-    <h4 className="text-title text-gray-900 dark:text-gray-100 mb-4">Education</h4>
-    <ul className="space-y-2">
-      <li className="text-gray-700 dark:text-gray-300">
+  <motion.div 
+    className="space-tight"
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: 1.6 }}
+  >
+    <h4 className="text-title text-neutral-900 dark:text-neutral-100 mb-6">Education</h4>
+    <div className="space-y-3">
+      <div className="text-neutral-700 dark:text-neutral-300">
         B.Tech in Information Technology from <a href="https://www.spit.ac.in/" className="link-primary">SPIT</a>, Mumbai
-      </li>
-    </ul>
-  </div>
+      </div>
+    </div>
+  </motion.div>
 </div>

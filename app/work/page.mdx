@@ -1,4 +1,5 @@
 import { getMetaData, AnimatedName, Small } from "@/components/common";
+import { motion } from "framer-motion";
 
 export const metadata = getMetaData("Work", "/work");
 
@@ -7,17 +8,30 @@ export const metadata = getMetaData("Work", "/work");
 <AnimatedName />
 
 <div className="space-content">
-  <p className="text-body text-gray-700 dark:text-gray-300 leading-relaxed">
+  <motion.p 
+    className="text-body text-neutral-700 dark:text-neutral-300 leading-relaxed"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: 0.2 }}
+  >
     Crafting digital experiences and scaling cloud solutions. Each project is a story of innovation, transformation, and continuous evolution. Here's a glimpse into my journey.
-  </p>
+  </motion.p>
 
-  <div className="card p-6 space-tight">
-    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
-      <h3 className="text-title text-gray-900 dark:text-gray-100 m-0">Wohlig</h3>
+  <motion.div 
+    className="card p-8 space-tight relative overflow-hidden"
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: 0.4 }}
+    whileHover={{ y: -4 }}
+  >
+    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-400/10 to-purple-400/10 rounded-full blur-2xl"></div>
+    
+    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-6 relative z-10">
+      <h3 className="text-title text-neutral-900 dark:text-neutral-100 m-0">Wohlig</h3>
       <Small>Software Development Engineer, July 2023 - Current</Small>
     </div>
 
-    <div className="space-y-4 text-gray-700 dark:text-gray-300">
+    <div className="space-y-6 text-neutral-700 dark:text-neutral-300 relative z-10">
       <p>
         At <a href="https://www.wohlig.com/" className="link-primary">Wohlig</a>, I architect and build scalable solutions that power businesses. My journey began with modernizing legacy systems for <a href="https://www.aon.com/apac/sites/india/aon-risk-insurance-broker/default" className="link-primary">Global Insurance</a>, where I contributed across the full development spectrum.
       </p>
@@ -30,5 +44,5 @@ export const metadata = getMetaData("Work", "/work");
         My role expanded beyond development to include technical leadership and pre-sales activities. From crafting SOWs to designing system architectures, I've gained comprehensive insights into building end-to-end solutions. Notable projects include <a href="https://www.shadowfax.in/" className="link-primary">Shadowfax</a>, <a href="https://www.moneycontrol.com/" className="link-primary">Moneycontrol</a>, <a href="https://www.wildworks.com/#welcome" className="link-primary">WildWorks</a>, and <a href="https://erosnow.com/" className="link-primary">Erosnow</a>.
       </p>
     </div>
-  </div>
+  </motion.div>
 </div>

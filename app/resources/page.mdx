@@ -1,6 +1,7 @@
 import { Link } from "next-view-transitions";
 import { getMetaData, AnimatedName, Small } from "@/components/common";
 import { resourcesList } from "@/utils/content";
+import { motion } from "framer-motion";
 
 export const metadata = getMetaData("Chaos Cabinet", "/resources");
 
@@ -9,34 +10,59 @@ export const metadata = getMetaData("Chaos Cabinet", "/resources");
 <AnimatedName />
 
 <div className="space-content">
-  <p className="text-body text-gray-700 dark:text-gray-300 leading-relaxed">
+  <motion.p 
+    className="text-body text-neutral-700 dark:text-neutral-300 leading-relaxed"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: 0.2 }}
+  >
     A curated collection of digital artifacts — tools, articles, and insights that shape my engineering journey. Each resource here has contributed to my growth and might help yours too.
-  </p>
+  </motion.p>
 
-  <div className="space-y-4">
+  <motion.div 
+    className="space-y-4"
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: 0.4 }}
+  >
     {[...resourcesList]
       .sort((a, b) => new Date(b.date) - new Date(a.date))
-      .map((blog) => (
-        <Link key={blog.slug} href={`/writings/${blog.slug}`} className="block group no-underline">
-          <article className="p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-all duration-200 border border-transparent hover:border-gray-200 dark:hover:border-gray-800 hover:shadow-sm">
-            <div className="space-y-2">
-              <h3 className="text-title text-gray-800 dark:text-gray-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-200 m-0">
-                {blog.title}
-              </h3>
-              {blog.description && (
-                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed m-0">
-                  {blog.description}
-                </p>
-              )}
-              <div className="flex items-center justify-between">
-                <Small>{blog.date}</Small>
-                <span className="text-sm text-indigo-600 dark:text-indigo-400 font-medium group-hover:translate-x-1 transition-transform duration-200">
-                  Read more →
-                </span>
+      .map((blog, index) => (
+        <motion.div
+          key={blog.slug}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+        >
+          <Link href={`/writings/${blog.slug}`} className="block group no-underline">
+            <motion.article 
+              className="p-6 rounded-xl hover:bg-neutral-50/50 dark:hover:bg-neutral-900/50 transition-all duration-300 border border-transparent hover:border-neutral-200/50 dark:hover:border-neutral-800/50 hover:shadow-sm card-interactive"
+              whileHover={{ y: -2 }}
+              transition={{ duration: 0.2 }}
+            >
+              <div className="space-y-3">
+                <h3 className="text-title text-neutral-800 dark:text-neutral-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300 m-0">
+                  {blog.title}
+                </h3>
+                {blog.description && (
+                  <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed m-0">
+                    {blog.description}
+                  </p>
+                )}
+                <div className="flex items-center justify-between">
+                  <Small>{blog.date}</Small>
+                  <motion.span 
+                    className="text-sm text-indigo-600 dark:text-indigo-400 font-medium flex items-center gap-1"
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    Read more →
+                  </motion.span>
+                </div>
               </div>
-            </div>
-          </article>
-        </Link>
+            </motion.article>
+          </Link>
+        </motion.div>
       ))}
-  </div>
+  </motion.div>
 </div>
