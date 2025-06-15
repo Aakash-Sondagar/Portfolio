@@ -1,5 +1,3 @@
-'use client';
-
 import { getMetaData, AnimatedName, Small } from "@/components/common";
 import { allBlogs } from "@/utils/blogs";
 import { resourcesList } from "@/utils/content";
