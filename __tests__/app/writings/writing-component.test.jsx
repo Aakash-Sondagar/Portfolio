@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import WritingComponent from '@/app/writings/writing-component';
 
 // Mock the blogs data
-jest.mock('@/utils/blogs', () => ({
+jest.mock('@/content/blogs', () => ({
   allBlogs: [
     {
       slug: 'test-blog-1',
