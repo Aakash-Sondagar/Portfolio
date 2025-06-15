@@ -19,6 +19,7 @@ module.exports = {
         },
       },
     }],
+    '^.+\\.mdx$': '@swc/jest',
   },
   transformIgnorePatterns: [
     'node_modules/(?!(next-view-transitions)/)',
