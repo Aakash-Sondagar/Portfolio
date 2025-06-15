@@ -24,8 +24,8 @@ export const navItems = {
 export const footerLinks = [
   { name: "@aakashsondagar", url: "https://x.com/AakashSondagar" },
   { name: "Email", url: "mailto:aakashsondar@gmail.com" },
-  { name: "Linkedin", url: "https://www.linkedin.com/in/aakash-sondagar" },
-  { name: "Github", url: "https://github.com/Aakash-Sondagar" },
+  { name: "LinkedIn", url: "https://www.linkedin.com/in/aakash-sondagar" },
+  { name: "GitHub", url: "https://github.com/Aakash-Sondagar" },
 ];
 
 export const resourcesList = [
@@ -34,7 +34,7 @@ export const resourcesList = [
     title: "Other Resources",
     date: formatDate("2024-12-31"),
     description:
-      "A list of resources that help in building a strong social profile and cracking interviews.",
+      "A comprehensive list of resources that help in building a strong social profile and cracking technical interviews.",
     tags: ["resources"],
     content: <OtherResources />,
   },
@@ -43,7 +43,7 @@ export const resourcesList = [
     title: "Frontend Resources",
     date: formatDate("2024-12-31"),
     description:
-      "A curated collection of treasures from the web that are useful for creating frontends.",
+      "A curated collection of treasures from the web that are useful for creating modern, responsive frontends.",
     tags: ["resources"],
     content: <FrontendResources />,
   },

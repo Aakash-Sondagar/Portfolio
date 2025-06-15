@@ -119,6 +119,7 @@ body.dark {
   position: fixed;
   height: 100vh;
   width: 100vw;
+  will-change: transform;
 }
 
 #progressive-blur {
@@ -222,6 +223,7 @@ body.dark {
       0,
       0,
       1);
+  will-change: transform, opacity;
 }
 
 .dark .perspective {
@@ -255,6 +257,7 @@ body.dark {
   background-image: url("/leaves.png");
   filter: url(#wind);
   animation: billow 8s ease-in-out infinite;
+  will-change: transform;
 }
 
 #blinds {
@@ -325,6 +328,16 @@ body.dark {
   }
 }
 
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 /* Custom scrollbar for dark mode */
 ::-webkit-scrollbar {
   width: 8px;
@@ -349,4 +362,24 @@ body.dark {
 
 .dark ::-webkit-scrollbar-thumb:hover {
   background: rgba(75, 85, 99, 0.7);
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  #leaves {
+    animation: none;
+  }
+  
+  .perspective {
+    transition: none;
+  }
 }
