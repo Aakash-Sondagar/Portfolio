@@ -1,4 +1,4 @@
-import { formatDate } from "@/utils/formatDate";
+import { formatDate } from "@/components/common";
 
 import SystemDesign from "@/app/blog/blogs/SystemDesign.mdx";
 import IntroductionSystemDesign from "@/app/blog/blogs/IntroductionSystemDesign.mdx";
