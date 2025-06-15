@@ -8,6 +8,7 @@ const nextConfig = {
   optimizeFonts: true,
   swcMinify: true,
   output: 'export',
+  transpilePackages: ['framer-motion'],
   images: {
     unoptimized: true,
     domains: ["https://aakashsondagar.vercel.app"],
