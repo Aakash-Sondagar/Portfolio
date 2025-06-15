@@ -2,7 +2,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import { baseUrl } from "@/utils/content";
 import { allBlogs } from "@/utils/blogs";
-import { resourcesList } from "@/utils/content";
+import { allResources } from "@/content/resources";
 
 const getNoteSlugs = async (dir) => {
   try {
@@ -73,7 +73,7 @@ const sitemap = async () => {
   }));
 
   // Add resource posts
-  const resourceUrls = resourcesList.map((resource) => ({
+  const resourceUrls = allResources.map((resource) => ({
     url: `${baseUrl}/writings/${resource.slug}`,
     lastModified: new Date(resource.date).toISOString(),
     changeFrequency: 'monthly',

@@ -1,6 +1,6 @@
 import { getMetaData, AnimatedName, Small } from "@/components/common";
 import { allBlogs } from "@/utils/blogs";
-import { resourcesList } from "@/utils/content";
+import { allResources } from "@/content/resources";
 
 export function generateMetadata({ params }) {
   if (!params.slug) return getMetaData("Blog not found", "/blog");
@@ -13,7 +13,7 @@ export async function generateStaticParams() {
   // Combine slugs from both blogs and resources
   const allSlugs = [
     ...allBlogs.map((blog) => ({ slug: blog.slug })),
-    ...resourcesList.map((resource) => ({ slug: resource.slug }))
+    ...allResources.map((resource) => ({ slug: resource.slug }))
   ];
   
   return allSlugs;
@@ -21,7 +21,7 @@ export async function generateStaticParams() {
 
 const BlogPage = ({ params }) => {
   const blog = allBlogs.find((blog) => blog.slug === params.slug);
-  const resource = resourcesList.find(
+  const resource = allResources.find(
     (resource) => resource.slug === params.slug
   );
 
