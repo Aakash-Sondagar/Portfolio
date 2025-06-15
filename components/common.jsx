@@ -3,13 +3,13 @@ import { ChevronLeft } from "lucide-react";
 
 export const Name = () => {
   return (
-    <div className="mb-12 fade-in">
-      <h1 className="text-display text-gray-900 dark:text-gray-100 mb-2">
+    <div className="mb-8">
+      <h1 className="flex text-3xl text-gray-900 dark:text-gray-100 font-semibold mb-0">
         Aakash Sondagar
       </h1>
-      <p className="text-xl text-gray-600 dark:text-gray-400 font-light">
+      <h4 className="text-gray-600 dark:text-gray-400 font-light text-base my-0">
         Software Engineer
-      </p>
+      </h4>
     </div>
   );
 };
@@ -19,20 +19,16 @@ export const AnimatedName = ({ href }) => {
   return (
     <Link
       href={href}
-      className="inline-flex items-center mb-8 font-medium text-gray-600 dark:text-gray-400 no-underline hover:text-gray-800 dark:hover:text-gray-200 transition-all duration-200 group"
+      className="flex items-center mb-8 font-light text-base text-gray-600 dark:text-gray-400 no-underline fade-in hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200"
     >
-      <ChevronLeft className="h-4 w-4 mr-1 group-hover:-translate-x-0.5 transition-transform duration-200" /> 
-      <span className="relative">
-        Aakash Sondagar
-        <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-gray-400 group-hover:w-full transition-all duration-300"></span>
-      </span>
+      <ChevronLeft className="h-4 w-4 ml-1" /> Aakash Sondagar
     </Link>
   );
 };
 
 export const Small = ({ children }) => {
   return (
-    <div className="text-caption">
+    <div className="text-sm text-gray-600 dark:text-gray-400 font-normal">
       {children}
     </div>
   );

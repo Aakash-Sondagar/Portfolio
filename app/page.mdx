@@ -3,57 +3,26 @@ import { allBlogs } from "@/utils/blogs";
 
 <Name />
 
-<div className="space-content">
-  <p className="text-body text-gray-700 dark:text-gray-300 leading-relaxed">
-    This space is my evolving digital garden — a messy but meaningful dump of thoughts, ideas, notes, and things I'm experimenting with. It's a living archive, updated as I learn, build, and break things.
-  </p>
+This space is my evolving digital garden — a messy but meaningful dump of thoughts, ideas, notes, and things I'm experimenting with. It's a living archive, updated as I learn, build, and break things.
 
-  <p className="text-body text-gray-700 dark:text-gray-300">
-    Everything I'm working on is <a href="/work" className="link-primary">over here</a>.
-  </p>
+Everything I'm working on is  [over here](/work).
 
-  <div className="space-tight">
-    <h4 className="text-title text-gray-900 dark:text-gray-100 mb-4">What I'm Learning</h4>
-    <ul className="space-y-3">
-      {
-        allBlogs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 3).map((blog) => (
-          <li key={blog.slug} className="group">
-            <a 
-              href={`/writings/${blog.slug}`} 
-              className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-all duration-200 border border-transparent hover:border-gray-200 dark:hover:border-gray-800"
-            >
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                <span className="text-gray-800 dark:text-gray-200 font-medium group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-200">
-                  {blog.title}
-                </span>
-                <span className="text-caption">
-                  {blog.date}
-                </span>
-              </div>
+#### What I'm Learning
+{
+    allBlogs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 3).map((blog) => (
+        <li key={blog.slug} className="font-normal">
+            <a href={`/writings/${blog.slug}`} className="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">
+                {blog.title}
             </a>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
+            <span className="text-gray-600 dark:text-gray-400 text-sm"> - ({blog.date})</span>
+        </li>
+    ))
+}
 
-  <div className="space-tight">
-    <h4 className="text-title text-gray-900 dark:text-gray-100 mb-4">Certification</h4>
-    <ul className="space-y-2">
-      <li>
-        <a href="https://scq.io/rsolS68" className="link-primary">
-          GCP Professional Cloud Developer
-        </a>
-      </li>
-    </ul>
-  </div>
+#### Certification
 
-  <div className="space-tight">
-    <h4 className="text-title text-gray-900 dark:text-gray-100 mb-4">Education</h4>
-    <ul className="space-y-2">
-      <li className="text-gray-700 dark:text-gray-300">
-        B.Tech in Information Technology from <a href="https://www.spit.ac.in/" className="link-primary">SPIT</a>, Mumbai
-      </li>
-    </ul>
-  </div>
-</div>
+- [GCP Professional Cloud Developer](https://scq.io/rsolS68)
+
+#### Education
+
+- B.Tech in Information Technology from [SPIT](https://www.spit.ac.in/), Mumbai
