@@ -1,8 +1,4 @@
 import '@testing-library/jest-dom';
-import React from 'react';
-
-// Make React available globally
-global.React = React;
 
 // Mock next/navigation
 jest.mock('next/navigation', () => ({
@@ -26,13 +22,20 @@ jest.mock('next/navigation', () => ({
 
 // Mock next-view-transitions
 jest.mock('next-view-transitions', () => ({
-  Link: function MockLink({ children, href, ...props }) {
+  Link: ({ children, href, ...props }) => {
+    const React = require('react');
     return React.createElement('a', { href, ...props }, children);
   },
-  ViewTransitions: function MockViewTransitions({ children }) {
-    return children;
-  },
+  ViewTransitions: ({ children }) => children,
 }));
+
+// Mock next/link
+jest.mock('next/link', () => {
+  return function MockLink({ children, href, ...props }) {
+    const React = require('react');
+    return React.createElement('a', { href, ...props }, children);
+  };
+});
 
 // Mock Vercel Analytics
 jest.mock('@vercel/analytics/next', () => ({
@@ -43,6 +46,21 @@ jest.mock('@vercel/analytics/next', () => ({
 jest.mock('@vercel/speed-insights/next', () => ({
   SpeedInsights: () => null,
 }));
+
+// Mock MDX components
+jest.mock('@/app/blog/blogs/SystemDesign.mdx', () => {
+  const React = require('react');
+  return function MockSystemDesign() {
+    return React.createElement('div', { 'data-testid': 'system-design-content' }, 'System Design Content');
+  };
+});
+
+jest.mock('@/app/blog/blogs/IntroductionSystemDesign.mdx', () => {
+  const React = require('react');
+  return function MockIntroductionSystemDesign() {
+    return React.createElement('div', { 'data-testid': 'intro-system-design-content' }, 'Introduction to System Design Content');
+  };
+});
 
 // Mock window.matchMedia
 Object.defineProperty(window, 'matchMedia', {

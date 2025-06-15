@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 // Mock the page components
@@ -38,5 +37,16 @@ describe('Navigation Integration', () => {
     externalRoutes.forEach(route => {
       expect(() => new URL(route)).not.toThrow();
     });
+  });
+
+  it('should render mock components correctly', () => {
+    render(<MockWritingsPage />);
+    expect(screen.getByTestId('writings-page')).toBeInTheDocument();
+    
+    render(<MockResourcesPage />);
+    expect(screen.getByTestId('resources-page')).toBeInTheDocument();
+    
+    render(<MockWorkPage />);
+    expect(screen.getByTestId('work-page')).toBeInTheDocument();
   });
 });

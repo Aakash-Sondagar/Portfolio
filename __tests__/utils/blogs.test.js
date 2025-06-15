@@ -12,4 +12,14 @@ describe('Utils Blogs', () => {
     expect(Array.isArray(allBlogs)).toBe(true);
     expect(allBlogs.length).toBeGreaterThan(0);
   });
+
+  it('should export functions that work correctly', () => {
+    const featured = getFeaturedBlogs();
+    const recent = getRecentBlogs();
+    const byTag = getBlogsByTag('System Design');
+    
+    expect(Array.isArray(featured)).toBe(true);
+    expect(Array.isArray(recent)).toBe(true);
+    expect(Array.isArray(byTag)).toBe(true);
+  });
 });
