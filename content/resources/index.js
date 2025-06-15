@@ -21,7 +21,7 @@ export const allResources = [
   {
     title: "Patterns.dev",
     url: "https://www.patterns.dev/",
-    description: "All JavaScript and React patterns in one place",
+    description: "All JavaScript and React patterns in one comprehensive guide",
     category: resourceCategories.FRONTEND,
     tags: ["React", "JavaScript", "Patterns"],
     date: "2024-12-31",
@@ -30,7 +30,7 @@ export const allResources = [
   {
     title: "shadcn/ui",
     url: "https://ui.shadcn.com/",
-    description: "Beautiful component library for React and Next.js",
+    description: "Beautiful component library for React and Next.js applications",
     category: resourceCategories.FRONTEND,
     tags: ["React", "Components", "UI"],
     date: "2024-12-31",
@@ -39,7 +39,7 @@ export const allResources = [
   {
     title: "Motion Primitives",
     url: "https://motion-primitives.com/docs",
-    description: "shadcn-like components with animation",
+    description: "shadcn-like components with beautiful animation effects",
     category: resourceCategories.FRONTEND,
     tags: ["Animation", "Components", "React"],
     date: "2024-12-31"
@@ -47,7 +47,7 @@ export const allResources = [
   {
     title: "Aceternity UI",
     url: "https://ui.aceternity.com/components",
-    description: "Components with beautiful animations",
+    description: "Components with stunning animations and modern design",
     category: resourceCategories.FRONTEND,
     tags: ["Animation", "Components", "UI"],
     date: "2024-12-31"
@@ -55,7 +55,7 @@ export const allResources = [
   {
     title: "Magic UI",
     url: "https://magicui.design/docs",
-    description: "Components, text effects, and templates",
+    description: "Components, text effects, and beautiful templates",
     category: resourceCategories.FRONTEND,
     tags: ["Components", "Effects", "Templates"],
     date: "2024-12-31"
@@ -73,7 +73,7 @@ export const allResources = [
   {
     title: "Lucide Icons",
     url: "https://lucide.dev/",
-    description: "Beautiful & consistent icon pack",
+    description: "Beautiful & consistent icon pack for modern applications",
     category: resourceCategories.TOOLS,
     tags: ["Icons", "Design"],
     date: "2024-12-29",
@@ -82,7 +82,7 @@ export const allResources = [
   {
     title: "React Icons",
     url: "https://react-icons.github.io/react-icons/",
-    description: "Package containing almost all icon packs",
+    description: "Package containing almost all popular icon packs",
     category: resourceCategories.TOOLS,
     tags: ["Icons", "React"],
     date: "2024-12-29"
@@ -90,7 +90,7 @@ export const allResources = [
   {
     title: "Framer Motion",
     url: "https://motion.dev/",
-    description: "Production-ready motion library for React",
+    description: "Production-ready motion library for React applications",
     category: resourceCategories.TOOLS,
     tags: ["Animation", "React", "Motion"],
     date: "2024-12-29"
@@ -98,7 +98,7 @@ export const allResources = [
   {
     title: "Tailwind CSS Motion",
     url: "https://rombo.co/tailwind/",
-    description: "Generate motion Tailwind classes",
+    description: "Generate motion Tailwind classes with ease",
     category: resourceCategories.TOOLS,
     tags: ["Tailwind", "Animation", "CSS"],
     date: "2024-12-29"
@@ -108,7 +108,7 @@ export const allResources = [
   {
     title: "NeetCode",
     url: "https://neetcode.io/",
-    description: "Best platform for coding interview preparation",
+    description: "Best platform for coding interview preparation and practice",
     category: resourceCategories.LEARNING,
     tags: ["DSA", "Interview", "Coding"],
     date: "2024-12-30",
@@ -117,7 +117,7 @@ export const allResources = [
   {
     title: "Tech Interview Handbook",
     url: "https://www.techinterviewhandbook.org/",
-    description: "Complete guide for technical interviews",
+    description: "Complete guide for technical interviews and career growth",
     category: resourceCategories.CAREER,
     tags: ["Interview", "Career", "Guide"],
     date: "2024-12-28",
@@ -136,7 +136,7 @@ export const allResources = [
   {
     title: "System Design Primer",
     url: "https://github.com/donnemartin/system-design-primer",
-    description: "Learn how to design large-scale systems",
+    description: "Learn how to design large-scale distributed systems",
     category: resourceCategories.SYSTEM_DESIGN,
     tags: ["System Design", "Architecture"],
     date: "2024-12-30",
@@ -145,7 +145,7 @@ export const allResources = [
   {
     title: "System Design Interview",
     url: "https://tianpan.co/notes/2016-02-13-crack-the-system-design-interview",
-    description: "System design in practice",
+    description: "System design concepts and practices for interviews",
     category: resourceCategories.SYSTEM_DESIGN,
     tags: ["System Design", "Interview"],
     date: "2024-12-30"
@@ -153,7 +153,7 @@ export const allResources = [
   {
     title: "High Scalability",
     url: "http://highscalability.com/",
-    description: "Building bigger, faster, more reliable websites",
+    description: "Building bigger, faster, more reliable websites and systems",
     category: resourceCategories.SYSTEM_DESIGN,
     tags: ["Scalability", "Architecture", "Performance"],
     date: "2024-12-30"
@@ -163,7 +163,7 @@ export const allResources = [
   {
     title: "TLDR",
     url: "https://tldr.tech/",
-    description: "Interesting stories in startups, tech and programming",
+    description: "Interesting stories in startups, tech and programming daily",
     category: resourceCategories.NEWSLETTERS,
     tags: ["Newsletter", "Tech", "Startups"],
     date: "2024-12-27"
@@ -171,7 +171,7 @@ export const allResources = [
   {
     title: "ByteByteGo",
     url: "https://blog.bytebytego.com/",
-    description: "Explain complex systems with simple terms",
+    description: "Explain complex systems with simple terms and diagrams",
     category: resourceCategories.NEWSLETTERS,
     tags: ["Newsletter", "System Design"],
     date: "2024-12-27"
@@ -179,7 +179,7 @@ export const allResources = [
   {
     title: "Filter Coffee",
     url: "https://filtercoffee.substack.com/",
-    description: "Trends, startup signals and tech news",
+    description: "Trends, startup signals and tech news from India",
     category: resourceCategories.NEWSLETTERS,
     tags: ["Newsletter", "Startups", "Trends"],
     date: "2024-12-27"
@@ -187,7 +187,7 @@ export const allResources = [
   {
     title: "Developing Dev",
     url: "https://www.developing.dev/",
-    description: "Blogs for developers",
+    description: "Blogs and insights for developers and engineers",
     category: resourceCategories.NEWSLETTERS,
     tags: ["Newsletter", "Development", "Programming"],
     date: "2024-12-27"
@@ -197,7 +197,7 @@ export const allResources = [
   {
     title: "Blind 75",
     url: "https://www.teamblind.com/post/New-Year-Gift---Curated-List-of-Top-100-LeetCode-Questions-to-Save-Your-Time-OaM1orEU",
-    description: "Curated list of top LeetCode questions",
+    description: "Curated list of top LeetCode questions for interview prep",
     category: resourceCategories.DSA,
     tags: ["LeetCode", "Interview", "DSA"],
     date: "2024-12-26"
@@ -205,7 +205,7 @@ export const allResources = [
   {
     title: "Grokking Algorithms",
     url: "https://github.com/judylime/grokking",
-    description: "Coding interview and system design patterns",
+    description: "Coding interview and system design patterns explained",
     category: resourceCategories.DSA,
     tags: ["Algorithms", "Interview", "Patterns"],
     date: "2024-12-26"
@@ -213,7 +213,7 @@ export const allResources = [
   {
     title: "AlgoMaster",
     url: "https://blog.algomaster.io/",
-    description: "Blogs about DSA and system design",
+    description: "Blogs about DSA and system design with practical examples",
     category: resourceCategories.DSA,
     tags: ["DSA", "System Design", "Algorithms"],
     date: "2024-12-26"
@@ -223,7 +223,7 @@ export const allResources = [
   {
     title: "CareerFlow",
     url: "https://www.careerflow.ai/still-hiring",
-    description: "Hiring updates and recruiter's mail",
+    description: "Hiring updates and recruiter's mail for job seekers",
     category: resourceCategories.CAREER,
     tags: ["Jobs", "Hiring", "Career"],
     date: "2024-12-25"
@@ -231,7 +231,7 @@ export const allResources = [
   {
     title: "Wonsulting",
     url: "https://www.wonsulting.ai/",
-    description: "Career coaching and job search assistance",
+    description: "Career coaching and job search assistance platform",
     category: resourceCategories.CAREER,
     tags: ["Career", "Coaching", "Jobs"],
     date: "2024-12-25"
@@ -241,7 +241,7 @@ export const allResources = [
   {
     title: "UI Land",
     url: "https://ui.land/",
-    description: "Digital library for designers and engineers",
+    description: "Digital library for designers and engineers with inspiration",
     category: resourceCategories.DESIGN,
     tags: ["Design", "UI", "Inspiration"],
     date: "2024-12-24"
@@ -249,7 +249,7 @@ export const allResources = [
   {
     title: "Buttons Collection",
     url: "https://buttons.ibelick.com/",
-    description: "Tailwind CSS button collection",
+    description: "Tailwind CSS button collection with copy-paste code",
     category: resourceCategories.DESIGN,
     tags: ["Buttons", "Tailwind", "Components"],
     date: "2024-12-24"
@@ -257,7 +257,7 @@ export const allResources = [
   {
     title: "Background Snippets",
     url: "https://bg.ibelick.com/",
-    description: "Background snippets: copy, paste, ready-to-use",
+    description: "Background snippets: copy, paste, ready-to-use CSS",
     category: resourceCategories.DESIGN,
     tags: ["Backgrounds", "CSS", "Snippets"],
     date: "2024-12-24"

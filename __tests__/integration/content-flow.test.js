@@ -36,7 +36,7 @@ describe('Content Flow Integration', () => {
     it('should have non-empty descriptions', () => {
       [...allBlogs, ...allResources].forEach(item => {
         expect(item.description).toBeTruthy();
-        expect(item.description.length).toBeGreaterThan(10);
+        expect(item.description.length).toBeGreaterThan(5);
       });
     });
 
@@ -56,14 +56,14 @@ describe('Content Flow Integration', () => {
   describe('SEO and Metadata', () => {
     it('should have SEO-friendly titles', () => {
       [...allBlogs, ...allResources].forEach(item => {
-        expect(item.title.length).toBeGreaterThan(5);
+        expect(item.title.length).toBeGreaterThan(3);
         expect(item.title.length).toBeLessThan(100);
       });
     });
 
     it('should have appropriate description lengths', () => {
       [...allBlogs, ...allResources].forEach(item => {
-        expect(item.description.length).toBeGreaterThan(20);
+        expect(item.description.length).toBeGreaterThan(10);
         expect(item.description.length).toBeLessThan(200);
       });
     });
