@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+const fs = require('fs');
+const path = require('path');
 
 // Mock fs module
 jest.mock('fs');

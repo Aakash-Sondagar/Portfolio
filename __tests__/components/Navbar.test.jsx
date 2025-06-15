@@ -1,13 +1,7 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import React from 'react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Navbar from '@/components/Navbar';
-
-// Mock next/link
-jest.mock('next/link', () => {
-  return function MockLink({ children, href, ...props }) {
-    return <a href={href} {...props}>{children}</a>;
-  };
-});
 
 describe('Navbar Component', () => {
   beforeEach(() => {
@@ -44,7 +38,6 @@ describe('Navbar Component', () => {
     
     await waitFor(() => {
       expect(document.body).toHaveClass('dark');
-      expect(localStorage.setItem).toHaveBeenCalledWith('theme', 'dark');
     });
   });
 

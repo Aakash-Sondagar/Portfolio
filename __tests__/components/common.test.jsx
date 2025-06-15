@@ -1,10 +1,6 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Name, AnimatedName, Small, getMetaData, formatDate } from '@/components/common';
-
-// Mock next-view-transitions Link
-jest.mock('next-view-transitions', () => ({
-  Link: ({ children, href, ...props }) => <a href={href} {...props}>{children}</a>
-}));
 
 describe('Common Components', () => {
   describe('Name Component', () => {
@@ -46,7 +42,7 @@ describe('Common Components', () => {
       render(<AnimatedName />);
       
       const linkElement = screen.getByRole('link');
-      expect(linkElement).toHaveClass('flex', 'items-center', 'mb-8', 'font-light');
+      expect(linkElement).toHaveClass('flex', 'items-center', 'mb-4', 'font-light');
       
       // Check for ChevronLeft icon (it should be present)
       const svgElement = linkElement.querySelector('svg');

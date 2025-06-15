@@ -1,25 +1,10 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 
 // Mock the page components
 const MockWritingsPage = () => <div data-testid="writings-page">Writings Page</div>;
 const MockResourcesPage = () => <div data-testid="resources-page">Resources Page</div>;
 const MockWorkPage = () => <div data-testid="work-page">Work Page</div>;
-
-// Mock next/navigation
-const mockPush = jest.fn();
-jest.mock('next/navigation', () => ({
-  useRouter: () => ({
-    push: mockPush,
-    replace: jest.fn(),
-    prefetch: jest.fn(),
-    back: jest.fn(),
-    forward: jest.fn(),
-    refresh: jest.fn(),
-  }),
-  useSearchParams: () => new URLSearchParams(),
-  usePathname: () => '/',
-}));
 
 describe('Navigation Integration', () => {
   beforeEach(() => {

@@ -52,31 +52,13 @@
         "jsc": {
           "parser": {
             "syntax": "ecmascript",
-            "jsx": true,
-            "decorators": false,
-            "dynamicImport": false,
-            "privateMethod": false,
-            "functionBind": false,
-            "exportDefaultFrom": false,
-            "exportNamespaceFrom": false,
-            "decoratorsBeforeExport": false,
-            "topLevelAwait": false,
-            "importMeta": false
+            "jsx": true
           },
           "transform": {
             "react": {
-              "pragma": "React.createElement",
-              "pragmaFrag": "React.Fragment",
-              "throwIfNamespace": true,
-              "development": false,
-              "useBuiltins": false,
               "runtime": "classic"
             }
-          },
-          "target": "es2017"
-        },
-        "module": {
-          "type": "commonjs"
+          }
         }
       }]
     },
@@ -92,19 +74,25 @@
       "app/**/*.{js,jsx}",
       "utils/**/*.{js,jsx}",
       "content/**/*.{js,jsx}",
+      "scripts/**/*.{js,jsx}",
       "!**/*.d.ts",
       "!**/node_modules/**",
       "!**/.next/**",
       "!**/coverage/**",
       "!jest.config.js",
-      "!jest.setup.js"
+      "!jest.setup.js",
+      "!app/layout.js",
+      "!app/sitemap.js",
+      "!next.config.mjs",
+      "!tailwind.config.js",
+      "!postcss.config.mjs"
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 70,
-        "functions": 70,
-        "lines": 70,
-        "statements": 70
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
       }
     },
     "coverageReporters": [

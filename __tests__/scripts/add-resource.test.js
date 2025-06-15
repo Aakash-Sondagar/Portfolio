@@ -1,10 +1,8 @@
-#!/usr/bin/env node
-
-// Script to easily add new resources
-// Usage: node scripts/add-resource.js "Title" "URL" "Description" "Category" "tag1,tag2"
-
 const fs = require('fs');
 const path = require('path');
+
+// Mock fs module
+jest.mock('fs');
 
 describe('Add Resource Script', () => {
   const mockFs = fs;

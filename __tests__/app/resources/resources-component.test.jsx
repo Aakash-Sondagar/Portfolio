@@ -1,4 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import React from 'react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ResourcesComponent from '@/app/resources/resources-component';
 
@@ -10,21 +11,21 @@ jest.mock('@/content/resources', () => ({
       url: 'https://example1.com',
       description: 'Test description 1',
       tags: ['React', 'Tools'],
-      date: 'January 20, 2025',
+      date: '2025-01-20',
     },
     {
       title: 'Test Resource 2',
       url: 'https://example2.com',
       description: 'Test description 2',
       tags: ['JavaScript', 'Learning'],
-      date: 'January 19, 2025',
+      date: '2025-01-19',
     },
     {
       title: 'Test Resource 3',
       url: 'https://example3.com',
       description: 'Test description 3',
       tags: ['React', 'Frontend'],
-      date: 'January 18, 2025',
+      date: '2025-01-18',
     },
   ],
   getAllResourceTags: () => ['React', 'Tools', 'JavaScript', 'Learning', 'Frontend'],

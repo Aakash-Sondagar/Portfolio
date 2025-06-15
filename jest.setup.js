@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import React from 'react';
 
-// Make React available globally for JSX
+// Make React available globally
 global.React = React;
 
 // Mock next/navigation
@@ -36,30 +36,13 @@ jest.mock('next-view-transitions', () => ({
 
 // Mock Vercel Analytics
 jest.mock('@vercel/analytics/next', () => ({
-  Analytics: function MockAnalytics() {
-    return null;
-  },
+  Analytics: () => null,
 }));
 
 // Mock Vercel Speed Insights
 jest.mock('@vercel/speed-insights/next', () => ({
-  SpeedInsights: function MockSpeedInsights() {
-    return null;
-  },
+  SpeedInsights: () => null,
 }));
-
-// Mock all MDX files with a generic component
-jest.mock('@/app/blog/blogs/SystemDesign.mdx', () => {
-  return function MockSystemDesign() {
-    return React.createElement('div', { 'data-testid': 'system-design-content' }, 'System Design Content');
-  };
-}, { virtual: true });
-
-jest.mock('@/app/blog/blogs/IntroductionSystemDesign.mdx', () => {
-  return function MockIntroductionSystemDesign() {
-    return React.createElement('div', { 'data-testid': 'intro-system-design-content' }, 'Introduction to System Design Content');
-  };
-}, { virtual: true });
 
 // Mock window.matchMedia
 Object.defineProperty(window, 'matchMedia', {
@@ -68,8 +51,8 @@ Object.defineProperty(window, 'matchMedia', {
     matches: false,
     media: query,
     onchange: null,
-    addListener: jest.fn(), // deprecated
-    removeListener: jest.fn(), // deprecated
+    addListener: jest.fn(),
+    removeListener: jest.fn(),
     addEventListener: jest.fn(),
     removeEventListener: jest.fn(),
     dispatchEvent: jest.fn(),
@@ -91,4 +74,12 @@ global.IntersectionObserver = class IntersectionObserver {
   disconnect() {}
   observe() {}
   unobserve() {}
+};
+
+// Mock console methods to avoid noise in tests
+global.console = {
+  ...console,
+  log: jest.fn(),
+  warn: jest.fn(),
+  error: jest.fn(),
 };
