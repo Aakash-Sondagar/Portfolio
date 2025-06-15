@@ -4,8 +4,6 @@ module.exports = {
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
-    // Mock MDX files
-    '\\.mdx$': '<rootDir>/__mocks__/mdx.js',
   },
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': ['@swc/jest', {

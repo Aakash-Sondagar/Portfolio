@@ -47,6 +47,21 @@ jest.mock('@vercel/speed-insights/next', () => ({
   SpeedInsights: () => null,
 }));
 
+// Mock specific MDX files
+jest.mock('@/app/blog/blogs/SystemDesign.mdx', () => {
+  const React = require('react');
+  return function MockSystemDesign() {
+    return React.createElement('div', { 'data-testid': 'system-design-content' }, 'System Design Content');
+  };
+});
+
+jest.mock('@/app/blog/blogs/IntroductionSystemDesign.mdx', () => {
+  const React = require('react');
+  return function MockIntroductionSystemDesign() {
+    return React.createElement('div', { 'data-testid': 'intro-system-design-content' }, 'Introduction to System Design Content');
+  };
+});
+
 // Mock window.matchMedia
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
