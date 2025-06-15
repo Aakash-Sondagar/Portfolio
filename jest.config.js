@@ -1,9 +1,11 @@
 module.exports = {
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
-  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'mdx'],
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
+    // Mock MDX files
+    '\\.mdx$': '<rootDir>/__mocks__/mdx.js',
   },
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': ['@swc/jest', {
@@ -19,7 +21,6 @@ module.exports = {
         },
       },
     }],
-    '^.+\\.mdx$': '@swc/jest',
   },
   transformIgnorePatterns: [
     'node_modules/(?!(next-view-transitions)/)',
