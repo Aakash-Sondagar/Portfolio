@@ -48,25 +48,35 @@
       "^@/(.*)$": "<rootDir>/$1"
     },
     "transform": {
-      "^.+\\.(js|jsx|mjs|ts|tsx)$": ["@swc/jest", {
+      "^.+\\.(js|jsx|ts|tsx)$": ["@swc/jest", {
         "jsc": {
           "parser": {
             "syntax": "ecmascript",
-            "jsx": true
+            "jsx": true,
+            "decorators": false,
+            "dynamicImport": false,
+            "privateMethod": false,
+            "functionBind": false,
+            "exportDefaultFrom": false,
+            "exportNamespaceFrom": false,
+            "decoratorsBeforeExport": false,
+            "topLevelAwait": false,
+            "importMeta": false
           },
           "transform": {
             "react": {
-              "runtime": "automatic"
+              "pragma": "React.createElement",
+              "pragmaFrag": "React.Fragment",
+              "throwIfNamespace": true,
+              "development": false,
+              "useBuiltins": false,
+              "runtime": "classic"
             }
-          }
-        }
-      }],
-      "^.+\\.mdx$": ["@swc/jest", {
-        "jsc": {
-          "parser": {
-            "syntax": "ecmascript",
-            "jsx": true
-          }
+          },
+          "target": "es2017"
+        },
+        "module": {
+          "type": "commonjs"
         }
       }]
     },
