@@ -12,6 +12,9 @@ export const navItems = {
   "/writings": {
     name: "Writings",
   },
+  "/bookmarks": {
+    name: "Bookmarks",
+  },
   "/resources": {
     name: "Resources",
   },

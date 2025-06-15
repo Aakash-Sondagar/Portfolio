@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "add-blog": "node scripts/add-blog.js",
+    "add-bookmark": "node scripts/add-bookmark.js"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
