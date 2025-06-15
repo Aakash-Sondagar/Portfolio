@@ -1,3 +1,5 @@
+'use client';
+
 import { footerLinks } from "@/utils/content";
 import { motion } from "framer-motion";
 

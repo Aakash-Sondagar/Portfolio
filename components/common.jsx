@@ -1,3 +1,5 @@
+'use client';
+
 import { Link } from "next-view-transitions";
 import { ChevronLeft } from "lucide-react";
 import { motion } from "framer-motion";
