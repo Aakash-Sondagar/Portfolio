@@ -6,6 +6,7 @@
   --font-inter: var(--font-inter);
   --font-plus-jakarta-sans: var(--font-plus-jakarta-sans);
   --font-manrope: var(--font-manrope);
+  --font-jetbrains-mono: var(--font-jetbrains-mono);
 }
 
 h1,
@@ -15,12 +16,14 @@ h4,
 h5,
 h6 {
   font-family: var(--font-inter);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
 }
 
 body {
   font-family: var(--font-manrope);
   letter-spacing: -0.01em;
+  line-height: 1.6;
 }
 
 main {
@@ -349,4 +352,172 @@ body.dark {
 
 .dark ::-webkit-scrollbar-thumb:hover {
   background: rgba(75, 85, 99, 0.7);
+}
+
+/* Enhanced focus states for accessibility */
+*:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Smooth transitions for all interactive elements */
+button, a, input, textarea {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced button styles */
+.btn-primary {
+  @apply bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-4 py-2 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md;
+}
+
+.btn-secondary {
+  @apply bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100 font-medium px-4 py-2 rounded-lg transition-all duration-200 border border-gray-200 dark:border-gray-700;
+}
+
+/* Card styles */
+.card {
+  @apply bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm hover:shadow-md transition-all duration-200;
+}
+
+/* Enhanced typography scale */
+.text-display {
+  @apply text-4xl sm:text-5xl font-bold tracking-tight;
+}
+
+.text-headline {
+  @apply text-2xl sm:text-3xl font-semibold tracking-tight;
+}
+
+.text-title {
+  @apply text-xl font-semibold;
+}
+
+.text-body {
+  @apply text-base leading-relaxed;
+}
+
+.text-caption {
+  @apply text-sm text-gray-600 dark:text-gray-400;
+}
+
+/* Improved spacing utilities */
+.space-section {
+  @apply space-y-12;
+}
+
+.space-content {
+  @apply space-y-6;
+}
+
+.space-tight {
+  @apply space-y-3;
+}
+
+/* Animation utilities */
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced link styles */
+.link-primary {
+  @apply text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors duration-200 underline decoration-indigo-300 dark:decoration-indigo-500 underline-offset-2 hover:decoration-indigo-500 dark:hover:decoration-indigo-300;
+}
+
+.link-subtle {
+  @apply text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200;
+}
+
+/* Code and pre styling */
+code {
+  font-family: var(--font-jetbrains-mono);
+}
+
+pre {
+  font-family: var(--font-jetbrains-mono);
+}
+
+/* Enhanced prose styles */
+.prose {
+  @apply max-w-none;
+}
+
+.prose h1 {
+  @apply text-display text-gray-900 dark:text-gray-100 mb-6;
+}
+
+.prose h2 {
+  @apply text-headline text-gray-900 dark:text-gray-100 mt-12 mb-4;
+}
+
+.prose h3 {
+  @apply text-title text-gray-900 dark:text-gray-100 mt-8 mb-3;
+}
+
+.prose h4 {
+  @apply text-lg font-semibold text-gray-900 dark:text-gray-100 mt-6 mb-2;
+}
+
+.prose p {
+  @apply text-body text-gray-700 dark:text-gray-300 mb-4;
+}
+
+.prose ul, .prose ol {
+  @apply space-y-2 mb-6;
+}
+
+.prose li {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+.prose a {
+  @apply link-primary;
+}
+
+.prose strong {
+  @apply text-gray-900 dark:text-gray-100 font-semibold;
+}
+
+.prose em {
+  @apply italic;
+}
+
+.prose code {
+  @apply bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-1.5 py-0.5 rounded text-sm;
+}
+
+.prose pre {
+  @apply bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-4 rounded-xl overflow-x-auto text-sm my-6 border border-gray-200 dark:border-gray-700;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-indigo-300 dark:border-indigo-500 pl-4 py-2 my-6 bg-indigo-50 dark:bg-indigo-900/20 text-gray-700 dark:text-gray-300 italic;
+}
+
+.prose hr {
+  @apply border-gray-300 dark:border-gray-600 my-8;
 }

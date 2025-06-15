@@ -30,20 +30,30 @@ const BlogPage = ({ params }) => {
 
   if (!blog && !resource) {
     return (
-      <h2 className="text-gray-900 dark:text-gray-100 font-semibold text-2xl mt-8">
-        404 - Blog not found
-      </h2>
+      <div className="space-content">
+        <h2 className="text-headline text-gray-900 dark:text-gray-100">
+          404 - Blog not found
+        </h2>
+        <p className="text-body text-gray-700 dark:text-gray-300">
+          The blog post you're looking for doesn't exist.
+        </p>
+      </div>
     );
   }
 
   return (
-    <div className="">
-      <h2 className="text-gray-900 dark:text-gray-100 font-semibold text-2xl mt-8 mb-4">
-        {render.title}
-      </h2>
-      <AnimatedName href={sourcePath} />
-      <Small>{render.date}</Small>
-      <div className="prose max-w-none">{render.content}</div>
+    <div className="space-content">
+      <div className="mb-8">
+        <h1 className="text-headline text-gray-900 dark:text-gray-100 mb-4">
+          {render.title}
+        </h1>
+        <AnimatedName href={sourcePath} />
+        <Small>{render.date}</Small>
+      </div>
+      
+      <article className="prose max-w-none">
+        {render.content}
+      </article>
     </div>
   );
 };

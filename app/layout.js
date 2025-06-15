@@ -1,4 +1,4 @@
-import { Inter, Manrope } from "next/font/google";
+import { Inter, Manrope, JetBrains_Mono } from "next/font/google";
 import { ViewTransitions } from "next-view-transitions";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -20,6 +20,12 @@ export const manrope = Manrope({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-manrope",
+});
+
+export const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-jetbrains-mono",
 });
 
 export function robots() {
@@ -113,13 +119,13 @@ const RootLayout = ({ children }) => {
         />
       </head>
       <body
-        className={`${inter.variable} ${manrope.variable} antialiased tracking-tight relative`}
+        className={`${inter.variable} ${manrope.variable} ${jetbrainsMono.variable} antialiased tracking-tight relative`}
       >
         <ThemeProvider />
         <main className="mx-auto mb-14 w-full max-w-screen-sm flex-1 px-4 pt-8 pb-0 sm:py-14">
           <ViewTransitions>
             <Navbar />
-            <div className="prose">{children}</div>
+            <div className="prose max-w-none">{children}</div>
             <Footer />
           </ViewTransitions>
         </main>
