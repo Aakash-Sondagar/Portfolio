@@ -4,15 +4,15 @@ export const resourceCategories = {
   BACKEND: "Backend Development", 
   DEVOPS: "DevOps & Cloud",
   DESIGN: "Design & UI/UX",
-  TOOLS: "Development Tools",
-  LEARNING: "Learning Resources",
-  CAREER: "Career & Interview",
+  TOOLS: "Tools",
+  LEARNING: "Learning",
+  CAREER: "Career",
   INSPIRATION: "Inspiration",
   PRODUCTIVITY: "Productivity",
-  NEWSLETTERS: "Newsletters",
-  DSA: "Data Structures & Algorithms",
+  NEWSLETTERS: "Articles",
+  DSA: "Algorithms",
   SYSTEM_DESIGN: "System Design",
-  BOOKS: "Books & Documentation"
+  BOOKS: "Books"
 };
 
 // Resources collection - Add new resources here
@@ -60,6 +60,14 @@ export const allResources = [
     tags: ["Components", "Effects", "Templates"],
     date: "2024-12-31"
   },
+  {
+    title: "21st.dev",
+    url: "https://21st.dev/",
+    description: "Cleanest collection of UI libraries aggregated in one site",
+    category: resourceCategories.FRONTEND,
+    tags: ["UI", "Libraries", "Collection"],
+    date: "2024-12-31"
+  },
 
   // Tools
   {
@@ -79,6 +87,22 @@ export const allResources = [
     tags: ["Icons", "React"],
     date: "2024-12-29"
   },
+  {
+    title: "Framer Motion",
+    url: "https://motion.dev/",
+    description: "Production-ready motion library for React",
+    category: resourceCategories.TOOLS,
+    tags: ["Animation", "React", "Motion"],
+    date: "2024-12-29"
+  },
+  {
+    title: "Tailwind CSS Motion",
+    url: "https://rombo.co/tailwind/",
+    description: "Generate motion Tailwind classes",
+    category: resourceCategories.TOOLS,
+    tags: ["Tailwind", "Animation", "CSS"],
+    date: "2024-12-29"
+  },
 
   // Learning Resources
   {
@@ -91,6 +115,25 @@ export const allResources = [
     featured: true
   },
   {
+    title: "Tech Interview Handbook",
+    url: "https://www.techinterviewhandbook.org/",
+    description: "Complete guide for technical interviews",
+    category: resourceCategories.CAREER,
+    tags: ["Interview", "Career", "Guide"],
+    date: "2024-12-28",
+    featured: true
+  },
+  {
+    title: "Coding Interview University",
+    url: "https://github.com/jwasham/coding-interview-university",
+    description: "Complete computer science study plan to become a software engineer",
+    category: resourceCategories.LEARNING,
+    tags: ["Computer Science", "Study Plan", "Engineering"],
+    date: "2024-12-28"
+  },
+
+  // System Design
+  {
     title: "System Design Primer",
     url: "https://github.com/donnemartin/system-design-primer",
     description: "Learn how to design large-scale systems",
@@ -100,16 +143,23 @@ export const allResources = [
     featured: true
   },
   {
-    title: "Tech Interview Handbook",
-    url: "https://www.techinterviewhandbook.org/",
-    description: "Complete guide for technical interviews",
-    category: resourceCategories.CAREER,
-    tags: ["Interview", "Career", "Guide"],
-    date: "2024-12-28",
-    featured: true
+    title: "System Design Interview",
+    url: "https://tianpan.co/notes/2016-02-13-crack-the-system-design-interview",
+    description: "System design in practice",
+    category: resourceCategories.SYSTEM_DESIGN,
+    tags: ["System Design", "Interview"],
+    date: "2024-12-30"
+  },
+  {
+    title: "High Scalability",
+    url: "http://highscalability.com/",
+    description: "Building bigger, faster, more reliable websites",
+    category: resourceCategories.SYSTEM_DESIGN,
+    tags: ["Scalability", "Architecture", "Performance"],
+    date: "2024-12-30"
   },
 
-  // Newsletters
+  // Articles & Newsletters
   {
     title: "TLDR",
     url: "https://tldr.tech/",
@@ -134,6 +184,14 @@ export const allResources = [
     tags: ["Newsletter", "Startups", "Trends"],
     date: "2024-12-27"
   },
+  {
+    title: "Developing Dev",
+    url: "https://www.developing.dev/",
+    description: "Blogs for developers",
+    category: resourceCategories.NEWSLETTERS,
+    tags: ["Newsletter", "Development", "Programming"],
+    date: "2024-12-27"
+  },
 
   // DSA Resources
   {
@@ -150,6 +208,14 @@ export const allResources = [
     description: "Coding interview and system design patterns",
     category: resourceCategories.DSA,
     tags: ["Algorithms", "Interview", "Patterns"],
+    date: "2024-12-26"
+  },
+  {
+    title: "AlgoMaster",
+    url: "https://blog.algomaster.io/",
+    description: "Blogs about DSA and system design",
+    category: resourceCategories.DSA,
+    tags: ["DSA", "System Design", "Algorithms"],
     date: "2024-12-26"
   },
 
@@ -169,6 +235,32 @@ export const allResources = [
     category: resourceCategories.CAREER,
     tags: ["Career", "Coaching", "Jobs"],
     date: "2024-12-25"
+  },
+
+  // Design & Inspiration
+  {
+    title: "UI Land",
+    url: "https://ui.land/",
+    description: "Digital library for designers and engineers",
+    category: resourceCategories.DESIGN,
+    tags: ["Design", "UI", "Inspiration"],
+    date: "2024-12-24"
+  },
+  {
+    title: "Buttons Collection",
+    url: "https://buttons.ibelick.com/",
+    description: "Tailwind CSS button collection",
+    category: resourceCategories.DESIGN,
+    tags: ["Buttons", "Tailwind", "Components"],
+    date: "2024-12-24"
+  },
+  {
+    title: "Background Snippets",
+    url: "https://bg.ibelick.com/",
+    description: "Background snippets: copy, paste, ready-to-use",
+    category: resourceCategories.DESIGN,
+    tags: ["Backgrounds", "CSS", "Snippets"],
+    date: "2024-12-24"
   },
 
   // Add new resources here following the same structure
