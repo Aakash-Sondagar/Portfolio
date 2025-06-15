@@ -20,7 +20,7 @@ const WritingComponent = () => {
 
   return (
     <div>
-      <h2 className="text-stone-800 dark:text-stone-200 font-medium mt-8">
+      <h2 className="text-gray-900 dark:text-gray-100 font-semibold text-2xl mt-8 mb-4">
         Writings
       </h2>
       <AnimatedName />
@@ -33,10 +33,10 @@ const WritingComponent = () => {
         {uniqueTags.map((tag) => (
           <button
             key={tag}
-            className={`px-3 py-1 text-sm rounded-lg transition-all duration-300 ${
+            className={`px-3 py-1.5 text-sm rounded-lg transition-all duration-300 border ${
               activeFilter === tag
-                ? "bg-stone-100 dark:bg-stone-800 text-stone-800 dark:text-stone-200"
-                : "text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800/50"
+                ? "bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 border-indigo-300 dark:border-indigo-600"
+                : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
             }`}
             onClick={() => setActiveFilter(tag)}
           >
@@ -44,7 +44,7 @@ const WritingComponent = () => {
           </button>
         ))}
       </div>
-      <ul className="list-disc pl-5 space-y-4 marker:text-gray-700 dark:marker:text-gray-300">
+      <ul className="list-disc pl-6 space-y-4 marker:text-gray-600 dark:marker:text-gray-400">
         {blogs.map((blog) => (
           <li
             key={blog.slug}
@@ -52,20 +52,20 @@ const WritingComponent = () => {
           >
             <Link
               href={`/writings/${blog.slug}`}
-              className="no-underline block mb-1"
+              className="no-underline block mb-1 group"
             >
               <div>
-                <h6 className="pl-1 text-gray-700 dark:text-gray-300 font-medium">
+                <h6 className="text-gray-800 dark:text-gray-200 font-medium group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-200">
                   {blog.title}
                 </h6>
                 {blog.description && (
                   <div className="space-y-2">
-                    <p className="text-gray-700 dark:text-gray-300 font-light m-0 text-sm pl-1">
+                    <p className="text-gray-600 dark:text-gray-400 font-light m-0 text-sm">
                       {blog.description}
                     </p>
-                    <div className="flex items-center space-x-2 pl-1">
+                    <div className="flex items-center space-x-2">
                       <Small>{blog.date}</Small>
-                      <span className="text-sm text-indigo-500 dark:text-indigo-300 font-medium hover:underline">
+                      <span className="text-sm text-indigo-600 dark:text-indigo-400 font-medium group-hover:underline">
                         Read more →
                       </span>
                     </div>

@@ -10,24 +10,24 @@ export const metadata = getMetaData("Chaos Cabinet", "/resources");
 
 A curated collection of digital artifacts — tools, articles, and insights that shape my engineering journey. Each resource here has contributed to my growth and might help yours too.
 
-<ul className="list-disc pl-5 space-y-2 marker:text-gray-700 dark:marker:text-gray-300">
+<ul className="list-disc pl-6 space-y-4 marker:text-gray-600 dark:marker:text-gray-400">
   {[...resourcesList]
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .map((blog) => (
       <li key={blog.slug} className="transition-all duration-300 hover:translate-x-1">
-        <Link href={`/writings/${blog.slug}`} className="no-underline">
+        <Link href={`/writings/${blog.slug}`} className="no-underline group">
           <>
-            <h6 className="pl-1 text-gray-700 dark:text-gray-300 font-medium group-hover:text-indigo-500 dark:group-hover:text-indigo-300">
+            <h6 className="text-gray-800 dark:text-gray-200 font-medium group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-200">
               {blog.title}
             </h6>
             {blog.description && (
               <>
-              <p className="text-gray-700 dark:text-gray-300 font-light m-0 text-sm">
+              <p className="text-gray-600 dark:text-gray-400 font-light m-0 text-sm">
                 {blog.description}
               </p>
-              <div className="flex items-center space-x-2 pl-1">
+              <div className="flex items-center space-x-2">
                 <Small>{blog.date}</Small>
-                <span className="text-sm text-indigo-500 dark:text-indigo-300 font-medium hover:underline">
+                <span className="text-sm text-indigo-600 dark:text-indigo-400 font-medium group-hover:underline">
                   Read more →
                 </span>
               </div>
